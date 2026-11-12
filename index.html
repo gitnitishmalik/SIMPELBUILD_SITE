@@ -427,6 +427,46 @@ section[id]{scroll-margin-top:84px}
   *,*::before,*::after{transition:none!important;animation:none!important}
   .js .reveal{opacity:1;transform:none}
 }
+
+/* Hero build-up clip: sits exactly over the 16:9 band of the photo it was generated from. */
+.hero-build{position:absolute;left:0;top:0;opacity:0;transition:opacity .7s ease;pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
+.hero-build.on{opacity:1}
+.hero-replay{position:absolute;right:24px;bottom:24px;z-index:2;display:none;align-items:center;gap:8px;
+  padding:9px 14px;border:1px solid rgba(255,255,255,.38);border-radius:999px;background:rgba(14,12,10,.38);
+  color:#fff;font:inherit;font-size:13px;letter-spacing:.02em;cursor:pointer;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.hero-replay.show{display:inline-flex}
+.hero-replay:hover{background:rgba(14,12,10,.6)}
+@media (max-width:720px){.hero-replay{right:16px;bottom:auto;top:84px}}
+
+/* Build film */
+.film{margin:0 0 clamp(40px,6vw,72px)}
+.film-frame{position:relative;aspect-ratio:16/9;border-radius:var(--radius,18px);overflow:hidden;background:var(--night);isolation:isolate}
+.film-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.film-frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(14,12,10,.78) 0%,rgba(14,12,10,0) 38%)}
+.film-cap{position:absolute;left:clamp(18px,3vw,40px);right:clamp(18px,3vw,40px);bottom:clamp(16px,2.6vw,34px);z-index:2;color:#fff;display:flex;align-items:flex-end;gap:clamp(14px,2vw,26px);pointer-events:none}
+.film-cap .n{font-family:var(--serif);font-size:clamp(40px,6vw,84px);line-height:.82;color:rgba(255,255,255,.5)}
+.film-cap h3{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.8vw,38px);line-height:1.05;margin:0 0 6px}
+.film-cap p{margin:0;font-size:clamp(13px,1.15vw,16px);color:rgba(255,255,255,.82)}
+.film-cap .txt{transition:opacity .35s ease,transform .35s ease}
+.film-cap.swap .txt{opacity:0;transform:translateY(8px)}
+.film-play{position:absolute;right:clamp(14px,2.4vw,30px);bottom:clamp(14px,2.4vw,30px);z-index:3;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(14,12,10,.4);color:#fff;cursor:pointer;display:grid;place-items:center;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.film-play:hover{background:rgba(14,12,10,.66)}
+.film-play svg{width:16px;height:16px;fill:currentColor}
+.film-play .pl{display:none}.film.paused .film-play .pl{display:block}.film.paused .film-play .pa{display:none}
+.film-rail{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-top:14px;padding:0;list-style:none}
+.film-rail button{display:block;width:100%;padding:10px 0 0;border:0;background:none;text-align:left;font:500 12px/1.3 var(--sans);letter-spacing:.02em;color:var(--muted);cursor:pointer}
+.film-rail button::before{content:"";display:block;height:3px;border-radius:2px;margin-bottom:9px;background:linear-gradient(90deg,var(--accent) var(--p,0%),var(--line) var(--p,0%))}
+.film-rail button[aria-current="true"]{color:var(--ink)}
+.film-rail button:hover{color:var(--ink)}
+@media (max-width:860px){
+  .film-rail{gap:4px}
+  .film-rail button{font-size:0;padding-top:6px}
+  .film-rail button::before{margin-bottom:0}
+  .film-cap{right:70px}
+}
 </style>
 </head>
 <body>
@@ -488,7 +528,9 @@ section[id]{scroll-margin-top:84px}
 <section class="hero" id="top" aria-labelledby="hero-title">
   <div class="hero-media">
     <img src="images/hero.webp" width="1902" height="1269" srcset="images/hero-768.webp 768w, images/hero-1280.webp 1280w, images/hero.webp 1902w" sizes="100vw" decoding="async" fetchpriority="high" alt="A Simpelbuild Boca Chica home with an outdoor deck and dining table under the trees">
+    <video class="hero-build" id="heroBuild" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
   </div>
+  <button class="hero-replay" id="heroReplay" type="button">&#9654; Watch it build</button>
   <div class="wrap hero-inner">
     <span class="eyebrow">Factory-built homes · Glasshouses · Outdoor living</span>
     <h1 id="hero-title">Healthy living,<br> <em>made simple.</em></h1>
@@ -614,6 +656,14 @@ section[id]{scroll-margin-top:84px}
         <span class="eyebrow">How it works</span>
         <h2 class="h2" id="process-title">From factory to finished, <em>in weeks.</em></h2>
       </div>
+    </div>
+    <div class="film paused reveal" id="buildFilm">
+      <div class="film-frame">
+        <video muted playsinline preload="none" poster="images/build-film-poster.jpg" aria-label="Film: a Simpelbuild module assembling step by step, from foundation to the finished home on site"></video>
+        <div class="film-cap" aria-live="off"><span class="n">01</span><div class="txt"><h3></h3><p></p></div></div>
+        <button class="film-play" type="button" aria-label="Play or pause the film"><svg class="pl" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg><svg class="pa" viewBox="0 0 16 16"><path d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/></svg></button>
+      </div>
+      <ol class="film-rail"></ol>
     </div>
     <ol class="steps">
       <li class="step reveal"><span class="n">01</span><h3>Design</h3><p>Choose a model and size, then pick the finishes and materials that suit your site.</p></li>
@@ -1155,6 +1205,88 @@ section[id]{scroll-margin-top:84px}
     $$('.reveal').forEach(function (n) { io.observe(n); });
   } else {
     $$('.reveal').forEach(function (n) { n.classList.add('in'); });
+  }
+})();
+</script>
+<script>
+(function(){
+  var v=document.getElementById('heroBuild'),btn=document.getElementById('heroReplay');
+  if(!v)return;
+  var media=v.parentNode,img=media.querySelector('img');
+  var conn=navigator.connection||{};
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches||conn.saveData)return;
+  /* Photo is 1902x1269, shown with object-fit:cover at 50% 62%. The clip is the full-width 16:9 band
+     starting 123.46px down the photo. Recompute the band's on-screen box whenever the hero resizes. */
+  var IW=1902,IH=1269,BAND_TOP=123.46;
+  function place(){
+    var W=media.clientWidth,H=media.clientHeight,s=Math.max(W/IW,H/IH);
+    var w=IW*s,x=(W-w)*.5,y=(H-IH*s)*.62;
+    v.style.width=w+'px';v.style.height=(w*9/16)+'px';
+    v.style.transform='translate('+x+'px,'+(y+BAND_TOP*s)+'px)';
+  }
+  place();addEventListener('resize',place);
+  function play(){
+    btn.classList.remove('show');v.currentTime=0;
+    var p=v.play();
+    if(p&&p.then)p.then(function(){v.classList.add('on')}).catch(function(){btn.classList.add('show')});
+    else v.classList.add('on');
+  }
+  v.addEventListener('ended',function(){v.classList.remove('on');btn.classList.add('show')});
+  v.addEventListener('error',function(){v.classList.remove('on');btn.classList.remove('show')});
+  btn.addEventListener('click',play);
+  function start(){
+    v.addEventListener('canplaythrough',play,{once:true});
+    v.preload='auto';v.src='images/hero-build.mp4';v.load();
+  }
+  /* Let the photo paint first so it stays the LCP element, then bring the clip in. */
+  if(img.complete)start();else img.addEventListener('load',start,{once:true});
+})();
+</script>
+<script>
+(function(){
+  var root=document.getElementById('buildFilm');if(!root)return;
+  var CH=[[0.0, "Foundation", "Pre-cast piers and a level floor frame."], [3.5, "Aluminium frame", "Posts and ring beam lock together."], [7.5, "The connection", "Every corner meets in a precision joint."], [10.0, "Wall and roof cassettes", "Factory-made panels slide into the frame."], [14.0, "Glazing and cladding", "Floor-to-ceiling glass, then the outer skin."], [17.5, "Interior", "Floor, ceiling and fit-out go in last."], [20.5, "Deck and lighting", "One module, complete."], [24.0, "On your site", "Assembled in days, not months."]];
+  var v=root.querySelector('video'),cap=root.querySelector('.film-cap'),num=cap.querySelector('.n'),
+      h=cap.querySelector('h3'),p=cap.querySelector('p'),rail=root.querySelector('.film-rail'),
+      btn=root.querySelector('.film-play'),cur=-1,loaded=false,userPaused=false,
+      reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var btns=CH.map(function(c,i){
+    var li=document.createElement('li'),b=document.createElement('button');
+    b.type='button';b.textContent=c[1];b.setAttribute('aria-label','Chapter '+(i+1)+': '+c[1]);
+    b.addEventListener('click',function(){load();v.currentTime=c[0]+.05;userPaused=false;v.play()});
+    li.appendChild(b);rail.appendChild(li);return b;
+  });
+  function show(i){
+    if(i===cur)return;cur=i;cap.classList.add('swap');
+    setTimeout(function(){num.textContent=('0'+(i+1)).slice(-2);h.textContent=CH[i][1];p.textContent=CH[i][2];cap.classList.remove('swap')},cur<0?0:220);
+    btns.forEach(function(b,j){b.setAttribute('aria-current',j===i?'true':'false')});
+  }
+  function tick(){
+    var t=v.currentTime,d=v.duration||1,i=0;
+    for(var j=0;j<CH.length;j++)if(t>=CH[j][0])i=j;
+    show(i);
+    btns.forEach(function(b,j){
+      var a=CH[j][0],z=j+1<CH.length?CH[j+1][0]:d;
+      b.style.setProperty('--p',Math.max(0,Math.min(1,(t-a)/(z-a)))*100+'%');
+    });
+  }
+  function load(){if(loaded)return;loaded=true;v.src='images/build-film.mp4';v.load()}
+  num.textContent='01';h.textContent=CH[0][1];p.textContent=CH[0][2];cur=0;btns[0].setAttribute('aria-current','true');
+  v.addEventListener('timeupdate',tick);
+  v.addEventListener('play',function(){root.classList.remove('paused')});
+  v.addEventListener('pause',function(){root.classList.add('paused')});
+  v.addEventListener('ended',function(){userPaused=true});
+  btn.addEventListener('click',function(){
+    load();
+    if(v.paused){userPaused=false;if(v.ended)v.currentTime=0;v.play()}else{userPaused=true;v.pause()}
+  });
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&e.intersectionRatio>=.55){if(!reduce&&!userPaused){load();var q=v.play();if(q&&q.catch)q.catch(function(){})}}
+        else if(!v.paused){v.pause()}
+      });
+    },{threshold:[0,.55]}).observe(root.querySelector('.film-frame'));
   }
 })();
 </script>
