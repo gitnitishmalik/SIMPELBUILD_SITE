@@ -6,10 +6,11 @@
 <title>Simpelbuild | Factory-built homes, glasshouses &amp; outdoor living (concept)</title>
 <meta name="description" content="Concept redesign of simpelbuild.com: precision-engineered aluminium homes, glasshouses and outdoor living, built in the factory and assembled on site in days.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="author" content="Concept by Nitin Malik">
+<meta name="author" content="Concept by Nitish Malik">
+<link rel="author" href="https://nmcutbyte.vercel.app/">
 <meta name="theme-color" content="#F6F2EC">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Simpelbuild website concept by Nitin Malik">
+<meta property="og:title" content="Simpelbuild website concept by Nitish Malik">
 <meta property="og:description" content="A faster, enquiry-focused redesign concept for simpelbuild.com, built with Simpelbuild's own products and photos.">
 <meta property="og:url" content="https://simpelbuild-concept-nitin.netlify.app/">
 <meta property="og:image" content="https://simpelbuild-concept-nitin.netlify.app/og-image.jpg">
@@ -22,7 +23,9 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-serif-latin-400-italic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin-400-normal.woff2" crossorigin>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C81E3C'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='40' fill='white'%3ES%3C/text%3E%3C/svg%3E">
-<script>(function(d){d.classList.add('js');try{if(!sessionStorage.getItem('sbIntro')&&!matchMedia('(prefers-reduced-motion:reduce)').matches)d.classList.add('intro-on')}catch(e){}})(document.documentElement);</script>
+<script>(function(d){d.classList.add('js');try{var c=navigator.connection||{};if(!matchMedia('(prefers-reduced-motion:reduce)').matches&&!c.saveData)d.classList.add('intro-on')}catch(e){}})(document.documentElement);</script>
+<link rel="preload" as="image" href="images/lift-wide.jpg" media="(orientation:landscape)" fetchpriority="high">
+<link rel="preload" as="image" href="images/lift-tall.jpg" media="(orientation:portrait)" fetchpriority="high">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <style>
 /* Inter and Instrument Serif (SIL Open Font License), embedded so the page works offline */
@@ -84,6 +87,8 @@ h2 em,h1 em{font-style:italic}
 .cbar{background:#0E0D0C;color:#EFE9E1;font-size:13px;line-height:1.4}
 .cbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:8px;padding-bottom:8px}
 .cbar p{margin:0}
+.cbar p a{color:inherit;text-decoration:underline;text-decoration-color:rgba(239,233,225,.45);text-underline-offset:3px}
+.cbar p a:hover{text-decoration-color:currentColor}
 .cbar b{font-weight:600}
 .cbar-actions{display:flex;align-items:center;gap:6px;flex:none}
 .cbar-btn{background:transparent;border:1px solid rgba(239,233,225,.32);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:12.5px}
@@ -412,11 +417,12 @@ section[id]{scroll-margin-top:84px}
   .glass-card{max-width:none}
   .ftr-grid{grid-template-columns:1fr}
   .ftr-bottom{padding-bottom:64px}
-  .mbar{display:flex}
+  .mbar{display:flex;padding-left:calc(var(--gutter) + 58px)}
   body{padding-bottom:76px}
-  .ai-launch{bottom:88px;right:16px;padding:0 14px 0 12px;min-height:46px}
+  /* On phones the assistant sits at the start of the action bar, so it never covers the text */
+  .ai-launch{left:var(--gutter);right:auto;bottom:calc(10px + env(safe-area-inset-bottom));width:48px;min-height:48px;padding:0;justify-content:center;box-shadow:none}
   .ai-launch .label{display:none}
-  .ai{right:16px;bottom:146px;height:min(520px,calc(100vh - 190px))}
+  .ai{right:16px;bottom:88px;height:min(520px,calc(100vh - 130px))}
 }
 @media print{
   .js .reveal{opacity:1!important;transform:none!important}
@@ -430,17 +436,25 @@ section[id]{scroll-margin-top:84px}
 }
 
 /* Hero build-up clip: sits exactly over the 16:9 band of the photo it was generated from. */
-.hero-build{position:absolute;left:0;top:0;opacity:0;transition:opacity .7s ease;pointer-events:none;
+.hero-build{position:absolute;left:0;top:0;opacity:0;transition:opacity 1s ease;pointer-events:none;
   -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 93%,transparent 100%);
   mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
 .hero-build.on{opacity:1}
+.hero-build.now{transition:none}
 .hero-replay{position:absolute;right:24px;bottom:24px;z-index:2;display:none;align-items:center;gap:8px;
   padding:9px 14px;border:1px solid rgba(255,255,255,.38);border-radius:999px;background:rgba(14,12,10,.38);
   color:#fff;font:inherit;font-size:13px;letter-spacing:.02em;cursor:pointer;
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .hero-replay.show{display:inline-flex}
 .hero-replay:hover{background:rgba(14,12,10,.6)}
-@media (max-width:720px){.hero-replay{right:16px;bottom:auto;top:84px}}
+/* Label and progress line while the build-up chapter plays */
+.hero-chapter{position:absolute;right:24px;bottom:24px;z-index:2;display:flex;flex-direction:column;gap:8px;min-width:190px;padding:11px 14px 10px;
+  border:1px solid rgba(255,255,255,.22);border-radius:12px;background:rgba(14,12,10,.42);color:#fff;font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;transform:translateY(6px);transition:opacity .5s ease,transform .5s ease;pointer-events:none}
+.hero-chapter.show{opacity:1;transform:none}
+.hero-chapter i{display:block;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--accent) calc(var(--p,0)*100%),rgba(255,255,255,.28) 0)}
+.hero-replay,.hero-chapter{bottom:auto;top:128px;right:var(--gutter,24px)}
+@media (max-width:720px){.hero-replay,.hero-chapter{right:16px;bottom:auto;top:84px}}
 
 /* Build film */
 .film{margin:0 0 clamp(40px,6vw,72px)}
@@ -541,38 +555,89 @@ section[id]{scroll-margin-top:84px}
 }
 @media (min-width:861px){.x3d-view{position:absolute;inset:0}}
 
-/* ---- Construction intro ---- */
-.intro{display:none}
-.intro-on .intro{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:var(--night);color:var(--on-night);
-  clip-path:inset(0 0 0 0);transition:clip-path .95s cubic-bezier(.76,0,.24,1)}
-.intro-on body{overflow:hidden}
-.intro::before{content:"";position:absolute;inset:0;opacity:.55;
-  background-image:linear-gradient(rgba(241,236,228,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(241,236,228,.055) 1px,transparent 1px),linear-gradient(rgba(241,236,228,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(241,236,228,.03) 1px,transparent 1px);
-  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
-  -webkit-mask-image:radial-gradient(70% 62% at 50% 46%,#000 30%,transparent 100%);mask-image:radial-gradient(70% 62% at 50% 46%,#000 30%,transparent 100%)}
-.intro-in{position:relative;width:min(620px,84vw);text-align:center;transition:transform .95s cubic-bezier(.76,0,.24,1),opacity .5s ease}
-.intro-art{display:block;width:100%;height:auto;stroke:rgba(241,236,228,.9);stroke-width:1.5}
+/* ---- Engineering: annotated 3D overview ---- */
+.e3d{position:sticky;top:96px;margin:0}
+.e3d-view{position:relative;aspect-ratio:1/1;max-height:calc(100vh - 190px);width:100%;border-radius:var(--radius);overflow:hidden;isolation:isolate;
+  border:1px solid var(--night-line);background:radial-gradient(110% 85% at 50% 42%,#2f2b27 0%,#1b1917 58%,#121110 100%)}
+.e3d-view canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;outline:0;touch-action:pan-y}
+.e3d-view canvas:active{cursor:grabbing}
+.e3d-fb{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:18px;transition:opacity .5s ease}
+.e3d-live .e3d-fb{opacity:0;pointer-events:none}
+.e3d-load{position:absolute;left:0;right:0;bottom:18px;text-align:center;font:500 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#69625a;pointer-events:none}
+.e3d-live .e3d-load,.e3d-nogl .e3d-load{display:none}
+.e3d-hud{position:absolute;left:clamp(14px,2vw,24px);top:clamp(14px,2vw,22px);right:clamp(14px,2vw,24px);pointer-events:none;opacity:0;transition:opacity .4s ease}
+.e3d-live .e3d-hud{opacity:1}
+.e3d-hud .k{font:500 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--on-night-2)}
+.e3d-hud h3{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.3vw,32px);line-height:1.08;margin:8px 0 6px;color:var(--on-night)}
+.e3d-hud p{margin:0;max-width:34ch;font-size:13.5px;line-height:1.45;color:var(--on-night-2)}
+.e3d-hud .txt{transition:opacity .25s ease,transform .25s ease}
+.e3d-hud.swap .txt{opacity:0;transform:translateY(6px)}
+.e3d-labs{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.e3d-lab{position:absolute;left:0;top:0;display:flex;align-items:center;gap:7px;white-space:nowrap;font:500 11.5px/1 var(--sans);letter-spacing:.02em;color:var(--on-night);
+  opacity:0;transition:opacity .35s ease;will-change:transform}
+.e3d-lab.on{opacity:1}
+.e3d-lab.on.hid{opacity:0}
+.e3d-lab::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(200,30,60,.22)}
+.e3d-lab span{padding:5px 9px;border-radius:999px;background:rgba(18,17,16,.72);border:1px solid rgba(241,236,228,.16);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.e3d-lab.rt{flex-direction:row-reverse}
+.e3d-lab.dim::before{display:none}
+.e3d-lab.dim span{background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none;padding:0;font-variant-numeric:tabular-nums;color:var(--on-night-2);letter-spacing:.06em;transform:translate(-50%,-50%)}
+.e3d-fea{position:absolute;left:clamp(12px,2vw,22px);bottom:clamp(12px,2vw,22px);width:min(36%,200px);margin:0;padding:8px;border-radius:12px;background:#fff;color:#1c1a17;
+  opacity:0;transform:translateY(10px);transition:opacity .4s ease,transform .4s ease;pointer-events:none}
+.e3d-fea img{display:block;width:100%;height:auto;border-radius:6px}
+.e3d-fea figcaption{font-size:11px;line-height:1.3;margin-top:6px;color:#4a443d}
+.e3d[data-mode="loads"].e3d-live .e3d-fea{opacity:1;transform:none}
+.e3d-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.e3d-tabs button{height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--night-line);background:none;color:var(--on-night-2);font:500 13px/1 var(--sans);cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.e3d-tabs button:hover{color:var(--on-night);border-color:rgba(241,236,228,.4)}
+.e3d-tabs button[aria-pressed="true"]{background:var(--on-night);color:var(--night);border-color:var(--on-night)}
+.e3d-nogl .e3d-tabs{display:none}
+.e3d-cap{font-size:13px;color:var(--on-night-2);margin:12px 0 0}
+/* spec rows drive the viewer */
+.e3d-ready .specs div{cursor:pointer;position:relative;transition:background-color .25s ease}
+.e3d-ready .specs div::before{content:"";position:absolute;left:-14px;top:-1px;bottom:-1px;width:2px;background:var(--accent);transform:scaleY(0);transition:transform .25s ease}
+.e3d-ready .specs div.on::before{transform:scaleY(1)}
+.e3d-ready .specs div.on dt{color:var(--on-night)}
+.e3d-ready .specs div:hover{background:rgba(241,236,228,.03)}
+@media (max-width:959px){
+  .e3d{position:static}
+  .e3d-view{aspect-ratio:4/5;max-height:none}
+  .e3d-hud p{display:none}
+}
+
+/* ---- Entrance: a wall panel with the wordmark hangs over the hero and is pulled up by its straps ---- */
+.hero-lift{display:none}
+.intro-on .hero-lift,.hero-lift.up,.hero-lift.live{display:block}
+.hero-lift{position:absolute;left:0;right:0;top:0;height:100%;z-index:3;pointer-events:none;transform-origin:50% 0;will-change:transform}
+.hero-lift .pn{position:absolute;left:0;right:0;top:15%;bottom:-3%;box-shadow:0 0 50px rgba(0,0,0,.5);
+  background-color:#b9a685;background-image:url(images/lift-wide.jpg),repeating-linear-gradient(90deg,#c6b596 0,#bba987 2.4vw,#8b7d66 2.4vw,#8b7d66 2.6vw);
+  background-size:cover,auto;background-position:50% 50%;background-repeat:no-repeat,repeat}
+@media (orientation:portrait){.hero-lift .pn{background-image:url(images/lift-tall.jpg),repeating-linear-gradient(90deg,#c6b596 0,#bba987 4.8vw,#8b7d66 4.8vw,#8b7d66 5.2vw);background-size:100% auto,auto;background-position:50% 40%}}
+/* aluminium top and bottom rails of the panel */
+.hero-lift .pn::before,.hero-lift .pn::after{content:"";position:absolute;left:0;right:0;height:12px;
+  background:linear-gradient(180deg,#3a3835 0,#b9babd 22%,#f1f2f4 46%,#8e8f93 74%,#2b2925 100%)}
+.hero-lift .pn::before{bottom:100%}
+.hero-lift .pn::after{top:100%;box-shadow:0 26px 40px rgba(0,0,0,.45)}
+/* two webbing straps running up out of the hero, each on a steel lifting plate */
+.hero-lift .st{position:absolute;top:-70%;height:calc(85% - 6px);width:clamp(12px,1.25vw,18px);margin-left:clamp(-9px,-.625vw,-6px);
+  background:repeating-linear-gradient(180deg,rgba(0,0,0,0) 0 7px,rgba(0,0,0,.12) 7px 8px),linear-gradient(90deg,#b98a00 0,#f2c200 22%,#ffd83a 50%,#f2c200 78%,#b98a00 100%);
+  box-shadow:6px 8px 14px rgba(0,0,0,.35)}
+.hero-lift .st:nth-child(1){left:24%}.hero-lift .st:nth-child(2){left:76%}
+.hero-lift .st::after{content:"";position:absolute;left:50%;bottom:-22px;width:46px;height:34px;margin-left:-23px;border-radius:4px;
+  background:radial-gradient(circle at 50% 30%,#1c1a17 0 5px,transparent 5.5px),linear-gradient(180deg,#e9eaec,#9a9b9f 60%,#5f6064);box-shadow:0 3px 8px rgba(0,0,0,.45)}
+.hero-lift.up{animation:liftup 1.25s linear forwards}
+@keyframes liftup{
+  0%{transform:translate3d(0,0,0);animation-timing-function:ease-in-out}
+  14%{transform:translate3d(0,.8%,0);animation-timing-function:cubic-bezier(.6,0,.22,1)}
+  100%{transform:translate3d(0,-112%,0) rotate(-.25deg)}
+}
 .intro-art path,.eng-art path{stroke-dasharray:1;stroke-dashoffset:1}
-.intro-on .intro-art path{animation:sbdraw .5s cubic-bezier(.4,0,.2,1) forwards}
-.intro-on .intro-art .g1 path{animation-delay:.10s}.intro-on .intro-art .g2 path{animation-delay:.38s}
-.intro-on .intro-art .g3 path{animation-delay:.66s}.intro-on .intro-art .g4 path{animation-delay:.94s}
-.intro-on .intro-art .g5 path{animation-delay:1.22s;stroke:rgba(241,236,228,.55)}.intro-on .intro-art .g6 path{animation-delay:1.5s;stroke:var(--accent)}
-@keyframes sbdraw{to{stroke-dashoffset:0}}
-.intro-logo{margin:26px 0 0;font-size:clamp(34px,5vw,52px);letter-spacing:-.025em;line-height:1;opacity:0;transform:translateY(10px);animation:sbup .7s .2s cubic-bezier(.2,.8,.2,1) forwards}
-.intro-logo span{font-weight:300}.intro-logo b{font-weight:700;color:var(--accent)}
-@keyframes sbup{to{opacity:1;transform:none}}
-.intro-meta{display:flex;align-items:center;gap:14px;margin:22px auto 0;width:min(340px,80%);font:500 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--on-night-2)}
-.intro-meta i{flex:1;height:1px;background:var(--night-line);position:relative;overflow:hidden}
-.intro-meta i::after{content:"";position:absolute;inset:0;background:var(--accent);transform:scaleX(var(--p,0));transform-origin:0 50%}
-.intro-meta b{font-weight:500;color:var(--on-night);font-variant-numeric:tabular-nums;min-width:3ch;text-align:right}
-.intro-meta span{min-width:10ch;text-align:left}
-.intro.out{clip-path:inset(0 0 100% 0)}
-.intro.out .intro-in{transform:translateY(-60px);opacity:0}
 /* Hero entrance once the intro lifts */
 .intro-on .hero-inner>*{opacity:0;transform:translateY(26px)}
-.intro-done .hero-inner>*{opacity:1;transform:none;transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
-.intro-done .hero-inner>*:nth-child(2){transition-delay:.08s}.intro-done .hero-inner>*:nth-child(3){transition-delay:.16s}
-.intro-done .hero-inner>*:nth-child(4){transition-delay:.24s}.intro-done .hero-inner>*:nth-child(5){transition-delay:.32s}
+.intro-done .hero-inner>*{opacity:1;transform:none;transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.intro-done .hero-inner>*:nth-child(2){transition-delay:.06s}.intro-done .hero-inner>*:nth-child(3){transition-delay:.12s}
+.intro-done .hero-inner>*:nth-child(4){transition-delay:.18s}.intro-done .hero-inner>*:nth-child(5){transition-delay:.24s}
+html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacity .4s ease,transform .4s ease;transition-delay:0s}
 .hero-media{will-change:transform}
 /* Blueprint graphics behind the engineering section */
 .eng{position:relative;overflow:hidden;isolation:isolate}
@@ -590,15 +655,6 @@ section[id]{scroll-margin-top:84px}
 </style>
 </head>
 <body>
-<div class="intro" id="sbIntro" role="status" aria-label="Loading Simpelbuild"><div class="intro-in"><svg class="intro-art" viewBox="0 0 480 250" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-<g class="g1"><path pathLength="1" d="M14 232H466"/><path pathLength="1" d="M66 232v-12h14v12M146 232v-12h14v12M226 232v-12h14v12M306 232v-12h14v12M386 232v-12h14v12"/></g>
-<g class="g2"><path pathLength="1" d="M46 220H434V206H46Z"/><path pathLength="1" d="M46 213H434"/></g>
-<g class="g3"><path pathLength="1" d="M70 206V98M110 206V98M150 206V98M190 206V98M230 206V98M270 206V98"/><path pathLength="1" d="M350 206V104M382 206V104M414 206V104"/></g>
-<g class="g4"><path pathLength="1" d="M64 98H276"/><path pathLength="1" d="M60 98V84H280V98"/><path pathLength="1" d="M346 104H418"/><path pathLength="1" d="M342 104V90H422V104"/></g>
-<g class="g5"><path pathLength="1" d="M116 110H144V206M156 110H184V206M196 110H224V206"/><path pathLength="1" d="M356 118H376V206"/><path pathLength="1" d="M80 104V206M90 104V206M100 104V206M240 104V206M250 104V206M260 104V206M392 110V206M403 110V206"/></g>
-<g class="g6"><path pathLength="1" d="M280 108H342"/><path pathLength="1" d="M288 102V112M298 102V112M308 102V112M318 102V112M328 102V112M338 102V112"/><path pathLength="1" d="M292 206V188H322V206M300 188V176M314 188V176M296 176H318"/></g>
-</svg><p class="intro-logo"><span>Simpel</span><b>build</b></p><div class="intro-meta"><span id="sbPhase">Foundation</span><i></i><b id="sbCount">0</b></div></div></div>
-
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></symbol>
@@ -616,7 +672,7 @@ section[id]{scroll-margin-top:84px}
 
 <div class="cbar" id="cbar" role="region" aria-label="About this concept">
   <div class="wrap">
-    <p><b>Concept redesign</b> for Simpelbuild by Nitin Malik. Not the official website.</p>
+    <p><b>Concept redesign</b> for Simpelbuild by <a href="https://nmcutbyte.vercel.app/" target="_blank" rel="noopener">Nitish Malik</a>. Not the official website.</p>
     <div class="cbar-actions">
       <button class="cbar-btn" type="button" data-open-changes>What changed</button>
       <button class="cbar-x" type="button" aria-label="Hide this bar" data-close-cbar><svg class="ico"><use href="#i-close"/></svg></button>
@@ -659,7 +715,9 @@ section[id]{scroll-margin-top:84px}
     <img src="images/hero.webp" width="1902" height="1269" srcset="images/hero-768.webp 768w, images/hero-1280.webp 1280w, images/hero.webp 1902w" sizes="100vw" decoding="async" fetchpriority="high" alt="A Simpelbuild Boca Chica home with an outdoor deck and dining table under the trees">
     <video class="hero-build" id="heroBuild" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
   </div>
+  <div class="hero-lift" id="sbLift" aria-hidden="true"><i class="st"></i><i class="st"></i><div class="pn"></div></div>
   <button class="hero-replay" id="heroReplay" type="button">&#9654; Watch it build</button>
+  <div class="hero-chapter" id="heroChapter" aria-hidden="true"><span>How it goes together</span><i></i></div>
   <div class="wrap hero-inner">
     <span class="eyebrow">Factory-built homes · Glasshouses · Outdoor living</span>
     <h1 id="hero-title">Healthy living,<br> <em>made simple.</em></h1>
@@ -869,10 +927,17 @@ section[id]{scroll-margin-top:84px}
         <div><dt>Upkeep</dt><dd>Repairable, upgradeable panels and non-corrosive finishes</dd></div>
       </dl>
     </div>
-    <figure class="fig reveal">
-      <div class="media"><img src="images/fea.webp" width="1200" height="737" srcset="images/fea-700.webp 700w, images/fea.webp 1200w" sizes="(min-width: 960px) 45vw, 100vw" decoding="async" loading="lazy" alt="Structural simulation of a Simpelbuild frame showing maximum combined stress"></div>
-      <figcaption>Structural simulation of the frame: maximum combined stress under load.</figcaption>
-    </figure>
+    <div class="e3d reveal" id="e3d" data-mode="overview">
+      <div class="e3d-view">
+        <img class="e3d-fb" src="images/fea.webp" width="1200" height="737" srcset="images/fea-700.webp 700w, images/fea.webp 1200w" sizes="(min-width: 960px) 45vw, 100vw" decoding="async" loading="lazy" alt="Structural simulation of a Simpelbuild frame showing maximum combined stress">
+        <div class="e3d-load">Loading 3D structure</div>
+        <div class="e3d-labs" aria-hidden="true"></div>
+        <div class="e3d-hud"><span class="k">3D overview</span><div class="txt"><h3></h3><p></p></div></div>
+        <figure class="e3d-fea" aria-hidden="true"><img src="images/fea-700.webp" width="700" height="430" loading="lazy" decoding="async" alt=""><figcaption>Simulation: maximum combined stress in the frame under load.</figcaption></figure>
+      </div>
+      <div class="e3d-tabs" role="group" aria-label="3D views of the structure"></div>
+      <p class="e3d-cap">Drag to turn the model. Pick a view, or point at a line of the specification.</p>
+    </div>
   </div>
 </section>
 
@@ -1079,7 +1144,7 @@ section[id]{scroll-margin-top:84px}
     </div>
     <div class="ftr-bottom">
       <span>© 2026 Simpelbuild. India · Global.</span>
-      <span>Concept by <a href="https://www.linkedin.com/in/thenitinmalik" target="_blank" rel="noopener">Nitin Malik</a>. Not the official website.</span>
+      <span>Concept by <a href="https://nmcutbyte.vercel.app/" target="_blank" rel="noopener">Nitish Malik</a> · <a href="https://nmcutbyte.vercel.app/" target="_blank" rel="noopener">Portfolio</a> · <a href="https://www.linkedin.com/in/thenitinmalik" target="_blank" rel="noopener">LinkedIn</a>. Not the official website.</span>
     </div>
   </div>
 </footer>
@@ -1385,7 +1450,7 @@ section[id]{scroll-margin-top:84px}
 </script>
 <script>
 (function(){
-  var v=document.getElementById('heroBuild'),btn=document.getElementById('heroReplay');
+  var v=document.getElementById('heroBuild'),btn=document.getElementById('heroReplay'),ch=document.getElementById('heroChapter'),WAIT=600;
   if(!v)return;
   var media=v.parentNode,img=media.querySelector('img');
   var conn=navigator.connection||{};
@@ -1401,21 +1466,27 @@ section[id]{scroll-margin-top:84px}
   }
   place();addEventListener('resize',place);
   function play(){
-    btn.classList.remove('show');v.currentTime=0;
+    btn.classList.remove('show');if(v.currentTime>0)v.currentTime=0;
     var p=v.play();
-    if(p&&p.then)p.then(function(){v.classList.add('on')}).catch(function(){btn.classList.add('show')});
-    else v.classList.add('on');
+    if(p&&p.then)p.then(function(){v.classList.add('on');ch.classList.add('show')}).catch(function(){btn.classList.add('show')});
+    else{v.classList.add('on');ch.classList.add('show')}
   }
-  v.addEventListener('ended',function(){v.classList.remove('on');btn.classList.add('show')});
-  v.addEventListener('error',function(){v.classList.remove('on');btn.classList.remove('show')});
+  v.addEventListener('timeupdate',function(){ch.style.setProperty('--p',v.duration?(v.currentTime/v.duration).toFixed(3):0)});
+  v.addEventListener('ended',function(){v.classList.remove('now');v.offsetWidth;v.classList.remove('on');ch.classList.remove('show');btn.classList.add('show')});
+  v.addEventListener('error',function(){v.classList.remove('on');ch.classList.remove('show');btn.classList.remove('show')});
   btn.addEventListener('click',play);
-  function start(){
-    v.addEventListener('canplaythrough',play,{once:true});
-    v.preload='auto';v.src=innerWidth<=900?'images/hero-build-720.mp4':'images/hero-build.mp4';v.load();
+  var SRC=innerWidth<=900?'images/hero-build-720.mp4?v=20261112':'images/hero-build.mp4?v=20261112';
+  if(document.documentElement.classList.contains('intro-on')){
+    /* Ready under the entrance panel: first frame showing, no fade, so there is no flash of the photo. */
+    v.classList.add('now','on');
+    v.poster=innerWidth<=900?'images/hero-build-poster-720.jpg':'images/hero-build-poster.jpg';
+    v.preload='auto';v.src=SRC;v.load();
+    /* Parks the clip on its first frame, fully shown, so the panel can lift onto an empty site. */
+    function prep(){v.pause();btn.classList.remove('show');ch.classList.remove('show');v.classList.add('now','on');if(v.currentTime>0)v.currentTime=0}
+    window.sbHero={v:v,play:play,prep:prep};
+  }else{
+    v.preload='none';v.src=SRC;btn.classList.add('show');
   }
-  /* Let the photo paint first so it stays the LCP element, then bring the clip in. */
-  function go(){if(img.complete)start();else img.addEventListener('load',start,{once:true})}
-  if(document.documentElement.classList.contains('intro-on'))addEventListener('sb:ready',go,{once:true});else go();
 })();
 </script>
 <script>
@@ -1446,7 +1517,7 @@ section[id]{scroll-margin-top:84px}
       b.style.setProperty('--p',Math.max(0,Math.min(1,(t-a)/(z-a)))*100+'%');
     });
   }
-  function load(){if(loaded)return;loaded=true;v.src=innerWidth<=900?'images/build-film-720.mp4':'images/build-film.mp4';v.load()}
+  function load(){if(loaded)return;loaded=true;v.src=innerWidth<=900?'images/build-film-720.mp4?v=20261112':'images/build-film.mp4?v=20261112';v.load()}
   num.textContent='01';h.textContent=CH[0][1];p.textContent=CH[0][2];cur=0;btns[0].setAttribute('aria-current','true');
   v.addEventListener('timeupdate',tick);
   v.addEventListener('play',function(){root.classList.remove('paused')});
@@ -1711,31 +1782,306 @@ section[id]{scroll-margin-top:84px}
   }
 })();
 </script>
+<script type="module">
+(function(){
+  var host=document.getElementById('e3d');if(!host)return;
+  var view=host.querySelector('.e3d-view'),started=false;
+  function nogl(){host.classList.add('e3d-nogl')}
+  try{var c=document.createElement('canvas');if(!(c.getContext('webgl2')||c.getContext('webgl')))return nogl()}catch(e){return nogl()}
+  new IntersectionObserver(function(es,o){if(es[0].isIntersecting&&!started){started=true;o.disconnect();boot().catch(function(e){console.warn('[e3d]',e);nogl()})}},{rootMargin:'500px 0px'}).observe(host);
+
+  /* One view per idea. show: which groups are solid (s), ghosted (g) or hidden (everything else).
+     Groups: frame, floor, walls, roof, glass, clad, fascia, deck, interior, furn. */
+  var MODES=[
+    {id:'overview',tab:'Structure',h:'One module, fully resolved',p:'An aluminium frame on pre-cast piers carries everything. Walls, roof and glass are cassettes that fix to it.',
+     s:'frame glass',g:'floor walls roof clad fascia deck interior',cam:[21,1.18,-.62],spin:1,
+     labs:[['Aluminium frame',-3.6,2.2,2.4],['Precision connectors',3.6,3.35,2.4],['Pre-cast piers',3.6,.12,2.45],['Wall cassettes',1.8,1.9,-2.45],['Double glazing',.6,1.6,2.42]],dims:1},
+    {id:'frame',tab:'Frame',spec:'Frame',h:'High-strength aluminium frame',p:'Corner posts, wall posts and a ring beam lock together with stainless-steel connectors and corner braces.',
+     s:'frame',g:'',cam:[19,1.12,-.78],spin:1,
+     labs:[['Corner post',-3.6,1.9,2.4],['Ring beam',0,3.34,2.4],['Stainless brace',3.35,3.02,2.35],['Floor joists',1.2,.44,.6],['Roof rafters',-1.2,3.5,-.4]]},
+    {id:'loads',tab:'Loads',spec:'Loads',h:'Loads carried to the ground',p:'Roof and floor loads run through the posts into twelve pier foundations. Verified against the loads in the US CFR.',
+     s:'frame',g:'roof',cam:[21,1.02,-.5],fx:'loads',
+     labs:[['Roof load',0,4.7,0],['Load path',-3.6,1.6,-2.4],['12 pier foundations',-1.2,.12,2.45]]},
+    {id:'wind',tab:'Wind',spec:'Wind',h:'Tested for 110 mph wind',p:'The closed envelope is tested to US Zone 3 (110 mph) and North zone (40 psf) loads.',
+     s:'frame floor walls roof glass clad fascia deck',g:'',cam:[23,1.2,-.95],fx:'wind',
+     labs:[['110 mph',-6.2,2.6,0],['40 psf',-3.75,1.3,.6]]},
+    {id:'envelope',tab:'Envelope',spec:'Envelope',h:'A wall in three layers',p:'Cladding, insulated cassette and frame are separate layers, detailed without thermal bridges. Passive and net-zero ready.',
+     s:'frame floor walls roof clad fascia',g:'glass',cam:[25,1.0,-.85],explode:1,
+     labs:[['Outer cladding',-5.3,2.0,.4],['Insulated cassette',-4.45,2.9,-1.6],['Frame',-3.6,1.2,2.4],['Roof cassette',1.2,4.75,0]]},
+    {id:'glass',tab:'Glass',spec:'Glass',h:'Laminated double glazing',p:'Floor-to-ceiling glazed units and a glazed door sit in dark aluminium frames between the posts.',
+     s:'glass frame',g:'walls roof clad fascia floor deck',cam:[17,1.36,-.16],
+     labs:[['Glazed door',-1.8,1.7,2.45],['Double-glazed units',.6,2.2,2.45],['Side window',-3.65,2.6,.6]]},
+    {id:'air',tab:'Interior',spec:'Air',h:'A sealed, ventilated interior',p:'With the roof lifted off: the finished interior. ERV ventilation keeps indoor air quality under AQI 50.',
+     s:'frame floor walls glass clad deck interior furn',g:'',cam:[22,.6,-.5],noroof:1,
+     labs:[['Living',1.9,1.0,-1.2],['Kitchen',-2.2,1.5,-1.6],['Deck',0,.6,4]]},
+    {id:'upkeep',tab:'Upkeep',spec:'Upkeep',h:'Any panel lifts out',p:'Cassettes are repairable and upgradeable. One can be removed and replaced without dismantling the building.',
+     s:'frame floor walls roof glass fascia deck',g:'clad',cam:[20,1.16,2.2],fx:'swap',
+     labs:[['Removable cassette',1.8,2.0,-3.4],['Non-corrosive finishes',-3.7,3.45,-2.5]]}
+  ];
+
+  async function boot(){
+    var m=await Promise.all([import('three'),import('three/addons/loaders/GLTFLoader.js'),import('three/addons/controls/OrbitControls.js'),import('three/addons/environments/RoomEnvironment.js')]);
+    var THREE=m[0],gltf=await new m[1].GLTFLoader().loadAsync('models/boca.glb');
+    var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,small=matchMedia('(max-width:959px)').matches;
+    var renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});
+    renderer.setPixelRatio(Math.min(devicePixelRatio||1,small?1.5:2));
+    renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.08;
+    renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+    var canvas=renderer.domElement;canvas.setAttribute('aria-label','Interactive 3D model of the Simpelbuild structure. Drag to rotate.');canvas.tabIndex=0;
+    view.insertBefore(canvas,view.firstChild);
+
+    var scene=new THREE.Scene(),pm=new THREE.PMREMGenerator(renderer);
+    scene.environment=pm.fromScene(new m[3].RoomEnvironment(),.04).texture;
+    var cam=new THREE.PerspectiveCamera(30,1,.1,200),target=new THREE.Vector3(0,2.55,.2);
+    var key=new THREE.DirectionalLight(0xfff1dd,2.4);key.position.set(-8,14,10);key.castShadow=true;
+    key.shadow.mapSize.set(small?1024:2048,small?1024:2048);key.shadow.bias=-.0004;key.shadow.normalBias=.03;
+    var sc=key.shadow.camera;sc.left=-10;sc.right=10;sc.top=10;sc.bottom=-10;sc.near=1;sc.far=45;
+    scene.add(key,new THREE.HemisphereLight(0xdfe6f0,0x2a2620,.6));
+    var ground=new THREE.Mesh(new THREE.CircleGeometry(40,64),new THREE.ShadowMaterial({opacity:.4}));
+    ground.rotation.x=-Math.PI/2;ground.position.y=.001;ground.receiveShadow=true;scene.add(ground);
+    var grid=new THREE.GridHelper(36,36,0xf1ece4,0xf1ece4);grid.material.transparent=true;grid.material.opacity=.07;grid.position.y=.002;scene.add(grid);
+
+    var S=function(c,r,me,x){return new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:r,metalness:me||0},x||{}))};
+    var MATS={
+      MAT_ALUMINIUM_FRAME:S(0xd3d6da,.36,.75),MAT_CONNECTOR:S(0xe2e4e8,.22,1),MAT_STAINLESS_STEEL:S(0xe2e4e8,.22,1),
+      MAT_CONCRETE:S(0x9c9a94,.92),MAT_WALL_PANEL:S(0xe9e6df,.8),MAT_INSULATION:S(0xd9b25a,.9),MAT_INTERIOR_WALL:S(0xece8df,.85),
+      MAT_EXTERIOR_CLADDING:S(0xcdbf9f,.72),MAT_DARK_ALUMINIUM:S(0x5a534a,.45,.6),MAT_WOOD:S(0xa9744a,.62),MAT_FLOOR:S(0xc08a55,.5),
+      MAT_BLACK_STEEL:S(0x1b1b1d,.5,.6),MAT_FABRIC:S(0x5b5d63,.95),MAT_FABRIC_WHITE:S(0xeeeae2,.95),MAT_CERAMIC:S(0xf2f2f0,.3),
+      MAT_GLASS:S(0xbfe0e6,.04,0,{transparent:true,opacity:.26,depthWrite:false,envMapIntensity:1.8}),
+      MAT_EMISSION_WARM:S(0xffe2b8,.4,0,{emissive:0xffc98a,emissiveIntensity:2})
+    };
+    var GHOST=S(0xe9e2d6,.9,0,{transparent:true,opacity:.085,depthWrite:false});
+    var HOT=S(0xc81e3c,.5,.1,{emissive:0xc81e3c,emissiveIntensity:.35});
+
+    function group(o,step){
+      if(step<=2||(step>=4&&step<=7))return 'frame';
+      if(step===3)return 'floor';
+      if(step>=8&&step<=10)return 'walls';
+      if(step===11)return 'roof';
+      if(step===12)return 'glass';
+      if(step===13)return 'clad';
+      if(step===14)return 'fascia';
+      if(step===15||step===16)return 'deck';
+      if(step===17)return 'interior';
+      return 'furn';
+    }
+    var model=gltf.scene,parts=[],v=new THREE.Vector3(),box=new THREE.Box3(),swap=null;
+    scene.add(model);
+    model.children.slice().forEach(function(o){
+      var step=(o.userData&&o.userData.sb_step)|0;
+      if(step===0||step===19){model.remove(o);return}
+      var meshes=[];
+      o.traverse(function(n){if(n.isMesh){n.userData.base=MATS[n.material.name]||MATS.MAT_WALL_PANEL;n.material=n.userData.base;n.receiveShadow=true;meshes.push(n)}});
+      box.setFromObject(o).getCenter(v);
+      var g=group(o,step),out=new THREE.Vector3(),nx=v.x/3.7,nz=v.z/2.5;
+      if(Math.abs(nx)>Math.abs(nz))out.x=Math.sign(nx);else out.z=Math.sign(nz||1);
+      var p={o:o,g:g,meshes:meshes,home:o.position.clone(),off:new THREE.Vector3(),want:new THREE.Vector3(),out:out,
+             roof:/^(ROOF_PANEL|ROOF_FASCIA|INTERIOR_CEILING|INTERIOR_SPOTLIGHT|INTERIOR_PENDANT)/.test(o.name),state:''};
+      if(o.name==='WALL_PANEL_REAR_005')swap=p;
+      parts.push(p);
+    });
+    if(!swap)swap=parts.filter(function(p){return p.g==='walls'&&p.out.z<0})[3]||null;
+
+    /* Effects: arrows for loads and wind */
+    function arrow(len,r){
+      var g=new THREE.Group(),a=new THREE.Mesh(new THREE.CylinderGeometry(r,r,len,10),HOT),b=new THREE.Mesh(new THREE.ConeGeometry(r*3.2,r*9,14),HOT);
+      a.position.y=len/2+r*9;b.position.y=r*4.5;b.rotation.x=Math.PI;g.add(a,b);return g;   /* tip at the origin, pointing down */
+    }
+    var fxLoads=new THREE.Group(),fxWind=new THREE.Group(),i,j;
+    for(i=0;i<5;i++)for(j=0;j<3;j++){var a=arrow(.7,.022);a.position.set(-3+i*1.5,3.75,-1.7+j*1.7);a.userData.ph=(i*.37+j*.61)%1;fxLoads.add(a)}
+    /* load path: thin red runs down the four corner posts */
+    [[-3.6,2.4],[3.6,2.4],[-3.6,-2.4],[3.6,-2.4]].forEach(function(q){
+      var l=new THREE.Mesh(new THREE.CylinderGeometry(.035,.035,2.86,8),HOT);l.position.set(q[0]*1.035,1.97,q[1]*1.05);fxLoads.add(l)});
+    for(i=0;i<3;i++)for(j=0;j<3;j++){var w=arrow(1.5,.022);w.rotation.z=Math.PI/2;w.position.set(-4.1,1.0+i*1.0,-1.6+j*1.6);w.userData.ph=(i*.29+j*.47)%1;w.userData.x0=-4.1;fxWind.add(w)}
+    fxLoads.visible=fxWind.visible=false;scene.add(fxLoads,fxWind);
+
+    /* Dimension lines for the overview */
+    var dimMat=new THREE.LineBasicMaterial({color:0xf1ece4,transparent:true,opacity:.5}),dims=new THREE.Group();
+    function dimLine(a,b,tick){
+      var pts=[a,b],t=tick.clone().multiplyScalar(.14);
+      pts.push(a.clone().add(t),a.clone().sub(t),b.clone().add(t),b.clone().sub(t));
+      dims.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(pts),dimMat));
+    }
+    var V=function(x,y,z){return new THREE.Vector3(x,y,z)};
+    dimLine(V(-3.7,.02,3.25),V(3.7,.02,3.25),V(0,0,1));
+    dimLine(V(4.45,.02,-2.5),V(4.45,.02,2.5),V(1,0,0));
+    dimLine(V(4.45,.3,-2.95),V(4.45,3.6,-2.95),V(0,0,1));
+    scene.add(dims);
+    var DIMS=[['7.4 m',0,.02,3.6],['5.0 m',4.9,.02,0],['3.3 m',4.9,1.95,-2.95]];
+
+    /* Labels pinned to points on the model */
+    var labRoot=host.querySelector('.e3d-labs'),labs=[];
+    function setLabels(list,withDims){
+      labs.forEach(function(l){l.el.classList.remove('on');var el=l.el;setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},380)});
+      labs=[];
+      (list||[]).concat(withDims?DIMS.map(function(d){return d.concat('dim')}):[]).forEach(function(d){
+        var el=document.createElement('div'),s=document.createElement('span');el.className='e3d-lab'+(d[4]?' dim':'');s.textContent=d[0];el.appendChild(s);labRoot.appendChild(el);
+        labs.push({el:el,p:new THREE.Vector3(d[1],d[2],d[3]),dim:!!d[4],rt:false});
+      });
+      setTimeout(function(){labs.forEach(function(l){l.el.classList.add('on')})},60);
+    }
+
+    var controls=new m[2].OrbitControls(cam,canvas);
+    controls.target.copy(target);controls.enableZoom=false;controls.enablePan=false;controls.enableDamping=true;controls.dampingFactor=.08;
+    controls.minPolarAngle=.3;controls.maxPolarAngle=1.5;controls.rotateSpeed=.7;controls.autoRotateSpeed=.5;
+    var sph=new THREE.Spherical(),cur={r:27,phi:1.25,theta:-1.0},goal={r:21,phi:1.18,theta:-.62},flying=true,zoom=small?1.3:1.14;
+    function place(){cam.position.setFromSpherical(sph.set(cur.r,cur.phi,cur.theta)).add(controls.target);cam.lookAt(controls.target)}
+    place();
+    controls.addEventListener('start',function(){flying=false;controls.autoRotate=false});
+
+    var mode=null,hud=host.querySelector('.e3d-hud'),hh=hud.querySelector('h3'),hp=hud.querySelector('p'),tabs=host.querySelector('.e3d-tabs'),btns={},rows={};
+    function setMode(id){
+      var md=MODES.filter(function(x){return x.id===id})[0];if(!md||md===mode)return;
+      mode=md;host.dataset.mode=id;
+      var solid=md.s.split(' '),ghost=md.g?md.g.split(' '):[];
+      parts.forEach(function(p){
+        var st=solid.indexOf(p.g)>=0?'s':ghost.indexOf(p.g)>=0?'g':'h';
+        if(md.noroof&&p.roof)st='h';
+        if(md.noroof&&p.g==='frame'&&/^ROOF_/.test(p.o.name))st='h';
+        if(st!==p.state){
+          p.state=st;p.o.visible=st!=='h';
+          p.meshes.forEach(function(n){n.material=st==='g'?GHOST:n.userData.base;n.castShadow=st==='s'&&n.userData.base!==MATS.MAT_GLASS});
+        }
+        p.want.set(0,0,0);
+        if(md.explode){
+          if(p.g==='clad')p.want.copy(p.out).multiplyScalar(1.7);
+          else if(p.g==='walls')p.want.copy(p.out).multiplyScalar(.8);
+          else if(p.g==='roof')p.want.set(0,1.0,0);
+          else if(p.g==='fascia')p.want.set(0,1.0,0).addScaledVector(p.out,.0);
+        }
+      });
+      fxLoads.visible=md.fx==='loads';fxWind.visible=md.fx==='wind';dims.visible=!!md.dims;
+      sph.setFromVector3(v.copy(cam.position).sub(controls.target));cur={r:sph.radius,phi:sph.phi,theta:sph.theta};
+      var th=md.cam[2];while(th-cur.theta>Math.PI)th-=2*Math.PI;while(cur.theta-th>Math.PI)th+=2*Math.PI;
+      goal={r:md.cam[0]*zoom,phi:md.cam[1],theta:th};flying=true;controls.autoRotate=false;spinAt=md.spin&&!reduce?performance.now()+2600:0;
+      hud.classList.add('swap');setTimeout(function(){hh.textContent=md.h;hp.textContent=md.p;hud.classList.remove('swap')},hh.textContent?220:0);
+      setLabels(md.labs,md.dims);
+      Object.keys(btns).forEach(function(k){btns[k].setAttribute('aria-pressed',k===id?'true':'false')});
+      Object.keys(rows).forEach(function(k){rows[k].classList.toggle('on',k===id)});
+    }
+    var spinAt=0;
+    MODES.forEach(function(md){
+      var b=document.createElement('button');b.type='button';b.textContent=md.tab;b.setAttribute('aria-pressed','false');
+      b.addEventListener('click',function(){setMode(md.id)});tabs.appendChild(b);btns[md.id]=b;
+    });
+    /* The spec list on the left drives the same views */
+    var sec=host.closest('section')||document,hover=matchMedia('(hover:hover)').matches;
+    [].forEach.call(sec.querySelectorAll('.specs div'),function(row){
+      var dt=row.querySelector('dt'),md=dt&&MODES.filter(function(x){return x.spec===dt.textContent.trim()})[0];if(!md)return;
+      rows[md.id]=row;row.tabIndex=0;row.setAttribute('role','button');row.setAttribute('aria-label','Show in 3D: '+md.tab);
+      var go=function(){setMode(md.id)};
+      if(hover)row.addEventListener('mouseenter',go);
+      row.addEventListener('click',go);row.addEventListener('focus',go);
+      row.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+    });
+    sec.classList.add('e3d-ready');
+
+    function resize(){var w=view.clientWidth,h=view.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+    new ResizeObserver(resize).observe(view);resize();
+    setMode('overview');
+
+    var visible=false,last=0,W=0,H=0;
+    new IntersectionObserver(function(es){visible=es[0].isIntersecting},{threshold:.05}).observe(view);
+    function frame(t){
+      requestAnimationFrame(frame);
+      if(!visible){last=0;return}
+      var dt=last?Math.min(.05,(t-last)/1000):.016;last=t;
+      for(var i=0;i<parts.length;i++){
+        var p=parts[i];if(!p.o.visible)continue;
+        if(p===swap&&mode.fx==='swap'){
+          var ph=reduce?.5:(t/1000%5)/5,k=ph<.35?ph/.35:ph<.6?1:ph<.95?1-(ph-.6)/.35:0;k=k*k*(3-2*k);
+          p.want.set(0,0,-1.5*k);p.off.copy(p.want);
+        }else p.off.lerp(p.want,Math.min(1,dt*5));
+        p.o.position.copy(p.home).add(p.off);
+      }
+      if(fxLoads.visible)fxLoads.children.forEach(function(a){if(a.userData.ph!==undefined){var q=reduce?.5:(t/1400+a.userData.ph)%1;a.position.y=4.5-q*.75;a.scale.setScalar(.6+.4*Math.sin(q*Math.PI))}});
+      if(fxWind.visible)fxWind.children.forEach(function(a){var q=reduce?.5:(t/1100+a.userData.ph)%1;a.position.x=a.userData.x0-2.2+q*2.2;a.scale.setScalar(.55+.45*Math.sin(q*Math.PI))});
+      if(flying){
+        var a=Math.min(1,dt*2.8);cur.r+=(goal.r-cur.r)*a;cur.phi+=(goal.phi-cur.phi)*a;cur.theta+=(goal.theta-cur.theta)*a;place();
+        if(Math.abs(goal.r-cur.r)<.02&&Math.abs(goal.phi-cur.phi)<.004&&Math.abs(goal.theta-cur.theta)<.004){flying=false;controls.update()}
+      }else{
+        if(spinAt&&t>spinAt){controls.autoRotate=true;spinAt=0}
+        controls.update();
+      }
+      renderer.render(scene,cam);
+      W=view.clientWidth;H=view.clientHeight;
+      var boxes=[];
+      for(i=0;i<labs.length;i++){
+        var l=labs[i];v.copy(l.p).project(cam);
+        var x=(v.x*.5+.5)*W,y=(-v.y*.5+.5)*H,ok=v.z<1&&x>4&&x<W-4&&y>24&&y<H-8;
+        var rt=x>W*.6&&!l.dim;if(rt!==l.rt){l.rt=rt;l.el.classList.toggle('rt',rt)}
+        l.el.style.transform='translate3d('+(x+(rt?3.5:-3.5)).toFixed(1)+'px,'+(y-12).toFixed(1)+'px,0)'+(rt?' translateX(-100%)':'');
+        l.el.style.visibility=ok?'visible':'hidden';
+        /* On small screens labels can land on top of each other: the first one listed keeps its place, later ones fade out */
+        var clear=true;
+        if(ok){
+          l.w=l.w||l.el.offsetWidth||80;
+          var x0=l.dim?x-22:(rt?x+3.5-l.w:x-3.5),x1=l.dim?x+22:x0+l.w,y0=l.dim?y-20:y-12,y1=l.dim?y-4:y+12;
+          for(var k=0;k<boxes.length;k++){var q=boxes[k];if(x0<q[2]+4&&x1>q[0]-4&&y0<q[3]+3&&y1>q[1]-3){clear=false;break}}
+          if(clear)boxes.push([x0,y0,x1,y1]);
+        }
+        if(clear===!!l.hid){l.hid=!clear;l.el.classList.toggle('hid',l.hid)}
+      }
+    }
+    host.classList.add('e3d-live');
+    requestAnimationFrame(frame);
+  }
+})();
+</script>
 <script>
 (function(){
-  var d=document.documentElement,el=document.getElementById('sbIntro');
-  function ready(){d.classList.remove('intro-on');d.classList.add('intro-done');if(el&&el.parentNode)el.parentNode.removeChild(el);dispatchEvent(new Event('sb:ready'))}
+  var d=document.documentElement,el=document.getElementById('sbLift'),H=window.sbHero,over=false,shown=false;
+  function text(){if(!shown){shown=true;d.classList.add('intro-done')}}     /* headline, buttons and numbers come in */
+  function finish(){
+    if(over)return;over=true;text();d.classList.remove('intro-on');
+    dispatchEvent(new Event('sb:ready'));
+  }
   if(el&&d.classList.contains('intro-on')){
-    var count=document.getElementById('sbCount'),phase=document.getElementById('sbPhase'),line=el.querySelector('.intro-meta i'),
-        names=['Foundation','Deck','Frame','Roof','Glazing','Finishing'],MIN=2300,MAX=4200,t0=performance.now(),loaded=false,done=false,
-        img=document.querySelector('.hero-media img');
-    function mark(){loaded=true}
-    if(img&&!img.complete){img.addEventListener('load',mark);img.addEventListener('error',mark)}else mark();
-    requestAnimationFrame(function step(t){
-      if(done)return;
-      var e=t-t0,p=Math.min(1,e/MIN);
-      if(p>=1&&!loaded&&e<MAX)p=.99;
-      var n=Math.round(p*100);
-      count.textContent=n;line.style.setProperty('--p',p);phase.textContent=names[Math.min(names.length-1,Math.floor(p*names.length))];
-      if(p>=1||e>=MAX){
-        done=true;count.textContent='100';phase.textContent='Ready';line.style.setProperty('--p',1);
-        try{sessionStorage.setItem('sbIntro','1')}catch(x){}
-        setTimeout(function(){el.classList.add('out');d.classList.add('intro-done');setTimeout(ready,980)},260);
-        return;
-      }
-      requestAnimationFrame(step);
-    });
-  }else if(el&&el.parentNode){el.parentNode.removeChild(el)}
+    /* Lift once the name has been readable for a moment and the build-up clip underneath can start. */
+    var MIN=700,MAX=2800,t0=performance.now(),need=2,gone=false,p=new Image(),v=H&&H.v;
+    if(/[?&]gate=hold/.test(location.search))MIN=MAX=1e9;   /* keeps the panel down, for checking the design */
+    function got(){need--;check()}
+    function lift(){
+      if(gone)return;gone=true;el.classList.add('up');
+      setTimeout(goLive,1300);
+      if(v){
+        H.play();
+        v.addEventListener('ended',finish);v.addEventListener('error',finish);
+        setTimeout(function(){if(v.paused&&v.currentTime<.1)finish()},2500);     /* clip never started: show the page */
+        setTimeout(finish,16000);
+      }else setTimeout(finish,700);
+    }
+    function check(){if(!gone&&need<=0){var w=MIN-(performance.now()-t0);if(w>0)setTimeout(lift,w);else lift()}}
+    p.onload=p.onerror=got;p.src=matchMedia('(orientation:portrait)').matches?'images/lift-tall.jpg':'images/lift-wide.jpg';
+    if(v&&v.readyState<3){v.addEventListener('canplay',got,{once:true});v.addEventListener('error',got,{once:true})}else need--;
+    check();
+    setTimeout(lift,MAX);
+    /* Anyone who scrolls, taps or presses a key gets the text at once; the clip carries on behind it. */
+    function early(){if(gone)text()}
+    addEventListener('scroll',function(){if(scrollY>40)early()},{passive:true});
+    addEventListener('pointerdown',early);addEventListener('keydown',early);
+    window.sbLift=lift;
+  }else finish();
+
+  /* After the entrance the panel follows the scroll: lowered back over the hero on the way down, hoisted
+     again on the way up, and once it is clear the home builds itself again. */
+  var hero=document.querySelector('.hero'),HH=hero?hero.offsetHeight:1,live=false,armed=false,again=false,lastQ=-1,sbusy=false;
+  function goLive(){
+    if(!el||live)return;live=true;
+    el.classList.add('live');sync();el.classList.remove('up');
+    if(H&&H.v){H.v.addEventListener('ended',calm);H.v.addEventListener('error',calm)}
+    addEventListener('scroll',function(){if(!sbusy){sbusy=true;requestAnimationFrame(function(){sbusy=false;sync()})}},{passive:true});
+    addEventListener('resize',function(){HH=hero.offsetHeight;lastQ=-1;sync()});
+    addEventListener('pointerdown',calm);addEventListener('keydown',calm);
+  }
+  function calm(){if(again){again=false;d.classList.remove('replay')}}     /* text back */
+  function sync(){
+    var q=Math.max(0,Math.min(1,(scrollY-HH*.06)/(HH*.5)));q=q*q*(3-2*q);
+    if(q!==lastQ){lastQ=q;el.style.transform='translate3d(0,'+(-112*(1-q)).toFixed(2)+'%,0)'}
+    if(q>0)calm();
+    if(q>=1&&!armed&&H&&H.v&&!H.v.error){armed=true;H.prep();d.classList.add('replay')}       /* hidden under the panel */
+    else if(q<=0&&armed){armed=false;if(document.hidden)d.classList.remove('replay');else{again=true;H.play()}}
+  }
 
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   /* Hero photo parallax (only while the hero is on screen) */

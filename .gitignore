@@ -3,3 +3,4 @@ simpelbuild/
 preview-*.html
 
 .vercel
+.gstack/
