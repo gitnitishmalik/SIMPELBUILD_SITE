@@ -24,8 +24,8 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin-400-normal.woff2" crossorigin>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C81E3C'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='40' fill='white'%3ES%3C/text%3E%3C/svg%3E">
 <script>(function(d){d.classList.add('js');try{var c=navigator.connection||{};if(!matchMedia('(prefers-reduced-motion:reduce)').matches&&!c.saveData)d.classList.add('intro-on')}catch(e){}})(document.documentElement);</script>
-<link rel="preload" as="image" href="images/lift-wide.jpg" media="(orientation:landscape)" fetchpriority="high">
-<link rel="preload" as="image" href="images/lift-tall.jpg" media="(orientation:portrait)" fetchpriority="high">
+<link rel="preload" as="image" href="images/lift-wide.webp" media="(orientation:landscape)" fetchpriority="high">
+<link rel="preload" as="image" href="images/lift-tall.webp" media="(orientation:portrait)" fetchpriority="high">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <style>
 /* Inter and Instrument Serif (SIL Open Font License), embedded so the page works offline */
@@ -610,9 +610,9 @@ section[id]{scroll-margin-top:84px}
 .intro-on .hero-lift,.hero-lift.up,.hero-lift.live{display:block}
 .hero-lift{position:absolute;left:0;right:0;top:0;height:100%;z-index:3;pointer-events:none;transform-origin:50% 0;will-change:transform}
 .hero-lift .pn{position:absolute;left:0;right:0;top:15%;bottom:-3%;box-shadow:0 0 50px rgba(0,0,0,.5);
-  background-color:#b9a685;background-image:url(images/lift-wide.jpg),repeating-linear-gradient(90deg,#c6b596 0,#bba987 2.4vw,#8b7d66 2.4vw,#8b7d66 2.6vw);
+  background-color:#b9a685;background-image:url(images/lift-wide.webp),repeating-linear-gradient(90deg,#c6b596 0,#bba987 2.4vw,#8b7d66 2.4vw,#8b7d66 2.6vw);
   background-size:cover,auto;background-position:50% 50%;background-repeat:no-repeat,repeat}
-@media (orientation:portrait){.hero-lift .pn{background-image:url(images/lift-tall.jpg),repeating-linear-gradient(90deg,#c6b596 0,#bba987 4.8vw,#8b7d66 4.8vw,#8b7d66 5.2vw);background-size:100% auto,auto;background-position:50% 40%}}
+@media (orientation:portrait){.hero-lift .pn{background-image:url(images/lift-tall.webp),repeating-linear-gradient(90deg,#c6b596 0,#bba987 4.8vw,#8b7d66 4.8vw,#8b7d66 5.2vw);background-size:100% auto,auto;background-position:50% 40%}}
 /* aluminium top and bottom rails of the panel */
 .hero-lift .pn::before,.hero-lift .pn::after{content:"";position:absolute;left:0;right:0;height:12px;
   background:linear-gradient(180deg,#3a3835 0,#b9babd 22%,#f1f2f4 46%,#8e8f93 74%,#2b2925 100%)}
@@ -846,7 +846,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
     </div>
     <div class="film paused reveal" id="buildFilm">
       <div class="film-frame">
-        <video muted playsinline preload="none" poster="images/build-film-poster.jpg" aria-label="Film: a Simpelbuild module assembling step by step, from foundation to the finished home on site"></video>
+        <video muted playsinline preload="none" data-poster="images/build-film-poster.jpg" aria-label="Film: a Simpelbuild module assembling step by step, from foundation to the finished home on site"></video>
         <div class="film-cap" aria-live="off"><span class="n">01</span><div class="txt"><h3></h3><p></p></div></div>
         <button class="film-play" type="button" aria-label="Play or pause the film"><svg class="pl" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg><svg class="pa" viewBox="0 0 16 16"><path d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/></svg></button>
       </div>
@@ -1475,12 +1475,12 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
   v.addEventListener('ended',function(){v.classList.remove('now');v.offsetWidth;v.classList.remove('on');ch.classList.remove('show');btn.classList.add('show')});
   v.addEventListener('error',function(){v.classList.remove('on');ch.classList.remove('show');btn.classList.remove('show')});
   btn.addEventListener('click',play);
-  var SRC=innerWidth<=900?'images/hero-build-720.mp4?v=20261112':'images/hero-build.mp4?v=20261112';
+  var SRC=innerWidth<=900?'images/hero-build-720.mp4?v=20261112b':'images/hero-build.mp4?v=20261112b';
   if(document.documentElement.classList.contains('intro-on')){
     /* Ready under the entrance panel: first frame showing, no fade, so there is no flash of the photo. */
     v.classList.add('now','on');
-    v.poster=innerWidth<=900?'images/hero-build-poster-720.jpg':'images/hero-build-poster.jpg';
-    v.preload='auto';v.src=SRC;v.load();
+    function fetchClip(){v.poster=innerWidth<=900?'images/hero-build-poster-720.webp':'images/hero-build-poster.webp';v.preload='auto';v.src=SRC;v.load()}
+    if(document.readyState==='complete')fetchClip();else addEventListener('load',fetchClip,{once:true});
     /* Parks the clip on its first frame, fully shown, so the panel can lift onto an empty site. */
     function prep(){v.pause();btn.classList.remove('show');ch.classList.remove('show');v.classList.add('now','on');if(v.currentTime>0)v.currentTime=0}
     window.sbHero={v:v,play:play,prep:prep};
@@ -1517,7 +1517,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
       b.style.setProperty('--p',Math.max(0,Math.min(1,(t-a)/(z-a)))*100+'%');
     });
   }
-  function load(){if(loaded)return;loaded=true;v.src=innerWidth<=900?'images/build-film-720.mp4?v=20261112':'images/build-film.mp4?v=20261112';v.load()}
+  function load(){if(loaded)return;loaded=true;v.src=innerWidth<=900?'images/build-film-720.mp4?v=20261112b':'images/build-film.mp4?v=20261112b';v.load()}
   num.textContent='01';h.textContent=CH[0][1];p.textContent=CH[0][2];cur=0;btns[0].setAttribute('aria-current','true');
   v.addEventListener('timeupdate',tick);
   v.addEventListener('play',function(){root.classList.remove('paused')});
@@ -1528,13 +1528,14 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
     if(v.paused){userPaused=false;if(v.ended)v.currentTime=0;v.play()}else{userPaused=true;v.pause()}
   });
   if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es,o){if(es[0].isIntersecting){v.poster=v.dataset.poster;o.disconnect()}},{rootMargin:'900px 0px'}).observe(root);
     new IntersectionObserver(function(es){
       es.forEach(function(e){
         if(e.isIntersecting&&e.intersectionRatio>=.55){if(!reduce&&!userPaused){load();var q=v.play();if(q&&q.catch)q.catch(function(){})}}
         else if(!v.paused){v.pause()}
       });
     },{threshold:[0,.55]}).observe(root.querySelector('.film-frame'));
-  }
+  }else v.poster=v.dataset.poster;
 })();
 </script>
 <script>
@@ -1647,8 +1648,8 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
   var host=document.getElementById('x3d');if(!host)return;
   var view=host.querySelector('.x3d-view'),STEPS=["Empty site", "Foundation piers", "Floor beams", "Floor cassettes", "Corner posts", "Wall studs", "Top ring beam", "Roof grid", "Rear wall cassettes", "Side wall cassettes", "Front wall cassettes", "Roof cassettes", "Glazing and door", "Beige cladding", "Roof fascia", "Raised deck", "Wall lights", "Interior floor and ceiling", "Kitchen and living", "Deck furniture"],started=false;
   function nogl(){host.classList.add('x3d-nogl')}
-  try{var c=document.createElement('canvas');if(!(c.getContext('webgl2')||c.getContext('webgl')))return nogl()}catch(e){return nogl()}
-  new IntersectionObserver(function(es,o){if(es[0].isIntersecting&&!started){started=true;o.disconnect();boot().catch(function(e){console.warn('[3d]',e);nogl()})}},{rootMargin:'600px 0px'}).observe(host);
+  function gl(){try{var c=document.createElement('canvas');return !!(c.getContext('webgl2')||c.getContext('webgl'))}catch(e){return false}}
+  new IntersectionObserver(function(es,o){if(es[0].isIntersecting&&!started){started=true;o.disconnect();if(!gl())return nogl();boot().catch(function(e){console.warn('[3d]',e);nogl()})}},{rootMargin:'600px 0px'}).observe(host);
 
   async function boot(){
     var m=await Promise.all([import('three'),import('three/addons/loaders/GLTFLoader.js'),import('three/addons/controls/OrbitControls.js'),import('three/addons/environments/RoomEnvironment.js')]);
@@ -1787,8 +1788,8 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
   var host=document.getElementById('e3d');if(!host)return;
   var view=host.querySelector('.e3d-view'),started=false;
   function nogl(){host.classList.add('e3d-nogl')}
-  try{var c=document.createElement('canvas');if(!(c.getContext('webgl2')||c.getContext('webgl')))return nogl()}catch(e){return nogl()}
-  new IntersectionObserver(function(es,o){if(es[0].isIntersecting&&!started){started=true;o.disconnect();boot().catch(function(e){console.warn('[e3d]',e);nogl()})}},{rootMargin:'500px 0px'}).observe(host);
+  function gl(){try{var c=document.createElement('canvas');return !!(c.getContext('webgl2')||c.getContext('webgl'))}catch(e){return false}}
+  new IntersectionObserver(function(es,o){if(es[0].isIntersecting&&!started){started=true;o.disconnect();if(!gl())return nogl();boot().catch(function(e){console.warn('[e3d]',e);nogl()})}},{rootMargin:'500px 0px'}).observe(host);
 
   /* One view per idea. show: which groups are solid (s), ghosted (g) or hidden (everything else).
      Groups: frame, floor, walls, roof, glass, clad, fascia, deck, interior, furn. */
@@ -2052,7 +2053,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
       }else setTimeout(finish,700);
     }
     function check(){if(!gone&&need<=0){var w=MIN-(performance.now()-t0);if(w>0)setTimeout(lift,w);else lift()}}
-    p.onload=p.onerror=got;p.src=matchMedia('(orientation:portrait)').matches?'images/lift-tall.jpg':'images/lift-wide.jpg';
+    p.onload=p.onerror=got;p.src=matchMedia('(orientation:portrait)').matches?'images/lift-tall.webp':'images/lift-wide.webp';
     if(v&&v.readyState<3){v.addEventListener('canplay',got,{once:true});v.addEventListener('error',got,{once:true})}else need--;
     check();
     setTimeout(lift,MAX);
