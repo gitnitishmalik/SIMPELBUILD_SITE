@@ -467,6 +467,33 @@ section[id]{scroll-margin-top:84px}
   .film-rail button::before{margin-bottom:0}
   .film-cap{right:70px}
 }
+
+/* ---- Interaction layer ---- */
+.sprog{position:fixed;left:0;top:0;right:0;height:3px;z-index:200;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+.wr{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.12em;margin-bottom:-.12em}
+.wr>i{display:inline-block;font-style:inherit;transform:translateY(105%);transition:transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i)*45ms)}
+.wr-in .wr>i{transform:none}
+.spot{position:relative;isolation:isolate}
+.spot::before{content:"";position:absolute;inset:-14px;z-index:-1;border-radius:calc(var(--radius) + 10px);pointer-events:none;opacity:0;transition:opacity .35s ease;
+  background:radial-gradient(340px circle at var(--sx,50%) var(--sy,50%),rgba(200,30,60,.10),transparent 68%)}
+.spot:hover::before,.spot:focus-within::before{opacity:1}
+.spot .media{transition:transform .5s cubic-bezier(.2,.8,.2,1);transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));will-change:transform}
+.cmp{margin:clamp(48px,7vw,88px) 0 0}
+.cmp-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 32px;margin-bottom:22px}
+.cmp-head h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,40px);line-height:1.08;margin:0}
+.cmp-head p{margin:0;color:var(--ink-2);font-size:15px;max-width:44ch}
+.cmp-frame{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;background:var(--night);touch-action:pan-y;cursor:ew-resize;user-select:none;-webkit-user-select:none}
+.cmp-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.cmp-after{clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0)}
+.cmp-tag{position:absolute;top:16px;z-index:2;padding:6px 12px;border-radius:999px;background:rgba(14,12,10,.55);color:#fff;font:500 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);pointer-events:none}
+.cmp-tag.a{left:16px}.cmp-tag.b{right:16px}
+.cmp-handle{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:44px;margin-left:-22px;z-index:3;border:0;padding:0;background:none;cursor:ew-resize;touch-action:none}
+.cmp-handle::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 0 1px rgba(14,12,10,.18)}
+.cmp-handle span{position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;box-shadow:0 6px 22px rgba(14,12,10,.32);transition:transform .2s ease}
+.cmp-handle:active span{transform:scale(.92)}
+.cmp-handle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cmp-note{margin:10px 0 0;font-size:12.5px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.wr>i{transform:none;transition:none}.spot .media{transform:none}}
 </style>
 </head>
 <body>
@@ -671,6 +698,19 @@ section[id]{scroll-margin-top:84px}
       <li class="step reveal"><span class="n">03</span><h3>Foundation and delivery</h3><p>A pre-cast foundation arrives with your kit, flat-packed to save space and transport cost.</p></li>
       <li class="step reveal"><span class="n">04</span><h3>Assembly</h3><p>The aluminium system locks together fast. Homes take days, and a glasshouse goes up in under 24 hours.</p></li>
     </ol>
+    <div class="cmp reveal" id="siteCompare">
+      <div class="cmp-head">
+        <h3>Empty site to finished home.</h3>
+        <p>Drag the handle to see the same garden before and after the build.</p>
+      </div>
+      <div class="cmp-frame">
+        <img src="images/site-before.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="The raised deck in the garden before the cabins are assembled">
+        <img class="cmp-after" src="images/site-after.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="The finished Simpelbuild cabins with pergola and outdoor furniture on the same deck">
+        <span class="cmp-tag a">Finished</span><span class="cmp-tag b">Empty site</span>
+        <button class="cmp-handle" type="button" role="slider" aria-label="Reveal the finished home" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-orientation="horizontal"><span><svg viewBox="0 0 20 20"><path d="M7 5l-4 5 4 5M13 5l4 5-4 5"/></svg></span></button>
+      </div>
+      <p class="cmp-note">The empty-site view is an illustration made from the finished photograph.</p>
+    </div>
     <div class="process-note reveal">
       <p><b>Typical timeline:</b> about 3 weeks in the factory, then days on site, not months.</p>
       <a class="tlink accent" href="#quote" data-quote="home">Plan your build <svg class="ico"><use href="#i-arrow"/></svg></a>
@@ -1287,6 +1327,110 @@ section[id]{scroll-margin-top:84px}
         else if(!v.paused){v.pause()}
       });
     },{threshold:[0,.55]}).observe(root.querySelector('.film-frame'));
+  }
+})();
+</script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  /* Scroll progress */
+  var bar=document.createElement('div');bar.className='sprog';bar.setAttribute('aria-hidden','true');document.body.appendChild(bar);
+  var tick=false;
+  function prog(){tick=false;var d=document.documentElement,m=d.scrollHeight-innerHeight;bar.style.transform='scaleX('+(m>0?Math.min(1,scrollY/m):0)+')'}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(prog)}},{passive:true});prog();
+
+  /* Hero number ticker */
+  if(!reduce){
+    [].forEach.call(document.querySelectorAll('.stat b'),function(b,k){
+      var node=null;
+      [].forEach.call(b.childNodes,function(n){if(n.nodeType===3&&/\d/.test(n.nodeValue))node=n});
+      if(!node)return;
+      var m=node.nodeValue.match(/^(\D*)(\d+)(.*)$/);if(!m)return;
+      var end=+m[2],t0=null,dur=1300;
+      b.style.fontVariantNumeric='tabular-nums';
+      node.nodeValue=m[1]+'0'+m[3];
+      setTimeout(function(){
+        requestAnimationFrame(function step(t){
+          if(t0===null)t0=t;
+          var p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,4);
+          node.nodeValue=m[1]+Math.round(end*e)+m[3];
+          if(p<1)requestAnimationFrame(step);
+        });
+      },350+k*120);
+    });
+  }
+
+  /* Heading word reveal (mask) */
+  if(!reduce&&'IntersectionObserver' in window){
+    var hs=[].slice.call(document.querySelectorAll('h2.h2, .cmp-head h3'));
+    hs.forEach(function(h){
+      var i=0;
+      (function walk(el){
+        [].slice.call(el.childNodes).forEach(function(n){
+          if(n.nodeType===3){
+            var parts=n.nodeValue.split(/(\s+)/),f=document.createDocumentFragment();
+            parts.forEach(function(w){
+              if(!w)return;
+              if(/^\s+$/.test(w)){f.appendChild(document.createTextNode(' '));return}
+              var o=document.createElement('span'),inn=document.createElement('i');
+              o.className='wr';inn.style.setProperty('--i',i++);inn.textContent=w;o.appendChild(inn);f.appendChild(o);
+            });
+            el.replaceChild(f,n);
+          }else if(n.nodeType===1&&n.tagName!=='BR')walk(n);
+        });
+      })(h);
+    });
+    var hio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('wr-in');hio.unobserve(e.target)}})},{threshold:.3});
+    hs.forEach(function(h){hio.observe(h)});
+  }
+
+  /* Pointer spotlight + gentle tilt on the range cards */
+  if(fine&&!reduce){
+    [].forEach.call(document.querySelectorAll('.rcard'),function(c){
+      c.classList.add('spot');var raf=0;
+      c.addEventListener('pointermove',function(ev){
+        cancelAnimationFrame(raf);
+        raf=requestAnimationFrame(function(){
+          var r=c.getBoundingClientRect(),x=ev.clientX-r.left,y=ev.clientY-r.top;
+          c.style.setProperty('--sx',x+14+'px');c.style.setProperty('--sy',y+14+'px');
+          c.style.setProperty('--ry',((x/r.width)-.5)*5+'deg');c.style.setProperty('--rx',(.5-(y/r.height))*4+'deg');
+        });
+      });
+      c.addEventListener('pointerleave',function(){cancelAnimationFrame(raf);c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')});
+    });
+  }
+
+  /* Before / after comparison */
+  var cmp=document.getElementById('siteCompare');
+  if(cmp){
+    var frame=cmp.querySelector('.cmp-frame'),handle=cmp.querySelector('.cmp-handle'),pos=50,drag=false,demo=false;
+    function set(p){pos=Math.max(0,Math.min(100,p));frame.style.setProperty('--pos',pos+'%');handle.setAttribute('aria-valuenow',Math.round(pos));handle.setAttribute('aria-valuetext',Math.round(pos)+'% finished')}
+    function at(ev){var r=frame.getBoundingClientRect();set((ev.clientX-r.left)/r.width*100)}
+    frame.addEventListener('pointerdown',function(ev){drag=true;demo=true;try{frame.setPointerCapture(ev.pointerId)}catch(e){}at(ev)});
+    frame.addEventListener('pointermove',function(ev){if(drag)at(ev)});
+    ['pointerup','pointercancel'].forEach(function(n){frame.addEventListener(n,function(){drag=false})});
+    handle.addEventListener('keydown',function(ev){
+      var k=ev.key,s=ev.shiftKey?10:2;
+      if(k==='ArrowLeft'||k==='ArrowDown'){set(pos-s)}else if(k==='ArrowRight'||k==='ArrowUp'){set(pos+s)}
+      else if(k==='Home'){set(0)}else if(k==='End'){set(100)}else return;
+      demo=true;ev.preventDefault();
+    });
+    set(50);
+    /* One-shot nudge that teaches the gesture */
+    if(!reduce&&'IntersectionObserver' in window){
+      var cio=new IntersectionObserver(function(es){
+        if(!es[0].isIntersecting||demo)return;demo=true;cio.disconnect();
+        var t0=null;
+        requestAnimationFrame(function step(t){
+          if(drag)return;if(t0===null)t0=t;
+          var p=Math.min(1,(t-t0)/1700);
+          set(50+22*Math.sin(p*Math.PI)*(1-p*.15));
+          if(p<1)requestAnimationFrame(step);else set(50);
+        });
+      },{threshold:.6});
+      cio.observe(frame);
+    }
   }
 })();
 </script>
