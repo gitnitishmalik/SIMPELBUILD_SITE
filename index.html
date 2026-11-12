@@ -18,22 +18,18 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Simpelbuild website concept: Healthy living, made simple">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" as="image" href="images/hero-1280.webp" imagesrcset="images/hero-768.webp 768w, images/hero-1280.webp 1280w, images/hero.webp 1902w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" href="images/hero-1280.avif" imagesrcset="images/hero-768.avif 768w, images/hero-1280.avif 1280w, images/hero.avif 1902w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-serif-latin-400-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-serif-latin-400-italic.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin-wght-normal.woff2" crossorigin>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C81E3C'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='40' fill='white'%3ES%3C/text%3E%3C/svg%3E">
 <script>(function(d){d.classList.add('js');try{var c=navigator.connection||{};if(!matchMedia('(prefers-reduced-motion:reduce)').matches&&!c.saveData)d.classList.add('intro-on')}catch(e){}})(document.documentElement);</script>
 <link rel="preload" as="image" href="images/lift-wide.webp" media="(orientation:landscape)" fetchpriority="high">
 <link rel="preload" as="image" href="images/lift-tall.webp" media="(orientation:portrait)" fetchpriority="high">
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
 <style>
 /* Inter and Instrument Serif (SIL Open Font License), embedded so the page works offline */
-@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(fonts/inter-latin-300-normal.woff2) format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-latin-500-normal.woff2) format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-latin-600-normal.woff2) format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/inter-latin-wght-normal.woff2) format('woff2')}
 @font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/instrument-serif-latin-400-normal.woff2) format('woff2')}
 @font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(fonts/instrument-serif-latin-400-italic.woff2) format('woff2')}
 :root{
@@ -385,7 +381,7 @@ section[id]{scroll-margin-top:84px}
 .changes a{font-size:13.5px;font-weight:500;color:var(--accent)}
 
 /* Reveal */
-.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
 .js .reveal.in{opacity:1;transform:none}
 
 /* Responsive */
@@ -486,7 +482,7 @@ section[id]{scroll-margin-top:84px}
 /* ---- Interaction layer ---- */
 .sprog{position:fixed;left:0;top:0;right:0;height:3px;z-index:200;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
 .wr{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.12em;margin-bottom:-.12em}
-.wr>i{display:inline-block;font-style:inherit;transform:translateY(105%);transition:transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i)*45ms)}
+.wr>i{display:inline-block;font-style:inherit;transform:translateY(105%);transition:transform .5s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i)*22ms)}
 .wr-in .wr>i{transform:none}
 .spot{position:relative;isolation:isolate}
 .spot::before{content:"";position:absolute;inset:-14px;z-index:-1;border-radius:calc(var(--radius) + 10px);pointer-events:none;opacity:0;transition:opacity .35s ease;
@@ -652,6 +648,8 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
 /* Skip rendering work for sections far off screen */
 #glasshouses,#outdoor,#projects,#visit,#faq,#quote,.ftr{content-visibility:auto;contain-intrinsic-size:auto 900px}
 @media (prefers-reduced-motion:reduce){.eng-art path{stroke-dashoffset:0}}
+
+picture{display:contents}
 </style>
 </head>
 <body>
@@ -712,7 +710,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
 
 <section class="hero" id="top" aria-labelledby="hero-title">
   <div class="hero-media">
-    <img src="images/hero.webp" width="1902" height="1269" srcset="images/hero-768.webp 768w, images/hero-1280.webp 1280w, images/hero.webp 1902w" sizes="100vw" decoding="async" fetchpriority="high" alt="A Simpelbuild Boca Chica home with an outdoor deck and dining table under the trees">
+    <picture><source type="image/avif" srcset="images/hero-768.avif 768w, images/hero-1280.avif 1280w, images/hero.avif 1902w" sizes="100vw"><img src="images/hero.webp" width="1902" height="1269" srcset="images/hero-768.webp 768w, images/hero-1280.webp 1280w, images/hero.webp 1902w" sizes="100vw" decoding="async" fetchpriority="high" alt="A Simpelbuild Boca Chica home with an outdoor deck and dining table under the trees"></picture>
     <video class="hero-build" id="heroBuild" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
   </div>
   <div class="hero-lift" id="sbLift" aria-hidden="true"><i class="st"></i><i class="st"></i><div class="pn"></div></div>
@@ -771,7 +769,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
     </div>
     <div class="range-grid">
       <article class="rcard reveal">
-        <div class="media"><img src="images/range-home.webp" width="952" height="634" srcset="images/range-home-640.webp 640w, images/range-home.webp 952w" sizes="(min-width: 960px) 33vw, 100vw" decoding="async" loading="lazy" alt="Boca Chica modular home exterior among trees"></div>
+        <div class="media"><picture><source type="image/avif" srcset="images/range-home-640.avif 640w, images/range-home.avif 952w" sizes="(min-width: 960px) 33vw, 100vw"><img src="images/range-home.webp" width="952" height="634" srcset="images/range-home-640.webp 640w, images/range-home.webp 952w" sizes="(min-width: 960px) 33vw, 100vw" decoding="async" loading="lazy" alt="Boca Chica modular home exterior among trees"></picture></div>
         <span class="eyebrow">Modular homes</span>
         <h3>Boca Chica</h3>
         <p>A complete home with kitchen, bedroom, bathroom and outdoor deck, built in the factory and installed in days.</p>
@@ -779,7 +777,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
         <div class="links"><a class="tlink" href="#homes">Explore the rooms <svg class="ico"><use href="#i-arrow"/></svg></a><a class="tlink accent" href="#quote" data-quote="home">Get a quote</a></div>
       </article>
       <article class="rcard reveal">
-        <div class="media"><img src="images/range-glass.webp" width="952" height="634" srcset="images/range-glass-640.webp 640w, images/range-glass.webp 952w" sizes="(min-width: 960px) 33vw, 100vw" decoding="async" loading="lazy" alt="Simpelbuild glasshouse beside a swimming pool in a garden"></div>
+        <div class="media"><picture><source type="image/avif" srcset="images/range-glass-640.avif 640w, images/range-glass.avif 952w" sizes="(min-width: 960px) 33vw, 100vw"><img src="images/range-glass.webp" width="952" height="634" srcset="images/range-glass-640.webp 640w, images/range-glass.webp 952w" sizes="(min-width: 960px) 33vw, 100vw" decoding="async" loading="lazy" alt="Simpelbuild glasshouse beside a swimming pool in a garden"></picture></div>
         <span class="eyebrow">Glass rooms</span>
         <h3>Glasshouses</h3>
         <p>Laminated double-glazed glass on an aluminium frame. Flat-packed, and assembled in under 24 hours.</p>
@@ -787,7 +785,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
         <div class="links"><a class="tlink" href="#glasshouses">Inside a glasshouse <svg class="ico"><use href="#i-arrow"/></svg></a><a class="tlink accent" href="#quote" data-quote="glass">Get a quote</a></div>
       </article>
       <article class="rcard reveal">
-        <div class="media"><img src="images/range-outdoor.webp" width="952" height="634" srcset="images/range-outdoor-640.webp 640w, images/range-outdoor.webp 952w" sizes="(min-width: 960px) 33vw, 100vw" decoding="async" loading="lazy" alt="Simpelbuild aluminium outdoor dining set"></div>
+        <div class="media"><picture><source type="image/avif" srcset="images/range-outdoor-640.avif 640w, images/range-outdoor.avif 952w" sizes="(min-width: 960px) 33vw, 100vw"><img src="images/range-outdoor.webp" width="952" height="634" srcset="images/range-outdoor-640.webp 640w, images/range-outdoor.webp 952w" sizes="(min-width: 960px) 33vw, 100vw" decoding="async" loading="lazy" alt="Simpelbuild aluminium outdoor dining set"></picture></div>
         <span class="eyebrow">Fire, dining and lounge</span>
         <h3>Outdoor living</h3>
         <p>Fireplaces, firepits, barbecues, furniture, lanterns and planters in recyclable aluminium alloy.</p>
@@ -802,10 +800,10 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
   <div class="wrap boca-grid">
     <div class="viewer reveal">
       <div class="media rooms">
-        <img src="images/room-kitchen.webp" width="1000" height="1000" srcset="images/room-kitchen-600.webp 600w, images/room-kitchen.webp 1000w" sizes="(min-width: 960px) 52vw, 100vw" decoding="async" loading="lazy" class="room active" data-room="kitchen" alt="Kitchen inside a Boca Chica home">
-        <img src="images/room-bedroom.webp" width="1000" height="1000" srcset="images/room-bedroom-600.webp 600w, images/room-bedroom.webp 1000w" sizes="(min-width: 960px) 52vw, 100vw" decoding="async" loading="lazy" class="room" data-room="bedroom" alt="Bedroom inside a Boca Chica home, with floor-to-ceiling glass" aria-hidden="true">
-        <img src="images/room-bathroom.webp" width="1000" height="1000" srcset="images/room-bathroom-600.webp 600w, images/room-bathroom.webp 1000w" sizes="(min-width: 960px) 52vw, 100vw" decoding="async" loading="lazy" class="room" data-room="bathroom" alt="Bathroom inside a Boca Chica home" aria-hidden="true">
-        <img src="images/room-garden.webp" width="1000" height="1000" srcset="images/room-garden-600.webp 600w, images/room-garden.webp 1000w" sizes="(min-width: 960px) 52vw, 100vw" decoding="async" loading="lazy" class="room" data-room="garden" alt="Boca Chica home and outdoor deck at dusk" aria-hidden="true">
+        <picture><source type="image/avif" srcset="images/room-kitchen-600.avif 600w, images/room-kitchen.avif 1000w" sizes="(min-width: 960px) 52vw, 100vw"><img src="images/room-kitchen.webp" width="1000" height="1000" srcset="images/room-kitchen-600.webp 600w, images/room-kitchen.webp 1000w" sizes="(min-width: 960px) 52vw, 100vw" decoding="async" loading="lazy" class="room active" data-room="kitchen" alt="Kitchen inside a Boca Chica home"></picture>
+        <picture><source type="image/avif" srcset="images/room-bedroom-600.avif 600w, images/room-bedroom.avif 1000w" sizes="(min-width: 960px) 52vw, 100vw"><img src="images/room-bedroom.webp" width="1000" height="1000" srcset="images/room-bedroom-600.webp 600w, images/room-bedroom.webp 1000w" sizes="(min-width: 960px) 52vw, 100vw" decoding="async" loading="lazy" class="room" data-room="bedroom" alt="Bedroom inside a Boca Chica home, with floor-to-ceiling glass" aria-hidden="true"></picture>
+        <picture><source type="image/avif" srcset="images/room-bathroom-600.avif 600w, images/room-bathroom.avif 1000w" sizes="(min-width: 960px) 52vw, 100vw"><img src="images/room-bathroom.webp" width="1000" height="1000" srcset="images/room-bathroom-600.webp 600w, images/room-bathroom.webp 1000w" sizes="(min-width: 960px) 52vw, 100vw" decoding="async" loading="lazy" class="room" data-room="bathroom" alt="Bathroom inside a Boca Chica home" aria-hidden="true"></picture>
+        <picture><source type="image/avif" srcset="images/room-garden-600.avif 600w, images/room-garden.avif 1000w" sizes="(min-width: 960px) 52vw, 100vw"><img src="images/room-garden.webp" width="1000" height="1000" srcset="images/room-garden-600.webp 600w, images/room-garden.webp 1000w" sizes="(min-width: 960px) 52vw, 100vw" decoding="async" loading="lazy" class="room" data-room="garden" alt="Boca Chica home and outdoor deck at dusk" aria-hidden="true"></picture>
         <span class="viewer-cap" id="room-cap" aria-live="polite">Kitchen</span>
       </div>
       <div class="tabs" role="group" aria-label="Rooms">
@@ -846,7 +844,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
     </div>
     <div class="film paused reveal" id="buildFilm">
       <div class="film-frame">
-        <video muted playsinline preload="none" data-poster="images/build-film-poster.jpg" aria-label="Film: a Simpelbuild module assembling step by step, from foundation to the finished home on site"></video>
+        <video muted playsinline preload="none" data-poster="images/build-film-poster-1600.webp" data-poster-s="images/build-film-poster-960.webp" aria-label="Film: a Simpelbuild module assembling step by step, from foundation to the finished home on site"></video>
         <div class="film-cap" aria-live="off"><span class="n">01</span><div class="txt"><h3></h3><p></p></div></div>
         <button class="film-play" type="button" aria-label="Play or pause the film"><svg class="pl" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg><svg class="pa" viewBox="0 0 16 16"><path d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/></svg></button>
       </div>
@@ -864,8 +862,8 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
         <p>Drag the handle to see the same garden before and after the build.</p>
       </div>
       <div class="cmp-frame">
-        <img src="images/site-before.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="The raised deck in the garden before the cabins are assembled">
-        <img class="cmp-after" src="images/site-after.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="The finished Simpelbuild cabins with pergola and outdoor furniture on the same deck">
+        <picture><source type="image/avif" srcset="images/site-before-800.avif 800w, images/site-before-1280.avif 1280w, images/site-before-1600.avif 1600w" sizes="(min-width: 1240px) 1160px, 94vw"><img src="images/site-before-1600.webp" srcset="images/site-before-800.webp 800w, images/site-before-1280.webp 1280w, images/site-before-1600.webp 1600w" sizes="(min-width: 1240px) 1160px, 94vw" width="1600" height="900" loading="lazy" decoding="async" alt="The raised deck in the garden before the cabins are assembled"></picture>
+        <picture><source type="image/avif" srcset="images/site-after-800.avif 800w, images/site-after-1280.avif 1280w, images/site-after-1600.avif 1600w" sizes="(min-width: 1240px) 1160px, 94vw"><img class="cmp-after" src="images/site-after-1600.webp" srcset="images/site-after-800.webp 800w, images/site-after-1280.webp 1280w, images/site-after-1600.webp 1600w" sizes="(min-width: 1240px) 1160px, 94vw" width="1600" height="900" loading="lazy" decoding="async" alt="The finished Simpelbuild cabins with pergola and outdoor furniture on the same deck"></picture>
         <span class="cmp-tag a">Finished</span><span class="cmp-tag b">Empty site</span>
         <button class="cmp-handle" type="button" role="slider" aria-label="Reveal the finished home" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-orientation="horizontal"><span><svg viewBox="0 0 20 20"><path d="M7 5l-4 5 4 5M13 5l4 5-4 5"/></svg></span></button>
       </div>
@@ -889,7 +887,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
     </div>
     <div class="x3d-stage reveal" id="x3d">
       <div class="x3d-view">
-        <img class="x3d-fallback" src="images/build-film-poster.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="3D model of a Simpelbuild module with deck">
+        <img class="x3d-fallback" src="images/build-film-poster-1600.webp" srcset="images/build-film-poster-960.webp 960w, images/build-film-poster-1600.webp 1600w" sizes="(min-width: 960px) 60vw, 100vw" width="1920" height="1080" loading="lazy" decoding="async" alt="3D model of a Simpelbuild module with deck">
         <div class="x3d-load">Loading 3D model</div>
         <div class="x3d-hud"><span class="n">Step <b id="x3dNum">19</b> / 19</span><h3 id="x3dName">Deck furniture</h3></div>
         <span class="x3d-hint">Drag to rotate</span>
@@ -929,11 +927,11 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
     </div>
     <div class="e3d reveal" id="e3d" data-mode="overview">
       <div class="e3d-view">
-        <img class="e3d-fb" src="images/fea.webp" width="1200" height="737" srcset="images/fea-700.webp 700w, images/fea.webp 1200w" sizes="(min-width: 960px) 45vw, 100vw" decoding="async" loading="lazy" alt="Structural simulation of a Simpelbuild frame showing maximum combined stress">
+        <picture><source type="image/avif" srcset="images/fea-700.avif 700w, images/fea.avif 1200w" sizes="(min-width: 960px) 45vw, 100vw"><img class="e3d-fb" src="images/fea.webp" width="1200" height="737" srcset="images/fea-700.webp 700w, images/fea.webp 1200w" sizes="(min-width: 960px) 45vw, 100vw" decoding="async" loading="lazy" alt="Structural simulation of a Simpelbuild frame showing maximum combined stress"></picture>
         <div class="e3d-load">Loading 3D structure</div>
         <div class="e3d-labs" aria-hidden="true"></div>
         <div class="e3d-hud"><span class="k">3D overview</span><div class="txt"><h3></h3><p></p></div></div>
-        <figure class="e3d-fea" aria-hidden="true"><img src="images/fea-700.webp" width="700" height="430" loading="lazy" decoding="async" alt=""><figcaption>Simulation: maximum combined stress in the frame under load.</figcaption></figure>
+        <figure class="e3d-fea" aria-hidden="true"><picture><source type="image/avif" srcset="images/fea-700.avif"><img src="images/fea-700.webp" width="700" height="430" loading="lazy" decoding="async" alt=""></picture><figcaption>Simulation: maximum combined stress in the frame under load.</figcaption></figure>
       </div>
       <div class="e3d-tabs" role="group" aria-label="3D views of the structure"></div>
       <p class="e3d-cap">Drag to turn the model. Pick a view, or point at a line of the specification.</p>
@@ -942,7 +940,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
 </section>
 
 <section class="glass" id="glasshouses" aria-labelledby="glass-title">
-  <div class="bg"><img src="images/glass.webp" width="1902" height="1269" srcset="images/glass-768.webp 768w, images/glass-1280.webp 1280w, images/glass.webp 1902w" sizes="100vw" decoding="async" loading="lazy" alt="Inside a Simpelbuild glasshouse set for dinner under pendant lights"></div>
+  <div class="bg"><picture><source type="image/avif" srcset="images/glass-768.avif 768w, images/glass-1280.avif 1280w, images/glass.avif 1902w" sizes="100vw"><img src="images/glass.webp" width="1902" height="1269" srcset="images/glass-768.webp 768w, images/glass-1280.webp 1280w, images/glass.webp 1902w" sizes="100vw" decoding="async" loading="lazy" alt="Inside a Simpelbuild glasshouse set for dinner under pendant lights"></picture></div>
   <div class="wrap">
     <div class="glass-card reveal">
       <span class="eyebrow">Glasshouses</span>
@@ -971,12 +969,12 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
       <a class="tlink accent" href="#quote" data-quote="outdoor">Ask about outdoor pieces <svg class="ico"><use href="#i-arrow"/></svg></a>
     </div>
     <ul class="tiles">
-      <li class="tile reveal"><div class="media"><img src="images/tile-fireplace.webp" width="385" height="515" decoding="async" loading="lazy" alt="Black aluminium outdoor fireplace beside a lounger"></div><h3>Fireplaces</h3></li>
-      <li class="tile reveal"><div class="media"><img src="images/tile-firepits.webp" width="385" height="515" decoding="async" loading="lazy" alt="Aluminium firepit on a lawn"></div><h3>Firepits</h3></li>
-      <li class="tile reveal"><div class="media"><img src="images/tile-barbecue.webp" width="386" height="515" decoding="async" loading="lazy" alt="Outdoor barbecue in a garden"></div><h3>Barbecues</h3></li>
-      <li class="tile reveal"><div class="media"><img src="images/tile-furniture.webp" width="385" height="516" decoding="async" loading="lazy" alt="Outdoor sofa with cushions"></div><h3>Furniture</h3></li>
-      <li class="tile reveal"><div class="media"><img src="images/tile-lantern.webp" width="385" height="516" decoding="async" loading="lazy" alt="Tall aluminium garden lantern"></div><h3>Lanterns</h3></li>
-      <li class="tile reveal"><div class="media"><img src="images/tile-planters.webp" width="386" height="516" decoding="async" loading="lazy" alt="Planter with agave against a panel wall"></div><h3>Planters</h3></li>
+      <li class="tile reveal"><div class="media"><picture><source type="image/avif" srcset="images/tile-fireplace.avif"><img src="images/tile-fireplace.webp" width="385" height="515" decoding="async" loading="lazy" alt="Black aluminium outdoor fireplace beside a lounger"></picture></div><h3>Fireplaces</h3></li>
+      <li class="tile reveal"><div class="media"><picture><source type="image/avif" srcset="images/tile-firepits.avif"><img src="images/tile-firepits.webp" width="385" height="515" decoding="async" loading="lazy" alt="Aluminium firepit on a lawn"></picture></div><h3>Firepits</h3></li>
+      <li class="tile reveal"><div class="media"><picture><source type="image/avif" srcset="images/tile-barbecue.avif"><img src="images/tile-barbecue.webp" width="386" height="515" decoding="async" loading="lazy" alt="Outdoor barbecue in a garden"></picture></div><h3>Barbecues</h3></li>
+      <li class="tile reveal"><div class="media"><picture><source type="image/avif" srcset="images/tile-furniture.avif"><img src="images/tile-furniture.webp" width="385" height="516" decoding="async" loading="lazy" alt="Outdoor sofa with cushions"></picture></div><h3>Furniture</h3></li>
+      <li class="tile reveal"><div class="media"><picture><source type="image/avif" srcset="images/tile-lantern.avif"><img src="images/tile-lantern.webp" width="385" height="516" decoding="async" loading="lazy" alt="Tall aluminium garden lantern"></picture></div><h3>Lanterns</h3></li>
+      <li class="tile reveal"><div class="media"><picture><source type="image/avif" srcset="images/tile-planters.avif"><img src="images/tile-planters.webp" width="386" height="516" decoding="async" loading="lazy" alt="Planter with agave against a panel wall"></picture></div><h3>Planters</h3></li>
     </ul>
   </div>
 </section>
@@ -992,22 +990,22 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
     </div>
     <div class="proj-grid">
       <article class="pcard reveal">
-        <div class="media"><img src="images/proj-rolex.webp" width="1200" height="800" srcset="images/proj-rolex-640.webp 640w, images/proj-rolex.webp 1200w" sizes="(min-width: 760px) 50vw, 100vw" decoding="async" loading="lazy" alt="Rolex exhibition pavilion lit at night"></div>
+        <div class="media"><picture><source type="image/avif" srcset="images/proj-rolex-640.avif 640w, images/proj-rolex.avif 1200w" sizes="(min-width: 760px) 50vw, 100vw"><img src="images/proj-rolex.webp" width="1200" height="800" srcset="images/proj-rolex-640.webp 640w, images/proj-rolex.webp 1200w" sizes="(min-width: 760px) 50vw, 100vw" decoding="async" loading="lazy" alt="Rolex exhibition pavilion lit at night"></picture></div>
         <div class="meta"><h3>Rolex</h3><span class="type">Exhibition pavilion</span></div>
         <p>A precision display pavilion for luxury timepieces.</p>
       </article>
       <article class="pcard reveal">
-        <div class="media"><img src="images/proj-loccitane.webp" width="952" height="634" srcset="images/proj-loccitane-640.webp 640w, images/proj-loccitane.webp 952w" sizes="(min-width: 760px) 50vw, 100vw" decoding="async" loading="lazy" alt="L’Occitane retail pavilion with glass walls"></div>
+        <div class="media"><picture><source type="image/avif" srcset="images/proj-loccitane-640.avif 640w, images/proj-loccitane.avif 952w" sizes="(min-width: 760px) 50vw, 100vw"><img src="images/proj-loccitane.webp" width="952" height="634" srcset="images/proj-loccitane-640.webp 640w, images/proj-loccitane.webp 952w" sizes="(min-width: 760px) 50vw, 100vw" decoding="async" loading="lazy" alt="L’Occitane retail pavilion with glass walls"></picture></div>
         <div class="meta"><h3>L’Occitane</h3><span class="type">Retail pavilion</span></div>
         <p>A refined display environment for a beauty brand.</p>
       </article>
       <article class="pcard reveal">
-        <div class="media"><img src="images/proj-jpmorgan.webp" width="952" height="634" srcset="images/proj-jpmorgan-640.webp 640w, images/proj-jpmorgan.webp 952w" sizes="(min-width: 760px) 50vw, 100vw" decoding="async" loading="lazy" alt="J.P. Morgan corporate pavilion surrounded by plants"></div>
+        <div class="media"><picture><source type="image/avif" srcset="images/proj-jpmorgan-640.avif 640w, images/proj-jpmorgan.avif 952w" sizes="(min-width: 760px) 50vw, 100vw"><img src="images/proj-jpmorgan.webp" width="952" height="634" srcset="images/proj-jpmorgan-640.webp 640w, images/proj-jpmorgan.webp 952w" sizes="(min-width: 760px) 50vw, 100vw" decoding="async" loading="lazy" alt="J.P. Morgan corporate pavilion surrounded by plants"></picture></div>
         <div class="meta"><h3>J.P. Morgan</h3><span class="type">Corporate pavilion</span></div>
         <p>An executive brand-experience space.</p>
       </article>
       <article class="pcard reveal">
-        <div class="media"><img src="images/proj-lifestyle.webp" width="952" height="634" srcset="images/proj-lifestyle-640.webp 640w, images/proj-lifestyle.webp 952w" sizes="(min-width: 760px) 50vw, 100vw" decoding="async" loading="lazy" alt="Lifestyle Luxury retail pavilion at night"></div>
+        <div class="media"><picture><source type="image/avif" srcset="images/proj-lifestyle-640.avif 640w, images/proj-lifestyle.avif 952w" sizes="(min-width: 760px) 50vw, 100vw"><img src="images/proj-lifestyle.webp" width="952" height="634" srcset="images/proj-lifestyle-640.webp 640w, images/proj-lifestyle.webp 952w" sizes="(min-width: 760px) 50vw, 100vw" decoding="async" loading="lazy" alt="Lifestyle Luxury retail pavilion at night"></picture></div>
         <div class="meta"><h3>Lifestyle Luxury</h3><span class="type">Retail installation</span></div>
         <p>An immersive premium shopping pavilion.</p>
       </article>
@@ -1021,7 +1019,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
 
 <section class="sec visit" id="visit" aria-labelledby="visit-title" style="padding-top:0">
   <div class="wrap visit-grid">
-    <div class="media reveal"><img src="images/visit.webp" width="860" height="1289" srcset="images/visit-560.webp 560w, images/visit.webp 860w" sizes="(min-width: 960px) 40vw, 100vw" decoding="async" loading="lazy" alt="Boca Chica home entrance with wall lights and planters"></div>
+    <div class="media reveal"><picture><source type="image/avif" srcset="images/visit-560.avif 560w, images/visit.avif 860w" sizes="(min-width: 960px) 40vw, 100vw"><img src="images/visit.webp" width="860" height="1289" srcset="images/visit-560.webp 560w, images/visit.webp 860w" sizes="(min-width: 960px) 40vw, 100vw" decoding="async" loading="lazy" alt="Boca Chica home entrance with wall lights and planters"></picture></div>
     <div class="reveal">
       <span class="eyebrow">Visit us</span>
       <h2 class="h2" id="visit-title">See it before <em>you buy.</em></h2>
@@ -1436,12 +1434,12 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
 
   /* Gentle reveal on scroll */
   $$('.range-grid, .steps, .tiles, .proj-grid, .pillars').forEach(function (g) {
-    $$('.reveal', g).forEach(function (n, i) { n.style.transitionDelay = (i % 6) * 70 + 'ms'; });
+    $$('.reveal', g).forEach(function (n, i) { n.style.transitionDelay = (i % 6) * 40 + 'ms'; });
   });
   if ('IntersectionObserver' in window && !reduced) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
+    }, { rootMargin: '0px 0px 12% 0px', threshold: 0 });
     $$('.reveal').forEach(function (n) { io.observe(n); });
   } else {
     $$('.reveal').forEach(function (n) { n.classList.add('in'); });
@@ -1475,15 +1473,18 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
   v.addEventListener('ended',function(){v.classList.remove('now');v.offsetWidth;v.classList.remove('on');ch.classList.remove('show');btn.classList.add('show')});
   v.addEventListener('error',function(){v.classList.remove('on');ch.classList.remove('show');btn.classList.remove('show')});
   btn.addEventListener('click',play);
-  var SRC=innerWidth<=900?'images/hero-build-720.mp4?v=20261112b':'images/hero-build.mp4?v=20261112b';
+  var SRC=innerWidth<=900?'images/hero-build-720.mp4?v=20261113':'images/hero-build.mp4?v=20261113';
   if(document.documentElement.classList.contains('intro-on')){
     /* Ready under the entrance panel: first frame showing, no fade, so there is no flash of the photo. */
     v.classList.add('now','on');
-    function fetchClip(){v.poster=innerWidth<=900?'images/hero-build-poster-720.webp':'images/hero-build-poster.webp';v.preload='auto';v.src=SRC;v.load()}
-    if(document.readyState==='complete')fetchClip();else addEventListener('load',fetchClip,{once:true});
+    /* The clip starts downloading as soon as the hero photo is in (so it never competes with it), 1.5 s at the latest. */
+    var fetched=false;
+    function fetchClip(){if(fetched)return;fetched=true;v.poster='images/hero-build-poster-960.webp';v.preload='auto';v.src=SRC;v.load()}
+    if(img&&!img.complete){img.addEventListener('load',fetchClip,{once:true});img.addEventListener('error',fetchClip,{once:true})}else setTimeout(fetchClip,0);
+    setTimeout(fetchClip,1500);
     /* Parks the clip on its first frame, fully shown, so the panel can lift onto an empty site. */
     function prep(){v.pause();btn.classList.remove('show');ch.classList.remove('show');v.classList.add('now','on');if(v.currentTime>0)v.currentTime=0}
-    window.sbHero={v:v,play:play,prep:prep};
+    window.sbHero={v:v,play:play,prep:prep,fetch:fetchClip};
   }else{
     v.preload='none';v.src=SRC;btn.classList.add('show');
   }
@@ -1517,7 +1518,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
       b.style.setProperty('--p',Math.max(0,Math.min(1,(t-a)/(z-a)))*100+'%');
     });
   }
-  function load(){if(loaded)return;loaded=true;v.src=innerWidth<=900?'images/build-film-720.mp4?v=20261112b':'images/build-film.mp4?v=20261112b';v.load()}
+  function load(){if(loaded)return;loaded=true;v.src=innerWidth<=900?'images/build-film-720.mp4?v=20261113':'images/build-film.mp4?v=20261113';v.load()}
   num.textContent='01';h.textContent=CH[0][1];p.textContent=CH[0][2];cur=0;btns[0].setAttribute('aria-current','true');
   v.addEventListener('timeupdate',tick);
   v.addEventListener('play',function(){root.classList.remove('paused')});
@@ -1528,14 +1529,14 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
     if(v.paused){userPaused=false;if(v.ended)v.currentTime=0;v.play()}else{userPaused=true;v.pause()}
   });
   if('IntersectionObserver' in window){
-    new IntersectionObserver(function(es,o){if(es[0].isIntersecting){v.poster=v.dataset.poster;o.disconnect()}},{rootMargin:'900px 0px'}).observe(root);
+    new IntersectionObserver(function(es,o){if(es[0].isIntersecting){v.poster=innerWidth<=900?v.dataset.posterS:v.dataset.poster;o.disconnect()}},{rootMargin:'900px 0px'}).observe(root);
     new IntersectionObserver(function(es){
       es.forEach(function(e){
         if(e.isIntersecting&&e.intersectionRatio>=.55){if(!reduce&&!userPaused){load();var q=v.play();if(q&&q.catch)q.catch(function(){})}}
         else if(!v.paused){v.pause()}
       });
     },{threshold:[0,.55]}).observe(root.querySelector('.film-frame'));
-  }else v.poster=v.dataset.poster;
+  }else v.poster=innerWidth<=900?v.dataset.posterS:v.dataset.poster;
 })();
 </script>
 <script>
@@ -1590,7 +1591,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
         });
       })(h);
     });
-    var hio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('wr-in');hio.unobserve(e.target)}})},{threshold:.3});
+    var hio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('wr-in');hio.unobserve(e.target)}})},{rootMargin:'0px 0px 8% 0px',threshold:0});
     hs.forEach(function(h){hio.observe(h)});
   }
 
@@ -1649,7 +1650,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
   var view=host.querySelector('.x3d-view'),STEPS=["Empty site", "Foundation piers", "Floor beams", "Floor cassettes", "Corner posts", "Wall studs", "Top ring beam", "Roof grid", "Rear wall cassettes", "Side wall cassettes", "Front wall cassettes", "Roof cassettes", "Glazing and door", "Beige cladding", "Roof fascia", "Raised deck", "Wall lights", "Interior floor and ceiling", "Kitchen and living", "Deck furniture"],started=false;
   function nogl(){host.classList.add('x3d-nogl')}
   function gl(){try{var c=document.createElement('canvas');return !!(c.getContext('webgl2')||c.getContext('webgl'))}catch(e){return false}}
-  new IntersectionObserver(function(es,o){if(es[0].isIntersecting&&!started){started=true;o.disconnect();if(!gl())return nogl();boot().catch(function(e){console.warn('[3d]',e);nogl()})}},{rootMargin:'600px 0px'}).observe(host);
+  new IntersectionObserver(function(es,o){if(es[0].isIntersecting&&!started){started=true;o.disconnect();if(!gl())return nogl();boot().catch(function(e){console.warn('[3d]',e);nogl()})}},{rootMargin:'1000px 0px'}).observe(host);
 
   async function boot(){
     var m=await Promise.all([import('three'),import('three/addons/loaders/GLTFLoader.js'),import('three/addons/controls/OrbitControls.js'),import('three/addons/environments/RoomEnvironment.js')]);
@@ -1789,7 +1790,7 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
   var view=host.querySelector('.e3d-view'),started=false;
   function nogl(){host.classList.add('e3d-nogl')}
   function gl(){try{var c=document.createElement('canvas');return !!(c.getContext('webgl2')||c.getContext('webgl'))}catch(e){return false}}
-  new IntersectionObserver(function(es,o){if(es[0].isIntersecting&&!started){started=true;o.disconnect();if(!gl())return nogl();boot().catch(function(e){console.warn('[e3d]',e);nogl()})}},{rootMargin:'500px 0px'}).observe(host);
+  new IntersectionObserver(function(es,o){if(es[0].isIntersecting&&!started){started=true;o.disconnect();if(!gl())return nogl();boot().catch(function(e){console.warn('[e3d]',e);nogl()})}},{rootMargin:'1000px 0px'}).observe(host);
 
   /* One view per idea. show: which groups are solid (s), ghosted (g) or hidden (everything else).
      Groups: frame, floor, walls, roof, glass, clad, fascia, deck, interior, furn. */
@@ -2046,9 +2047,9 @@ html.replay .hero-inner>*{opacity:0;transform:translateY(26px);transition:opacit
       if(gone)return;gone=true;el.classList.add('up');
       setTimeout(goLive,1300);
       if(v){
-        H.play();
+        if(H.fetch)H.fetch();H.play();
         v.addEventListener('ended',finish);v.addEventListener('error',finish);
-        setTimeout(function(){if(v.paused&&v.currentTime<.1)finish()},2500);     /* clip never started: show the page */
+        setTimeout(function(){if(v.currentTime<.1)finish()},2500);     /* clip has not started: show the page (the clip still plays when it can) */
         setTimeout(finish,16000);
       }else setTimeout(finish,700);
     }
