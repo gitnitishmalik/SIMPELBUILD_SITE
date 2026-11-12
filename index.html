@@ -22,7 +22,8 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-serif-latin-400-italic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin-400-normal.woff2" crossorigin>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C81E3C'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='40' fill='white'%3ES%3C/text%3E%3C/svg%3E">
-<script>document.documentElement.classList.add('js');</script>
+<script>(function(d){d.classList.add('js');try{if(!sessionStorage.getItem('sbIntro')&&!matchMedia('(prefers-reduced-motion:reduce)').matches)d.classList.add('intro-on')}catch(e){}})(document.documentElement);</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <style>
 /* Inter and Instrument Serif (SIL Open Font License), embedded so the page works offline */
 @font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(fonts/inter-latin-300-normal.woff2) format('woff2')}
@@ -494,9 +495,110 @@ section[id]{scroll-margin-top:84px}
 .cmp-handle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .cmp-note{margin:10px 0 0;font-size:12.5px;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){.wr>i{transform:none;transition:none}.spot .media{transform:none}}
+
+/* ---- 3D explorer ---- */
+.x3d{padding-top:0}
+.x3d-stage{position:relative;height:clamp(460px,78vh,760px);border-radius:var(--radius);overflow:hidden;isolation:isolate;color:var(--on-night);
+  background:radial-gradient(120% 90% at 50% 38%,#34302b 0%,#1d1b18 55%,#131210 100%)}
+.x3d-stage::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;
+  background-image:linear-gradient(rgba(241,236,228,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(241,236,228,.05) 1px,transparent 1px);background-size:96px 96px;
+  -webkit-mask-image:radial-gradient(75% 70% at 50% 60%,#000 20%,transparent 90%);mask-image:radial-gradient(75% 70% at 50% 60%,#000 20%,transparent 90%)}
+.x3d-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;outline:0}
+.x3d-stage canvas:active{cursor:grabbing}
+.x3d-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .6s ease}
+.x3d-live .x3d-fallback{opacity:0;pointer-events:none}
+.x3d-hud{position:absolute;left:clamp(16px,2.6vw,34px);top:clamp(16px,2.6vw,30px);pointer-events:none}
+.x3d-hud .n{font:500 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--on-night-2)}
+.x3d-hud .n b{color:var(--on-night);font-weight:500;font-variant-numeric:tabular-nums}
+.x3d-hud h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,3vw,40px);line-height:1.05;margin:10px 0 0}
+.x3d-hint{position:absolute;right:clamp(16px,2.6vw,34px);top:clamp(16px,2.6vw,30px);font:500 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--on-night-2);pointer-events:none;transition:opacity .5s ease}
+.x3d-used .x3d-hint{opacity:0}
+.x3d-load{position:absolute;inset:0;display:grid;place-items:center;font:500 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--on-night-2);pointer-events:none;transition:opacity .4s ease}
+.x3d-live .x3d-load,.x3d-nogl .x3d-load{opacity:0}
+.x3d-side{position:absolute;right:clamp(12px,2vw,26px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px}
+.x3d-btn{min-width:44px;height:44px;padding:0 14px;border-radius:999px;border:1px solid rgba(241,236,228,.28);background:rgba(20,19,17,.55);color:var(--on-night);font:500 13px/1 var(--sans);cursor:pointer;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:background-color .2s,border-color .2s,color .2s}
+.x3d-btn:hover{background:rgba(241,236,228,.14)}
+.x3d-btn[aria-pressed="true"]{background:var(--on-night);color:var(--night);border-color:var(--on-night)}
+.x3d-bar{position:absolute;left:clamp(12px,2.6vw,34px);right:clamp(12px,2.6vw,34px);bottom:clamp(12px,2.4vw,28px);display:grid;grid-template-columns:auto minmax(0,2.2fr) minmax(0,1fr);gap:14px 26px;align-items:center;
+  padding:14px 20px;border-radius:999px;border:1px solid rgba(241,236,228,.16);background:rgba(20,19,17,.6);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.x3d-bar label{display:flex;align-items:center;gap:12px;font:500 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--on-night-2);min-width:0}
+.x3d-bar input[type=range]{flex:1;min-width:0;height:24px;margin:0;background:none;-webkit-appearance:none;appearance:none;cursor:pointer}
+.x3d-bar input[type=range]::-webkit-slider-runnable-track{height:3px;border-radius:2px;background:linear-gradient(90deg,var(--accent) var(--f,0%),rgba(241,236,228,.24) var(--f,0%))}
+.x3d-bar input[type=range]::-moz-range-track{height:3px;border-radius:2px;background:rgba(241,236,228,.24)}
+.x3d-bar input[type=range]::-moz-range-progress{height:3px;border-radius:2px;background:var(--accent)}
+.x3d-bar input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;margin-top:-7.5px;border-radius:50%;background:#fff;border:0;box-shadow:0 2px 10px rgba(0,0,0,.4)}
+.x3d-bar input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:0;box-shadow:0 2px 10px rgba(0,0,0,.4)}
+.x3d-bar .x3d-btn{height:40px}
+.x3d-nogl .x3d-bar,.x3d-nogl .x3d-side,.x3d-nogl .x3d-hint{display:none}
+@media (max-width:860px){
+  .x3d-stage{height:auto;min-height:0;display:flex;flex-direction:column;overflow:visible;background:none;border-radius:0}
+  .x3d-stage::before{display:none}
+  .x3d-view{position:relative;height:62vh;min-height:380px;border-radius:var(--radius);overflow:hidden;background:radial-gradient(120% 90% at 50% 38%,#34302b 0%,#1d1b18 55%,#131210 100%)}
+  .x3d-side{top:auto;bottom:12px;right:12px;transform:none;flex-direction:row;flex-wrap:wrap;justify-content:flex-end;max-width:70%}
+  .x3d-hint{display:none}
+  .x3d-bar{position:static;margin-top:12px;grid-template-columns:1fr;border-radius:var(--radius-sm);background:var(--night);gap:10px}
+}
+@media (min-width:861px){.x3d-view{position:absolute;inset:0}}
+
+/* ---- Construction intro ---- */
+.intro{display:none}
+.intro-on .intro{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:var(--night);color:var(--on-night);
+  clip-path:inset(0 0 0 0);transition:clip-path .95s cubic-bezier(.76,0,.24,1)}
+.intro-on body{overflow:hidden}
+.intro::before{content:"";position:absolute;inset:0;opacity:.55;
+  background-image:linear-gradient(rgba(241,236,228,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(241,236,228,.055) 1px,transparent 1px),linear-gradient(rgba(241,236,228,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(241,236,228,.03) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+  -webkit-mask-image:radial-gradient(70% 62% at 50% 46%,#000 30%,transparent 100%);mask-image:radial-gradient(70% 62% at 50% 46%,#000 30%,transparent 100%)}
+.intro-in{position:relative;width:min(620px,84vw);text-align:center;transition:transform .95s cubic-bezier(.76,0,.24,1),opacity .5s ease}
+.intro-art{display:block;width:100%;height:auto;stroke:rgba(241,236,228,.9);stroke-width:1.5}
+.intro-art path,.eng-art path{stroke-dasharray:1;stroke-dashoffset:1}
+.intro-on .intro-art path{animation:sbdraw .5s cubic-bezier(.4,0,.2,1) forwards}
+.intro-on .intro-art .g1 path{animation-delay:.10s}.intro-on .intro-art .g2 path{animation-delay:.38s}
+.intro-on .intro-art .g3 path{animation-delay:.66s}.intro-on .intro-art .g4 path{animation-delay:.94s}
+.intro-on .intro-art .g5 path{animation-delay:1.22s;stroke:rgba(241,236,228,.55)}.intro-on .intro-art .g6 path{animation-delay:1.5s;stroke:var(--accent)}
+@keyframes sbdraw{to{stroke-dashoffset:0}}
+.intro-logo{margin:26px 0 0;font-size:clamp(34px,5vw,52px);letter-spacing:-.025em;line-height:1;opacity:0;transform:translateY(10px);animation:sbup .7s .2s cubic-bezier(.2,.8,.2,1) forwards}
+.intro-logo span{font-weight:300}.intro-logo b{font-weight:700;color:var(--accent)}
+@keyframes sbup{to{opacity:1;transform:none}}
+.intro-meta{display:flex;align-items:center;gap:14px;margin:22px auto 0;width:min(340px,80%);font:500 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--on-night-2)}
+.intro-meta i{flex:1;height:1px;background:var(--night-line);position:relative;overflow:hidden}
+.intro-meta i::after{content:"";position:absolute;inset:0;background:var(--accent);transform:scaleX(var(--p,0));transform-origin:0 50%}
+.intro-meta b{font-weight:500;color:var(--on-night);font-variant-numeric:tabular-nums;min-width:3ch;text-align:right}
+.intro-meta span{min-width:10ch;text-align:left}
+.intro.out{clip-path:inset(0 0 100% 0)}
+.intro.out .intro-in{transform:translateY(-60px);opacity:0}
+/* Hero entrance once the intro lifts */
+.intro-on .hero-inner>*{opacity:0;transform:translateY(26px)}
+.intro-done .hero-inner>*{opacity:1;transform:none;transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.intro-done .hero-inner>*:nth-child(2){transition-delay:.08s}.intro-done .hero-inner>*:nth-child(3){transition-delay:.16s}
+.intro-done .hero-inner>*:nth-child(4){transition-delay:.24s}.intro-done .hero-inner>*:nth-child(5){transition-delay:.32s}
+.hero-media{will-change:transform}
+/* Blueprint graphics behind the engineering section */
+.eng{position:relative;overflow:hidden;isolation:isolate}
+.eng::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(241,236,228,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(241,236,228,.05) 1px,transparent 1px),linear-gradient(rgba(241,236,228,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(241,236,228,.025) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+  -webkit-mask-image:radial-gradient(80% 70% at 78% 30%,#000 10%,transparent 85%);mask-image:radial-gradient(80% 70% at 78% 30%,#000 10%,transparent 85%)}
+.eng-art{position:absolute;z-index:-1;right:-4%;bottom:-2%;width:min(980px,78vw);height:auto;stroke:rgba(241,236,228,.13);stroke-width:1;pointer-events:none}
+.eng-art.drawn path{transition:stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1);stroke-dashoffset:0}
+.eng-art.drawn .g2 path{transition-delay:.2s}.eng-art.drawn .g3 path{transition-delay:.4s}.eng-art.drawn .g4 path{transition-delay:.6s}
+.eng-art.drawn .g5 path{transition-delay:.8s}.eng-art.drawn .g6 path{transition-delay:1s;stroke:rgba(200,30,60,.5)}
+/* Skip rendering work for sections far off screen */
+#glasshouses,#outdoor,#projects,#visit,#faq,#quote,.ftr{content-visibility:auto;contain-intrinsic-size:auto 900px}
+@media (prefers-reduced-motion:reduce){.eng-art path{stroke-dashoffset:0}}
 </style>
 </head>
 <body>
+<div class="intro" id="sbIntro" role="status" aria-label="Loading Simpelbuild"><div class="intro-in"><svg class="intro-art" viewBox="0 0 480 250" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+<g class="g1"><path pathLength="1" d="M14 232H466"/><path pathLength="1" d="M66 232v-12h14v12M146 232v-12h14v12M226 232v-12h14v12M306 232v-12h14v12M386 232v-12h14v12"/></g>
+<g class="g2"><path pathLength="1" d="M46 220H434V206H46Z"/><path pathLength="1" d="M46 213H434"/></g>
+<g class="g3"><path pathLength="1" d="M70 206V98M110 206V98M150 206V98M190 206V98M230 206V98M270 206V98"/><path pathLength="1" d="M350 206V104M382 206V104M414 206V104"/></g>
+<g class="g4"><path pathLength="1" d="M64 98H276"/><path pathLength="1" d="M60 98V84H280V98"/><path pathLength="1" d="M346 104H418"/><path pathLength="1" d="M342 104V90H422V104"/></g>
+<g class="g5"><path pathLength="1" d="M116 110H144V206M156 110H184V206M196 110H224V206"/><path pathLength="1" d="M356 118H376V206"/><path pathLength="1" d="M80 104V206M90 104V206M100 104V206M240 104V206M250 104V206M260 104V206M392 110V206M403 110V206"/></g>
+<g class="g6"><path pathLength="1" d="M280 108H342"/><path pathLength="1" d="M288 102V112M298 102V112M308 102V112M318 102V112M328 102V112M338 102V112"/><path pathLength="1" d="M292 206V188H322V206M300 188V176M314 188V176M296 176H318"/></g>
+</svg><p class="intro-logo"><span>Simpel</span><b>build</b></p><div class="intro-meta"><span id="sbPhase">Foundation</span><i></i><b id="sbCount">0</b></div></div></div>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></symbol>
@@ -718,7 +820,40 @@ section[id]{scroll-margin-top:84px}
   </div>
 </section>
 
+<section class="sec x3d" id="explore" aria-labelledby="explore-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Explore in 3D</span>
+        <h2 class="h2" id="explore-title">Take it apart, <em>piece by piece.</em></h2>
+        <p class="lead">Drag to turn the module. Build it step by step, pull the layers apart, or lift the roof to look inside.</p>
+      </div>
+    </div>
+    <div class="x3d-stage reveal" id="x3d">
+      <div class="x3d-view">
+        <img class="x3d-fallback" src="images/build-film-poster.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="3D model of a Simpelbuild module with deck">
+        <div class="x3d-load">Loading 3D model</div>
+        <div class="x3d-hud"><span class="n">Step <b id="x3dNum">19</b> / 19</span><h3 id="x3dName">Deck furniture</h3></div>
+        <span class="x3d-hint">Drag to rotate</span>
+        <div class="x3d-side">
+          <button class="x3d-btn" type="button" data-view="orbit" aria-pressed="true">Outside</button>
+          <button class="x3d-btn" type="button" data-view="open" aria-pressed="false">Roof off</button>
+          <button class="x3d-btn" type="button" data-xray aria-pressed="false">X-ray</button>
+          <button class="x3d-btn" type="button" data-zoom="1" aria-label="Zoom in">+</button>
+          <button class="x3d-btn" type="button" data-zoom="-1" aria-label="Zoom out">&minus;</button>
+        </div>
+      </div>
+      <div class="x3d-bar">
+        <button class="x3d-btn" type="button" data-play>Replay build</button>
+        <label>Build <input type="range" id="x3dBuild" min="0" max="19" step="0.01" value="19" aria-label="Build step"></label>
+        <label>Explode <input type="range" id="x3dExplode" min="0" max="1" step="0.01" value="0" aria-label="Pull the layers apart"></label>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec eng" id="engineering" aria-labelledby="eng-title">
+  <svg class="eng-art" viewBox="0 0 480 250" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="g1"><path pathLength="1" d="M14 232H466"/><path pathLength="1" d="M66 232v-12h14v12M146 232v-12h14v12M226 232v-12h14v12M306 232v-12h14v12M386 232v-12h14v12"/></g><g class="g2"><path pathLength="1" d="M46 220H434V206H46Z"/><path pathLength="1" d="M46 213H434"/></g><g class="g3"><path pathLength="1" d="M70 206V98M110 206V98M150 206V98M190 206V98M230 206V98M270 206V98"/><path pathLength="1" d="M350 206V104M382 206V104M414 206V104"/></g><g class="g4"><path pathLength="1" d="M64 98H276"/><path pathLength="1" d="M60 98V84H280V98"/><path pathLength="1" d="M346 104H418"/><path pathLength="1" d="M342 104V90H422V104"/></g><g class="g5"><path pathLength="1" d="M116 110H144V206M156 110H184V206M196 110H224V206"/><path pathLength="1" d="M356 118H376V206"/><path pathLength="1" d="M80 104V206M90 104V206M100 104V206M240 104V206M250 104V206M260 104V206M392 110V206M403 110V206"/></g><g class="g6"><path pathLength="1" d="M280 108H342"/><path pathLength="1" d="M288 102V112M298 102V112M308 102V112M318 102V112M328 102V112M338 102V112"/><path pathLength="1" d="M292 206V188H322V206M300 188V176M314 188V176M296 176H318"/></g></svg>
   <div class="wrap eng-grid">
     <div>
       <span class="eyebrow">Engineering</span>
@@ -1276,10 +1411,11 @@ section[id]{scroll-margin-top:84px}
   btn.addEventListener('click',play);
   function start(){
     v.addEventListener('canplaythrough',play,{once:true});
-    v.preload='auto';v.src='images/hero-build.mp4';v.load();
+    v.preload='auto';v.src=innerWidth<=900?'images/hero-build-720.mp4':'images/hero-build.mp4';v.load();
   }
   /* Let the photo paint first so it stays the LCP element, then bring the clip in. */
-  if(img.complete)start();else img.addEventListener('load',start,{once:true});
+  function go(){if(img.complete)start();else img.addEventListener('load',start,{once:true})}
+  if(document.documentElement.classList.contains('intro-on'))addEventListener('sb:ready',go,{once:true});else go();
 })();
 </script>
 <script>
@@ -1310,7 +1446,7 @@ section[id]{scroll-margin-top:84px}
       b.style.setProperty('--p',Math.max(0,Math.min(1,(t-a)/(z-a)))*100+'%');
     });
   }
-  function load(){if(loaded)return;loaded=true;v.src='images/build-film.mp4';v.load()}
+  function load(){if(loaded)return;loaded=true;v.src=innerWidth<=900?'images/build-film-720.mp4':'images/build-film.mp4';v.load()}
   num.textContent='01';h.textContent=CH[0][1];p.textContent=CH[0][2];cur=0;btns[0].setAttribute('aria-current','true');
   v.addEventListener('timeupdate',tick);
   v.addEventListener('play',function(){root.classList.remove('paused')});
@@ -1350,14 +1486,15 @@ section[id]{scroll-margin-top:84px}
       var end=+m[2],t0=null,dur=1300;
       b.style.fontVariantNumeric='tabular-nums';
       node.nodeValue=m[1]+'0'+m[3];
-      setTimeout(function(){
+      function run(){setTimeout(function(){
         requestAnimationFrame(function step(t){
           if(t0===null)t0=t;
           var p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,4);
           node.nodeValue=m[1]+Math.round(end*e)+m[3];
           if(p<1)requestAnimationFrame(step);
         });
-      },350+k*120);
+      },350+k*120)}
+      if(document.documentElement.classList.contains('intro-on'))addEventListener('sb:ready',run,{once:true});else run();
     });
   }
 
@@ -1431,6 +1568,188 @@ section[id]{scroll-margin-top:84px}
       },{threshold:.6});
       cio.observe(frame);
     }
+  }
+})();
+</script>
+<script type="module">
+(function(){
+  var host=document.getElementById('x3d');if(!host)return;
+  var view=host.querySelector('.x3d-view'),STEPS=["Empty site", "Foundation piers", "Floor beams", "Floor cassettes", "Corner posts", "Wall studs", "Top ring beam", "Roof grid", "Rear wall cassettes", "Side wall cassettes", "Front wall cassettes", "Roof cassettes", "Glazing and door", "Beige cladding", "Roof fascia", "Raised deck", "Wall lights", "Interior floor and ceiling", "Kitchen and living", "Deck furniture"],started=false;
+  function nogl(){host.classList.add('x3d-nogl')}
+  try{var c=document.createElement('canvas');if(!(c.getContext('webgl2')||c.getContext('webgl')))return nogl()}catch(e){return nogl()}
+  new IntersectionObserver(function(es,o){if(es[0].isIntersecting&&!started){started=true;o.disconnect();boot().catch(function(e){console.warn('[3d]',e);nogl()})}},{rootMargin:'600px 0px'}).observe(host);
+
+  async function boot(){
+    var m=await Promise.all([import('three'),import('three/addons/loaders/GLTFLoader.js'),import('three/addons/controls/OrbitControls.js'),import('three/addons/environments/RoomEnvironment.js')]);
+    var THREE=m[0],gltf=await new m[1].GLTFLoader().loadAsync('models/boca.glb');
+    var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,small=matchMedia('(max-width:860px)').matches;
+
+    var renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});
+    renderer.setPixelRatio(Math.min(devicePixelRatio||1,small?1.5:2));
+    renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+    renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+    var canvas=renderer.domElement;canvas.setAttribute('aria-label','Interactive 3D model of a Simpelbuild module. Drag to rotate.');canvas.tabIndex=0;
+    view.insertBefore(canvas,view.firstChild);
+
+    var scene=new THREE.Scene(),pm=new THREE.PMREMGenerator(renderer);
+    scene.environment=pm.fromScene(new m[3].RoomEnvironment(),.04).texture;
+    var cam=new THREE.PerspectiveCamera(32,1,.1,200);
+    var key=new THREE.DirectionalLight(0xfff1dd,2.6);key.position.set(-9,14,11);key.castShadow=true;
+    key.shadow.mapSize.set(small?1024:2048,small?1024:2048);key.shadow.bias=-.0004;key.shadow.normalBias=.03;
+    var sc=key.shadow.camera;sc.left=-11;sc.right=11;sc.top=11;sc.bottom=-11;sc.near=1;sc.far=45;
+    scene.add(key,new THREE.HemisphereLight(0xdfe6f0,0x2a2620,.55));
+    var glow=new THREE.PointLight(0xffc98a,0,9,2);glow.position.set(0,2.6,0);scene.add(glow);
+    var ground=new THREE.Mesh(new THREE.CircleGeometry(40,64),new THREE.ShadowMaterial({opacity:.42}));
+    ground.rotation.x=-Math.PI/2;ground.position.y=.001;ground.receiveShadow=true;scene.add(ground);
+
+    var S=function(c,r,me,x){return new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:r,metalness:me||0},x||{}))};
+    var MATS={
+      MAT_ALUMINIUM_FRAME:S(0xcfd2d6,.38,.7),MAT_CONNECTOR:S(0xd4d6da,.25,1),MAT_STAINLESS_STEEL:S(0xd4d6da,.25,1),
+      MAT_CONCRETE:S(0x9c9a94,.92),MAT_WALL_PANEL:S(0xe9e6df,.8),MAT_INSULATION:S(0xd9b25a,.9),MAT_INTERIOR_WALL:S(0xece8df,.85),
+      MAT_EXTERIOR_CLADDING:S(0xcdbf9f,.72),MAT_DARK_ALUMINIUM:S(0x5a534a,.45,.6),MAT_WOOD:S(0xa9744a,.62),MAT_FLOOR:S(0xc08a55,.5),
+      MAT_BLACK_STEEL:S(0x1b1b1d,.5,.6),MAT_FABRIC:S(0x5b5d63,.95),MAT_FABRIC_WHITE:S(0xeeeae2,.95),MAT_CERAMIC:S(0xf2f2f0,.3),
+      MAT_GLASS:S(0xcfe2e4,.04,0,{transparent:true,opacity:.2,depthWrite:false,envMapIntensity:1.6}),
+      MAT_EMISSION_WARM:S(0xffe2b8,.4,0,{emissive:0xffc98a,emissiveIntensity:2.2})
+    };
+    var SKIN=['MAT_WALL_PANEL','MAT_INSULATION','MAT_INTERIOR_WALL','MAT_EXTERIOR_CLADDING','MAT_DARK_ALUMINIUM','MAT_WOOD','MAT_FLOOR'];
+
+    /* How far, and which way, each build step moves when the model is pulled apart */
+    var UP={1:-.7,7:1.0,11:1.9,14:2.8,17:.0},OUT={8:1.2,9:1.2,10:1.2,12:2.1,13:3.0,15:.9,16:3.4,19:1.6};
+    var model=gltf.scene,parts=[],v=new THREE.Vector3(),box=new THREE.Box3();
+    scene.add(model);
+    model.children.slice().forEach(function(o){
+      var step=(o.userData&&o.userData.sb_step)|0;
+      if(step===0){model.remove(o);return}
+      o.traverse(function(n){if(n.isMesh){n.material=MATS[n.material.name]||MATS.MAT_WALL_PANEL;n.castShadow=n.material!==MATS.MAT_GLASS;n.receiveShadow=true}});
+      box.setFromObject(o).getCenter(v);
+      var ex=new THREE.Vector3(),nx=v.x/3.7,nz=v.z/2.5;
+      if(OUT[step]){if(Math.abs(nx)>Math.abs(nz))ex.x=Math.sign(nx)*OUT[step];else ex.z=Math.sign(nz||1)*OUT[step]}
+      if(UP[step])ex.y=UP[step];
+      if(step===15)ex.y=-.25;
+      var arrive=ex.lengthSq()>.01?ex.clone().normalize().multiplyScalar(2.6):new THREE.Vector3(0,3,0);
+      if(step>=17&&step<=18)arrive.set(0,.9,0);
+      parts.push({o:o,step:step,home:o.position.clone(),ex:ex,arrive:arrive,cx:v.x,cz:v.z,k:1,
+        roof:/^(ROOF_|INTERIOR_CEILING|INTERIOR_SPOTLIGHT)/.test(o.name)});
+    });
+    /* Stagger the parts inside each step from left to right */
+    var by={};parts.forEach(function(p){(by[p.step]=by[p.step]||[]).push(p)});
+    Object.keys(by).forEach(function(s){var l=by[s].sort(function(a,b){return (a.cx-b.cx)||(a.cz-b.cz)});l.forEach(function(p,i){p.at=p.step-1+.7*i/l.length})});
+
+    var controls=new m[2].OrbitControls(cam,canvas);
+    controls.target.set(0,.95,.4);controls.enableZoom=false;controls.enablePan=false;controls.enableDamping=true;controls.dampingFactor=.08;
+    controls.minPolarAngle=.25;controls.maxPolarAngle=1.52;controls.rotateSpeed=.7;controls.autoRotateSpeed=.55;controls.autoRotate=!reduce;
+    var sph=new THREE.Spherical(),goal={r:small?29:23,phi:1.2,theta:-.62},cur={r:small?33:27,phi:1.25,theta:-.95},flying=true;
+    function place(){cam.position.setFromSpherical(sph.set(cur.r,cur.phi,cur.theta)).add(controls.target);cam.lookAt(controls.target)}
+    place();
+    controls.addEventListener('start',function(){flying=false;controls.autoRotate=false;host.classList.add('x3d-used')});
+
+    var st={build:0,buildGoal:19,explode:0,explodeGoal:0,open:false,auto:true,t0:0},
+        num=document.getElementById('x3dNum'),name=document.getElementById('x3dName'),
+        rb=document.getElementById('x3dBuild'),re=document.getElementById('x3dExplode'),lastStep=-1;
+    function fill(inp){inp.style.setProperty('--f',((inp.value-inp.min)/(inp.max-inp.min)*100)+'%')}
+    function label(){var s=Math.max(0,Math.min(19,Math.round(st.build)));if(s===lastStep)return;lastStep=s;num.textContent=s;name.textContent=STEPS[s]}
+    rb.addEventListener('input',function(){st.auto=false;st.buildGoal=+rb.value;fill(rb)});
+    re.addEventListener('input',function(){st.explodeGoal=+re.value;fill(re)});
+    host.querySelector('[data-play]').addEventListener('click',function(){st.auto=true;st.build=0;st.t0=0;st.explodeGoal=0;re.value=0;fill(re)});
+    [].forEach.call(host.querySelectorAll('[data-view]'),function(b){
+      b.addEventListener('click',function(){
+        st.open=b.dataset.view==='open';flying=true;controls.autoRotate=false;
+        sph.setFromVector3(v.copy(cam.position).sub(controls.target));cur={r:sph.radius,phi:sph.phi,theta:sph.theta};
+        goal=st.open?{r:Math.min(38,cur.r*1.14),phi:.62,theta:-.5}:{r:cur.r,phi:1.2,theta:-.62};
+        [].forEach.call(host.querySelectorAll('[data-view]'),function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+      });
+    });
+    var xb=host.querySelector('[data-xray]'),xray=0,xrayGoal=0;
+    xb.addEventListener('click',function(){xrayGoal=xrayGoal?0:1;xb.setAttribute('aria-pressed',xrayGoal?'true':'false')});
+    [].forEach.call(host.querySelectorAll('[data-zoom]'),function(b){
+      b.addEventListener('click',function(){
+        sph.setFromVector3(v.copy(cam.position).sub(controls.target));cur={r:sph.radius,phi:sph.phi,theta:sph.theta};
+        goal={r:Math.max(9,Math.min(38,cur.r*(b.dataset.zoom>0?.8:1.25))),phi:cur.phi,theta:cur.theta};flying=true;controls.autoRotate=false;
+      });
+    });
+    fill(rb);fill(re);
+
+    function resize(){var w=view.clientWidth,h=view.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+    new ResizeObserver(resize).observe(view);resize();
+
+    var visible=false,last=0,ease=function(t){return 1-Math.pow(1-t,3)};
+    new IntersectionObserver(function(es){visible=es[0].isIntersecting},{threshold:.05}).observe(view);
+    function frame(t){
+      requestAnimationFrame(frame);
+      /* Off screen: do no work, and hold the build so it plays when the visitor arrives */
+      if(!visible){if(last&&st.t0)st.pause=t;last=0;return}
+      if(st.pause){st.t0+=t-st.pause;st.pause=0}
+      var dt=last?Math.min(.05,(t-last)/1000):.016;last=t;
+      if(st.auto){
+        if(reduce){st.build=19;st.auto=false}
+        else{if(!st.t0)st.t0=t;st.build=Math.min(19,(t-st.t0)/1000*2.1);if(st.build>=19)st.auto=false}
+        st.buildGoal=st.build;rb.value=st.build;fill(rb);
+      }else st.build+=(st.buildGoal-st.build)*Math.min(1,dt*7);
+      st.explode+=(st.explodeGoal-st.explode)*Math.min(1,dt*6);
+      xray+=(xrayGoal-xray)*Math.min(1,dt*6);
+      label();
+      for(var i=0;i<parts.length;i++){
+        var p=parts[i],want=(st.build>=p.at+.02&&!(st.open&&p.roof))?1:0;
+        p.k+=(want-p.k)*Math.min(1,dt*(want?5:9));
+        var e=ease(p.k);
+        p.o.visible=p.k>.015;
+        if(p.o.visible){
+          p.o.position.copy(p.home).addScaledVector(p.ex,st.explode).addScaledVector(p.arrive,1-e);
+          var s=.82+.18*e;p.o.scale.setScalar(s);
+        }
+      }
+      SKIN.forEach(function(n){var mt=MATS[n],o=1-.88*xray;if(mt.opacity!==o){mt.opacity=o;mt.transparent=o<.995;mt.depthWrite=o>.5;mt.needsUpdate=true}});
+      glow.intensity=Math.max(0,Math.min(1,st.build-16.5))*26;
+      if(flying){
+        var a=Math.min(1,dt*2.6);cur.r+=(goal.r-cur.r)*a;cur.phi+=(goal.phi-cur.phi)*a;cur.theta+=(goal.theta-cur.theta)*a;place();
+        if(Math.abs(goal.r-cur.r)<.02&&Math.abs(goal.phi-cur.phi)<.004&&Math.abs(goal.theta-cur.theta)<.004)flying=false;
+      }else controls.update();
+      renderer.render(scene,cam);
+    }
+    host.classList.add('x3d-live');
+    requestAnimationFrame(frame);
+  }
+})();
+</script>
+<script>
+(function(){
+  var d=document.documentElement,el=document.getElementById('sbIntro');
+  function ready(){d.classList.remove('intro-on');d.classList.add('intro-done');if(el&&el.parentNode)el.parentNode.removeChild(el);dispatchEvent(new Event('sb:ready'))}
+  if(el&&d.classList.contains('intro-on')){
+    var count=document.getElementById('sbCount'),phase=document.getElementById('sbPhase'),line=el.querySelector('.intro-meta i'),
+        names=['Foundation','Deck','Frame','Roof','Glazing','Finishing'],MIN=2300,MAX=4200,t0=performance.now(),loaded=false,done=false,
+        img=document.querySelector('.hero-media img');
+    function mark(){loaded=true}
+    if(img&&!img.complete){img.addEventListener('load',mark);img.addEventListener('error',mark)}else mark();
+    requestAnimationFrame(function step(t){
+      if(done)return;
+      var e=t-t0,p=Math.min(1,e/MIN);
+      if(p>=1&&!loaded&&e<MAX)p=.99;
+      var n=Math.round(p*100);
+      count.textContent=n;line.style.setProperty('--p',p);phase.textContent=names[Math.min(names.length-1,Math.floor(p*names.length))];
+      if(p>=1||e>=MAX){
+        done=true;count.textContent='100';phase.textContent='Ready';line.style.setProperty('--p',1);
+        try{sessionStorage.setItem('sbIntro','1')}catch(x){}
+        setTimeout(function(){el.classList.add('out');d.classList.add('intro-done');setTimeout(ready,980)},260);
+        return;
+      }
+      requestAnimationFrame(step);
+    });
+  }else if(el&&el.parentNode){el.parentNode.removeChild(el)}
+
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* Hero photo parallax (only while the hero is on screen) */
+  var hero=document.querySelector('.hero'),media=document.querySelector('.hero-media');
+  if(hero&&media&&!reduce){
+    var busy=false;
+    function par(){busy=false;var y=scrollY,h=hero.offsetHeight;if(y>h)return;media.style.transform='translate3d(0,'+(y*.16).toFixed(1)+'px,0) scale('+(1+y/h*.05).toFixed(4)+')'}
+    addEventListener('scroll',function(){if(!busy){busy=true;requestAnimationFrame(par)}},{passive:true});
+  }
+  /* Draw the blueprint when the engineering section arrives */
+  var art=document.querySelector('.eng-art');
+  if(art){
+    if(reduce||!('IntersectionObserver' in window))art.classList.add('drawn');
+    else new IntersectionObserver(function(es,o){if(es[0].isIntersecting){art.classList.add('drawn');o.disconnect()}},{threshold:.2}).observe(art.parentNode);
   }
 })();
 </script>
