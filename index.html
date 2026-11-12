@@ -1,0 +1,1162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Simpelbuild | Factory-built homes, glasshouses &amp; outdoor living (concept)</title>
+<meta name="description" content="Concept redesign of simpelbuild.com: precision-engineered aluminium homes, glasshouses and outdoor living, built in the factory and assembled on site in days.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Concept by Nitin Malik">
+<meta name="theme-color" content="#F6F2EC">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Simpelbuild website concept by Nitin Malik">
+<meta property="og:description" content="A faster, enquiry-focused redesign concept for simpelbuild.com, built with Simpelbuild's own products and photos.">
+<meta property="og:url" content="https://simpelbuild-concept-nitin.netlify.app/">
+<meta property="og:image" content="https://simpelbuild-concept-nitin.netlify.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Simpelbuild website concept: Healthy living, made simple">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="images/hero-1280.webp" imagesrcset="images/hero-768.webp 768w, images/hero-1280.webp 1280w, images/hero.webp 1902w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="fonts/instrument-serif-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/instrument-serif-latin-400-italic.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin-400-normal.woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C81E3C'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='40' fill='white'%3ES%3C/text%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+/* Inter and Instrument Serif (SIL Open Font License), embedded so the page works offline */
+@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(fonts/inter-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/instrument-serif-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(fonts/instrument-serif-latin-400-italic.woff2) format('woff2')}
+:root{
+  --paper:#F6F2EC; --paper-2:#EFE8DE; --stone:#E4DACB; --sand:#CFC2AF;
+  --ink:#1C1A17; --ink-2:#4A443D; --muted:#69625A; --line:rgba(28,26,23,.13);
+  --accent:#C81E3C; --accent-ink:#A3152F; --accent-soft:rgba(200,30,60,.08);
+  --night:#151412; --night-2:#201E1B; --on-night:#F1ECE4; --on-night-2:rgba(241,236,228,.7); --night-line:rgba(241,236,228,.14);
+  --serif:'Instrument Serif','Iowan Old Style','Times New Roman',Georgia,serif;
+  --sans:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --radius:18px; --radius-sm:12px;
+  --wrap:1240px; --gutter:clamp(16px,4vw,40px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+p{margin:0 0 1em}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.012em;line-height:1.02;margin:0}
+h2 em,h1 em{font-style:italic}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+.eyebrow{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--muted);margin-bottom:18px}
+.h2{font-size:clamp(38px,5.2vw,68px)}
+.lead{font-size:clamp(17px,1.35vw,19px);color:var(--ink-2);max-width:56ch}
+.skip{position:absolute;left:-9999px;top:8px;z-index:100;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:8px}
+.skip:focus{left:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ico{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* Buttons and links */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:999px;font:500 15px/1.1 var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .2s var(--ease);white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-ink)}
+.btn-ghost{border-color:currentColor;background:transparent}
+.btn-light{border-color:rgba(255,255,255,.62);color:#fff}
+.btn-light:hover{background:rgba(255,255,255,.12)}
+.btn-dark{background:var(--ink);color:var(--paper)}
+.btn-dark:hover{background:#000}
+.btn .ico{width:18px;height:18px}
+.tlink{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:15px;text-decoration:none;padding:6px 0;border-bottom:1px solid currentColor;line-height:1.2}
+.tlink .ico{width:16px;height:16px;transition:transform .25s var(--ease)}
+.tlink:hover .ico{transform:translateX(3px)}
+.tlink.accent{color:var(--accent)}
+
+/* Concept bar */
+.cbar{background:#0E0D0C;color:#EFE9E1;font-size:13px;line-height:1.4}
+.cbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:8px;padding-bottom:8px}
+.cbar p{margin:0}
+.cbar b{font-weight:600}
+.cbar-actions{display:flex;align-items:center;gap:6px;flex:none}
+.cbar-btn{background:transparent;border:1px solid rgba(239,233,225,.32);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:12.5px}
+.cbar-btn:hover{background:rgba(239,233,225,.1)}
+.cbar-x{border:0;background:transparent;width:32px;height:32px;display:grid;place-items:center;border-radius:999px;cursor:pointer}
+.cbar-x:hover{background:rgba(239,233,225,.1)}
+.cbar-x .ico{width:16px;height:16px}
+
+/* Header */
+.hdr{position:sticky;top:0;z-index:60;height:72px;margin-bottom:-72px;color:#fff;transition:background-color .35s ease,color .35s ease,box-shadow .35s ease}
+.hdr.solid,.hdr.menu-open{background:rgba(246,242,236,.95);color:var(--ink);box-shadow:0 1px 0 var(--line);-webkit-backdrop-filter:saturate(1.3) blur(14px);backdrop-filter:saturate(1.3) blur(14px)}
+.hdr .wrap{height:100%;display:flex;align-items:center;gap:28px}
+.logo{display:inline-flex;align-items:baseline;font-size:25px;letter-spacing:-.025em;text-decoration:none;color:inherit;line-height:1}
+.logo span{font-weight:300}
+.logo b{font-weight:700}
+.hdr.solid .logo,.hdr.menu-open .logo{color:var(--accent)}
+.nav{display:flex;gap:26px;margin-left:auto}
+.nav a{font-size:14.5px;text-decoration:none;opacity:.88;padding:6px 0;border-bottom:1px solid transparent}
+.nav a:hover{opacity:1;border-bottom-color:currentColor}
+.hdr-cta{display:flex;align-items:center;gap:10px}
+.hdr .btn{min-height:44px;padding:0 18px;font-size:14px}
+.icon-btn{width:44px;height:44px;display:grid;place-items:center;border-radius:999px;border:1px solid currentColor;background:transparent;text-decoration:none;cursor:pointer;opacity:.92}
+.icon-btn:hover{opacity:1}
+.icon-btn .ico{width:18px;height:18px}
+.menu-btn{display:none}
+.mnav{position:absolute;left:0;right:0;top:100%;background:var(--paper);color:var(--ink);border-bottom:1px solid var(--line);box-shadow:0 24px 40px -24px rgba(28,26,23,.35);padding:8px var(--gutter) 24px;display:none}
+.mnav.open{display:block}
+.mnav a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:28px;text-decoration:none}
+.mnav .btn{margin-top:20px;width:100%;font-family:var(--sans);font-size:15px;border-bottom:0}
+@media (max-width:1100px){
+  .nav{display:none}
+  .menu-btn{display:grid}
+  .hdr-cta{margin-left:auto}
+  .hdr-cta .btn{display:none}
+}
+
+/* Hero */
+.hero{position:relative;min-height:max(660px,100svh);display:flex;align-items:flex-end;color:#fff;background:#2B2824;overflow:hidden;isolation:isolate}
+.hero-media{position:absolute;inset:0;z-index:-2}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 62%}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,12,10,.5) 0%,rgba(14,12,10,0) 22%),linear-gradient(90deg,rgba(14,12,10,.62) 0%,rgba(14,12,10,.36) 42%,rgba(14,12,10,.06) 72%,rgba(14,12,10,0) 100%),linear-gradient(0deg,rgba(14,12,10,.72) 0%,rgba(14,12,10,0) 46%)}
+.hero-inner{width:100%;padding-top:150px;padding-bottom:30px}
+.hero .eyebrow{color:rgba(255,255,255,.82)}
+.hero h1{font-size:clamp(50px,8.4vw,128px);line-height:.95;text-shadow:0 2px 30px rgba(0,0,0,.22)}
+.hero-sub{font-size:clamp(17px,1.45vw,20px);line-height:1.5;max-width:44ch;color:rgba(255,255,255,.9);margin:24px 0 32px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin:56px 0 0;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.3)}
+.stat{padding:18px 20px 6px 0}
+.stat+.stat{padding-left:22px;border-left:1px solid rgba(255,255,255,.2)}
+.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.1vw,44px);line-height:1;letter-spacing:-.01em}
+.stat b small{font-size:.5em;letter-spacing:0;margin-right:4px;font-family:var(--sans);font-weight:500;vertical-align:.45em;opacity:.85}
+.stat span{display:block;font-size:13px;line-height:1.4;color:rgba(255,255,255,.8);margin-top:8px}
+@media (max-width:760px){
+  .hero::after{background:linear-gradient(180deg,rgba(14,12,10,.55) 0%,rgba(14,12,10,.34) 38%,rgba(14,12,10,.5) 62%,rgba(14,12,10,.82) 100%)}
+  .hero-inner{padding-top:128px}
+  .stats{grid-template-columns:1fr 1fr;margin-top:40px}
+  .stat:nth-child(3){padding-left:0;border-left:0}
+  .stat:nth-child(n+3){border-top:1px solid rgba(255,255,255,.2)}
+  .hero-ctas .btn{flex:1 1 auto}
+}
+
+/* Trust band */
+.trust{border-bottom:1px solid var(--line)}
+.trust .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 32px;padding-top:22px;padding-bottom:22px}
+.trust p{margin:0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.trust ul{display:flex;flex-wrap:wrap;gap:6px 36px;list-style:none;margin:0;padding:0}
+.trust li{font-family:var(--serif);font-size:clamp(22px,2.2vw,28px);color:var(--ink-2);line-height:1.2}
+
+/* Sections */
+section[id]{scroll-margin-top:84px}
+.sec{padding:clamp(76px,10vw,144px) 0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 40px;margin-bottom:clamp(36px,5vw,60px)}
+.sec-head .lead{margin:18px 0 0}
+
+/* Intro */
+.statement{font-family:var(--serif);font-size:clamp(30px,3.5vw,50px);line-height:1.14;letter-spacing:-.012em;max-width:23em;margin:0}
+.statement em{color:var(--accent)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 40px;margin-top:clamp(48px,6vw,80px);padding-top:30px;border-top:1px solid var(--line)}
+.pillar h3{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:0;line-height:1.3;margin:0 0 8px}
+.pillar p{margin:0;color:var(--ink-2);font-size:15px}
+.pillar .num{display:block;font-family:var(--serif);font-size:20px;color:var(--accent);margin-bottom:10px}
+
+/* Range */
+.range-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.rcard{display:flex;flex-direction:column}
+.media{border-radius:var(--radius);overflow:hidden;background:var(--stone) linear-gradient(135deg,var(--stone),var(--paper-2))}
+.media img{width:100%;height:100%;object-fit:cover}
+.rcard .media{aspect-ratio:5/4}
+.rcard .media img{transition:transform 1.1s var(--ease)}
+.rcard:hover .media img{transform:scale(1.035)}
+.rcard .eyebrow{margin:22px 0 6px}
+.rcard h3{font-size:38px;margin:0 0 10px}
+.rcard p{color:var(--ink-2);margin:0 0 18px;max-width:40ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
+.chip{font-size:13px;line-height:1;border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:rgba(255,255,255,.55);color:var(--ink-2)}
+.rcard .links{margin-top:auto;display:flex;flex-wrap:wrap;gap:22px}
+
+/* Boca Chica */
+.boca{background:var(--paper-2)}
+.boca-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center}
+.viewer .media{aspect-ratio:1/1;position:relative}
+.rooms img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease}
+.rooms img.active{opacity:1}
+.viewer-cap{position:absolute;left:14px;bottom:14px;background:rgba(20,18,16,.72);color:#fff;font-size:12.5px;padding:7px 12px;border-radius:999px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tab{font-size:14px;font-weight:500;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink-2);cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.tab:hover{border-color:var(--ink-2)}
+.tab[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.size-label{font-size:13px;font-weight:500;color:var(--muted);margin:30px 0 10px}
+.sizes{display:flex;flex-wrap:wrap;gap:8px}
+.size{min-height:46px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:15px;font-weight:500;color:var(--ink-2);transition:border-color .2s,background-color .2s,color .2s}
+.size:hover{border-color:var(--ink-2)}
+.size[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink)}
+.feat{list-style:none;padding:0;margin:30px 0 34px;display:grid;gap:16px}
+.feat li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start}
+.feat .ico{color:var(--accent);width:20px;height:20px;margin-top:2px}
+.feat b{display:block;font-weight:600}
+.feat span{display:block;color:var(--ink-2);font-size:15px}
+
+/* Process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;list-style:none;margin:0;padding:0;counter-reset:step}
+.step{position:relative;padding:28px 28px 0 0}
+.step::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line)}
+.step::after{content:"";position:absolute;left:0;top:-5px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:1.5px solid var(--accent)}
+.step .n{display:block;font-family:var(--serif);font-size:56px;line-height:1;color:var(--sand);margin:14px 0 14px}
+.step h3{font-family:var(--sans);font-size:18px;font-weight:600;letter-spacing:-.005em;line-height:1.3;margin:0 0 8px}
+.step p{color:var(--ink-2);font-size:15px;margin:0;max-width:30ch}
+.process-note{margin-top:48px;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;padding:20px 24px;border-radius:var(--radius-sm);background:#fff;border:1px solid var(--line)}
+.process-note p{margin:0;font-size:15px}
+.process-note b{font-weight:600}
+
+/* Engineering */
+.eng{background:var(--night);color:var(--on-night)}
+.eng .eyebrow{color:var(--on-night-2)}
+.eng .lead{color:var(--on-night-2)}
+.eng-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,6vw,96px);align-items:start}
+.specs{margin:36px 0 0;padding:0}
+.specs div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--night-line)}
+.specs div:last-child{border-bottom:1px solid var(--night-line)}
+.specs dt{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--on-night-2);padding-top:2px}
+.specs dd{margin:0;font-size:16px}
+.fig{margin:0;position:sticky;top:110px}
+.fig .media{background:#fff;padding:clamp(12px,2vw,24px)}
+.fig .media img{object-fit:contain;width:100%;height:auto;aspect-ratio:1370/842}
+.fig figcaption{font-size:13.5px;color:var(--on-night-2);margin-top:14px}
+
+/* Glasshouse */
+.glass{position:relative;min-height:min(880px,110vh);display:flex;align-items:center;color:var(--ink);overflow:hidden;isolation:isolate}
+.glass .bg{position:absolute;inset:0;z-index:-1}
+.glass .bg img{width:100%;height:100%;object-fit:cover}
+.glass-card{background:rgba(246,242,236,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-radius:var(--radius);padding:clamp(28px,4vw,52px);max-width:520px;box-shadow:0 30px 60px -30px rgba(0,0,0,.45)}
+.glass-card .chips{margin:22px 0 4px}
+.ticks{list-style:none;padding:0;margin:22px 0 28px;display:grid;gap:10px}
+.ticks li{display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:15.5px;color:var(--ink-2)}
+.ticks .ico{color:var(--accent);width:18px;height:18px;margin-top:3px}
+
+/* Outdoor */
+.tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;list-style:none;margin:0;padding:0}
+.tile .media{aspect-ratio:3/4;border-radius:var(--radius-sm)}
+.tile .media img{transition:transform 1.1s var(--ease)}
+.tile:hover .media img{transform:scale(1.04)}
+.tile h3{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:0;margin:12px 0 0}
+
+/* Projects */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.pcard .media{aspect-ratio:3/2}
+.pcard .media img{transition:transform 1.1s var(--ease)}
+.pcard:hover .media img{transform:scale(1.03)}
+.pcard .meta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:16px}
+.pcard h3{font-size:32px}
+.pcard .type{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.pcard p{margin:6px 0 0;color:var(--ink-2)}
+.proj-cta{margin-top:44px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;padding:26px 28px;border-radius:var(--radius);background:var(--paper-2)}
+.proj-cta p{margin:0;font-family:var(--serif);font-size:clamp(24px,2.4vw,32px);line-height:1.15}
+
+/* Visit */
+.visit-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,96px);align-items:center}
+.visit .media{aspect-ratio:4/5}
+.addr{display:grid;gap:18px;margin:30px 0 34px}
+.addr div{display:grid;grid-template-columns:22px 1fr;gap:12px}
+.addr .ico{color:var(--accent);margin-top:3px}
+.addr b{display:block;font-weight:600}
+.addr span{color:var(--ink-2);font-size:15px}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+
+/* FAQ */
+.faq{background:var(--paper-2)}
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,96px)}
+.qa{border-top:1px solid var(--line)}
+.qa:last-child{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font-size:18px;font-weight:500}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .pm{flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .3s var(--ease),background-color .2s}
+.qa[open] summary .pm{transform:rotate(45deg);background:#fff}
+.qa summary .pm .ico{width:14px;height:14px}
+.qa p{margin:0;padding:0 48px 24px 0;color:var(--ink-2)}
+
+/* Quote */
+.quote-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,6vw,96px);align-items:start}
+.direct{list-style:none;padding:0;margin:32px 0 0;display:grid;gap:4px}
+.direct a{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-size:16px}
+.direct a:hover b{text-decoration:underline;text-underline-offset:4px}
+.direct .ico{color:var(--accent)}
+.direct span{display:block;font-size:12.5px;color:var(--muted)}
+.direct b{font-weight:500}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:clamp(22px,3.5vw,44px);box-shadow:0 30px 60px -40px rgba(28,26,23,.35)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-size:13.5px;font-weight:500;color:var(--ink-2)}
+.field label i{font-style:normal;color:var(--muted);font-weight:400}
+.field input,.field select,.field textarea{width:100%;font:16px/1.4 var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:13px 14px;appearance:none;-webkit-appearance:none;transition:border-color .2s,box-shadow .2s,background-color .2s}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%2369625A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+.field textarea{min-height:96px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ink-2);background:#fff;box-shadow:0 0 0 3px var(--accent-soft)}
+.consent{grid-column:1/-1;display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:13.5px;color:var(--ink-2);align-items:start}
+.consent input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--accent)}
+.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin-top:6px}
+.form-foot small{font-size:12.5px;color:var(--muted)}
+.success{text-align:left}
+.success h3{font-size:40px;margin:10px 0 12px}
+.success .sum{list-style:none;padding:0;margin:18px 0 26px;border-top:1px solid var(--line)}
+.success .sum li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+.success .sum span{color:var(--muted)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500;color:var(--accent-ink);background:var(--accent-soft);border-radius:999px;padding:6px 12px}
+
+/* Footer */
+.ftr{background:var(--night);color:var(--on-night);padding:clamp(60px,8vw,96px) 0 28px}
+.ftr-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px}
+.ftr .logo{color:#fff;font-size:28px}
+.ftr p{color:var(--on-night-2);font-size:15px;max-width:34ch;margin-top:16px}
+.ftr h2{font-family:var(--sans);line-height:1.4;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--on-night-2);margin:0 0 14px}
+.ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ftr a{text-decoration:none;font-size:15px}
+.ftr a:hover{text-decoration:underline;text-underline-offset:4px}
+.ftr address{font-style:normal;color:var(--on-night-2);font-size:14.5px;line-height:1.55}
+.ftr-bottom{margin-top:56px;padding-top:22px;border-top:1px solid var(--night-line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;font-size:13px;color:var(--on-night-2)}
+
+/* Mobile action bar */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;gap:10px;padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));background:rgba(246,242,236,.96);border-top:1px solid var(--line);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.mbar .btn{flex:1;min-height:48px;padding:0 12px}
+.js .mbar{visibility:hidden;transform:translateY(105%);transition:transform .3s var(--ease),visibility 0s .3s}
+.js .mbar.show{visibility:visible;transform:none;transition:transform .3s var(--ease),visibility 0s}
+
+/* Assistant */
+.ai-launch{position:fixed;right:24px;bottom:24px;z-index:56;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px 0 16px;border-radius:999px;border:0;background:var(--ink);color:var(--paper);cursor:pointer;font-weight:500;font-size:14.5px;box-shadow:0 18px 40px -16px rgba(0,0,0,.55);transition:transform .25s var(--ease)}
+.js .ai-launch{opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .3s,transform .3s var(--ease),visibility 0s .3s}
+.js .ai-launch.show{opacity:1;visibility:visible;transform:none;transition:opacity .3s,transform .3s var(--ease),visibility 0s}
+.js .ai-launch.show:hover{transform:translateY(-2px)}
+.ai-launch .dot{width:28px;height:28px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
+.ai-launch .dot .ico{width:16px;height:16px;color:#fff}
+.ai{position:fixed;right:24px;bottom:92px;z-index:57;width:min(380px,calc(100vw - 32px));height:min(560px,calc(100vh - 180px));display:none;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 40px 80px -30px rgba(0,0,0,.45);overflow:hidden}
+.ai.open{display:flex}
+.ai-head{display:flex;align-items:center;gap:12px;padding:16px 16px 14px;border-bottom:1px solid var(--line);background:var(--paper)}
+.ai-head .dot{width:34px;height:34px;border-radius:50%;background:var(--accent);display:grid;place-items:center;flex:none}
+.ai-head .dot .ico{color:#fff;width:18px;height:18px}
+.ai-head b{display:block;font-size:15px}
+.ai-head small{display:block;font-size:12px;color:var(--muted)}
+.ai-head button{margin-left:auto;border:0;background:transparent;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer}
+.ai-head button:hover{background:var(--paper-2)}
+.ai-log{flex:1;overflow-y:auto;padding:18px 16px;display:flex;flex-direction:column;gap:10px;background:#fff}
+.msg{max-width:86%;padding:11px 14px;border-radius:16px;font-size:14.5px;line-height:1.45}
+.msg.bot{background:var(--paper-2);border-bottom-left-radius:6px;align-self:flex-start}
+.msg.me{background:var(--ink);color:var(--paper);border-bottom-right-radius:6px;align-self:flex-end}
+.msg.typing{color:var(--muted);letter-spacing:.2em}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.opt{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;font-size:14px;cursor:pointer;color:var(--ink)}
+.opt:hover{border-color:var(--accent);color:var(--accent-ink)}
+.opt.primary{background:var(--accent);border-color:var(--accent);color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.opt.primary:hover{background:var(--accent-ink);color:#fff}
+.ai-sum{border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:14px;align-self:stretch}
+.ai-sum div{display:flex;justify-content:space-between;gap:12px;padding:4px 0}
+.ai-sum span{color:var(--muted)}
+.ai-input{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:var(--paper)}
+.ai-input input{flex:1;min-width:0;font:15px var(--sans);padding:11px 14px;border-radius:999px;border:1px solid var(--line);background:#fff}
+.ai-input input:focus{outline:none;border-color:var(--ink-2)}
+.ai-input button{border:0;border-radius:999px;background:var(--ink);color:var(--paper);padding:0 16px;font-weight:500;cursor:pointer}
+.ai-input[hidden]{display:none}
+
+/* Drawer */
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(14,12,10,.45);opacity:0;transition:opacity .3s ease}
+.scrim.show{opacity:1}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:81;width:min(460px,100vw);background:var(--paper);color:var(--ink);box-shadow:-30px 0 60px -30px rgba(0,0,0,.4);transform:translateX(100%);transition:transform .35s var(--ease);display:flex;flex-direction:column}
+.drawer.show{transform:none}
+.drawer-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:26px 24px 18px;border-bottom:1px solid var(--line)}
+.drawer-head h2{font-size:36px}
+.drawer-head p{margin:8px 0 0;font-size:14px;color:var(--ink-2)}
+.drawer-head button{border:1px solid var(--line);background:#fff;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;cursor:pointer;flex:none}
+.changes{list-style:none;margin:0;padding:6px 24px 32px;overflow-y:auto;counter-reset:chg}
+.changes li{display:grid;grid-template-columns:30px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.changes li::before{counter-increment:chg;content:counter(chg);width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);font-size:12.5px;font-weight:600;display:grid;place-items:center}
+.changes b{display:block;font-weight:600;margin-bottom:3px}
+.changes p{margin:0 0 6px;font-size:14.5px;color:var(--ink-2)}
+.changes a{font-size:13.5px;font-weight:500;color:var(--accent)}
+
+/* Reveal */
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* Responsive */
+@media (max-width:1100px){
+  .tiles{grid-template-columns:repeat(3,1fr)}
+  .ftr-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:960px){
+  .range-grid{grid-template-columns:1fr;gap:48px}
+  .rcard .media{aspect-ratio:4/3}
+  .boca-grid,.eng-grid,.visit-grid,.faq-grid,.quote-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:40px}
+  .fig{position:static}
+  .visit .media{aspect-ratio:4/3}
+}
+@media (max-width:760px){
+  body{font-size:15.5px}
+  .cbar .wrap{align-items:flex-start}
+  .pillars{grid-template-columns:1fr;gap:22px}
+  .steps{grid-template-columns:1fr;row-gap:32px}
+  .step{padding-right:0}
+  .specs div{grid-template-columns:1fr;gap:4px}
+  .tiles{grid-template-columns:1fr 1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .pcard .meta{flex-direction:column;gap:4px}
+  .fgrid{grid-template-columns:1fr}
+  .qa p{padding-right:0}
+  .glass{min-height:auto;padding:52vw 0 var(--gutter);align-items:flex-end}
+  .glass-card{max-width:none}
+  .ftr-grid{grid-template-columns:1fr}
+  .ftr-bottom{padding-bottom:64px}
+  .mbar{display:flex}
+  body{padding-bottom:76px}
+  .ai-launch{bottom:88px;right:16px;padding:0 14px 0 12px;min-height:46px}
+  .ai-launch .label{display:none}
+  .ai{right:16px;bottom:146px;height:min(520px,calc(100vh - 190px))}
+}
+@media print{
+  .js .reveal{opacity:1!important;transform:none!important}
+  .cbar,.hdr,.mbar,.ai-launch,.ai,.drawer,.scrim{display:none!important}
+  .hero{min-height:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 15 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5l1.9 5.3 5.3 1.9-5.3 1.9L12 18l-1.9-5.4-5.3-1.9 5.3-1.9z"/><path d="M19 3v3M17.5 4.5h3"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="cbar" id="cbar" role="region" aria-label="About this concept">
+  <div class="wrap">
+    <p><b>Concept redesign</b> for Simpelbuild by Nitin Malik. Not the official website.</p>
+    <div class="cbar-actions">
+      <button class="cbar-btn" type="button" data-open-changes>What changed</button>
+      <button class="cbar-x" type="button" aria-label="Hide this bar" data-close-cbar><svg class="ico"><use href="#i-close"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Simpelbuild home"><span>Simpel</span><b>build</b></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#homes">Homes</a>
+      <a href="#glasshouses">Glasshouses</a>
+      <a href="#outdoor">Outdoor living</a>
+      <a href="#projects">Projects</a>
+      <a href="#process">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="hdr-cta">
+      <a class="icon-btn" href="tel:+918800891173" aria-label="Call Simpelbuild on +91 88008 91173"><svg class="ico"><use href="#i-phone"/></svg></a>
+      <a class="btn btn-primary" href="#quote" data-quote="home">Get a quote</a>
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><svg class="ico"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile">
+    <a href="#homes">Homes</a>
+    <a href="#glasshouses">Glasshouses</a>
+    <a href="#outdoor">Outdoor living</a>
+    <a href="#projects">Projects</a>
+    <a href="#process">How it works</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn btn-primary" href="#quote" data-quote="home">Get a quote</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero-media">
+    <img src="images/hero.webp" width="1902" height="1269" srcset="images/hero-768.webp 768w, images/hero-1280.webp 1280w, images/hero.webp 1902w" sizes="100vw" decoding="async" fetchpriority="high" alt="A Simpelbuild Boca Chica home with an outdoor deck and dining table under the trees">
+  </div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Factory-built homes · Glasshouses · Outdoor living</span>
+    <h1 id="hero-title">Healthy living,<br> <em>made simple.</em></h1>
+    <p class="hero-sub">Precision-engineered aluminium homes and glasshouses. Built in the factory, assembled on your site in days, and made to last.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#quote" data-quote="home">Get a quote <svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-light" href="#quote" data-quote="visit">Book a factory visit</a>
+    </div>
+    <ul class="stats" aria-label="Key numbers">
+      <li class="stat"><b>3 weeks</b><span>to build in the factory</span></li>
+      <li class="stat"><b>&lt; 24 h</b><span>to assemble a glasshouse</span></li>
+      <li class="stat"><b><small>up to</small>50%</b><span>lower energy use</span></li>
+      <li class="stat"><b>110 mph</b><span>wind-load tested (US Zone 3)</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <p>Brand pavilions built for</p>
+    <ul>
+      <li>Rolex</li>
+      <li>L’Occitane</li>
+      <li>J.P. Morgan</li>
+    </ul>
+  </div>
+</div>
+
+<section class="sec" id="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <span class="eyebrow">Why Simpelbuild</span>
+    <h2 class="sr" id="about-title">Why Simpelbuild</h2>
+    <p class="statement reveal">Building has stayed slow, messy and labour-intensive for decades. We simplify the most critical part, <em>the structure</em>: a pre-engineered aluminium system that locks together fast and gives you a complete wall, floor and roof.</p>
+    <div class="pillars">
+      <div class="pillar reveal"><span class="num">01</span><h3>Healthy living</h3><p>Insulated, well-ventilated spaces that keep indoor air quality under AQI 50.</p></div>
+      <div class="pillar reveal"><span class="num">02</span><h3>Simplicity</h3><p>From design to installation, a process built to remove the complexity of construction.</p></div>
+      <div class="pillar reveal"><span class="num">03</span><h3>Longevity</h3><p>A durable aluminium frame with repairable, upgradeable panels means low maintenance and a long life.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="range" aria-labelledby="range-title" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">The range</span>
+        <h2 class="h2" id="range-title">Three ways to <em>build simply.</em></h2>
+        <p class="lead">Every product uses the same high-strength aluminium system: made in the factory, quick to assemble and easy to upgrade.</p>
+      </div>
+      <a class="tlink" href="#quote" data-quote="visit">See them at the factory <svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="range-grid">
+      <article class="rcard reveal">
+        <div class="media"><img src="images/range-home.webp" width="952" height="634" srcset="images/range-home-640.webp 640w, images/range-home.webp 952w" sizes="(min-width: 960px) 33vw, 100vw" decoding="async" loading="lazy" alt="Boca Chica modular home exterior among trees"></div>
+        <span class="eyebrow">Modular homes</span>
+        <h3>Boca Chica</h3>
+        <p>A complete home with kitchen, bedroom, bathroom and outdoor deck, built in the factory and installed in days.</p>
+        <ul class="chips" aria-label="Sizes"><li class="chip">390 sq ft</li><li class="chip">960 sq ft</li><li class="chip">1,200 sq ft</li></ul>
+        <div class="links"><a class="tlink" href="#homes">Explore the rooms <svg class="ico"><use href="#i-arrow"/></svg></a><a class="tlink accent" href="#quote" data-quote="home">Get a quote</a></div>
+      </article>
+      <article class="rcard reveal">
+        <div class="media"><img src="images/range-glass.webp" width="952" height="634" srcset="images/range-glass-640.webp 640w, images/range-glass.webp 952w" sizes="(min-width: 960px) 33vw, 100vw" decoding="async" loading="lazy" alt="Simpelbuild glasshouse beside a swimming pool in a garden"></div>
+        <span class="eyebrow">Glass rooms</span>
+        <h3>Glasshouses</h3>
+        <p>Laminated double-glazed glass on an aluminium frame. Flat-packed, and assembled in under 24 hours.</p>
+        <ul class="chips" aria-label="Sizes"><li class="chip">120 sq ft</li><li class="chip">240 sq ft</li><li class="chip">760 sq ft</li></ul>
+        <div class="links"><a class="tlink" href="#glasshouses">Inside a glasshouse <svg class="ico"><use href="#i-arrow"/></svg></a><a class="tlink accent" href="#quote" data-quote="glass">Get a quote</a></div>
+      </article>
+      <article class="rcard reveal">
+        <div class="media"><img src="images/range-outdoor.webp" width="952" height="634" srcset="images/range-outdoor-640.webp 640w, images/range-outdoor.webp 952w" sizes="(min-width: 960px) 33vw, 100vw" decoding="async" loading="lazy" alt="Simpelbuild aluminium outdoor dining set"></div>
+        <span class="eyebrow">Fire, dining and lounge</span>
+        <h3>Outdoor living</h3>
+        <p>Fireplaces, firepits, barbecues, furniture, lanterns and planters in recyclable aluminium alloy.</p>
+        <ul class="chips" aria-label="Collections"><li class="chip">6 collections</li><li class="chip">Assemble with basic tools</li></ul>
+        <div class="links"><a class="tlink" href="#outdoor">See the collections <svg class="ico"><use href="#i-arrow"/></svg></a><a class="tlink accent" href="#quote" data-quote="outdoor">Get a quote</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec boca" id="homes" aria-labelledby="homes-title">
+  <div class="wrap boca-grid">
+    <div class="viewer reveal">
+      <div class="media rooms">
+        <img src="images/room-kitchen.webp" width="1000" height="1000" srcset="images/room-kitchen-600.webp 600w, images/room-kitchen.webp 1000w" sizes="(min-width: 960px) 52vw, 100vw" decoding="async" loading="lazy" class="room active" data-room="kitchen" alt="Kitchen inside a Boca Chica home">
+        <img src="images/room-bedroom.webp" width="1000" height="1000" srcset="images/room-bedroom-600.webp 600w, images/room-bedroom.webp 1000w" sizes="(min-width: 960px) 52vw, 100vw" decoding="async" loading="lazy" class="room" data-room="bedroom" alt="Bedroom inside a Boca Chica home, with floor-to-ceiling glass" aria-hidden="true">
+        <img src="images/room-bathroom.webp" width="1000" height="1000" srcset="images/room-bathroom-600.webp 600w, images/room-bathroom.webp 1000w" sizes="(min-width: 960px) 52vw, 100vw" decoding="async" loading="lazy" class="room" data-room="bathroom" alt="Bathroom inside a Boca Chica home" aria-hidden="true">
+        <img src="images/room-garden.webp" width="1000" height="1000" srcset="images/room-garden-600.webp 600w, images/room-garden.webp 1000w" sizes="(min-width: 960px) 52vw, 100vw" decoding="async" loading="lazy" class="room" data-room="garden" alt="Boca Chica home and outdoor deck at dusk" aria-hidden="true">
+        <span class="viewer-cap" id="room-cap" aria-live="polite">Kitchen</span>
+      </div>
+      <div class="tabs" role="group" aria-label="Rooms">
+        <button class="tab" type="button" aria-pressed="true" data-room="kitchen">Kitchen</button>
+        <button class="tab" type="button" aria-pressed="false" data-room="bedroom">Bedroom</button>
+        <button class="tab" type="button" aria-pressed="false" data-room="bathroom">Bathroom</button>
+        <button class="tab" type="button" aria-pressed="false" data-room="garden">Outdoor</button>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Boca Chica · modular home</span>
+      <h2 class="h2" id="homes-title">A complete home, <em>delivered as one system.</em></h2>
+      <p class="lead" style="margin-top:18px">Kitchen, bedroom, bathroom and outdoor deck arrive ready to assemble. Pick a size and we will send its floor plans.</p>
+      <p class="size-label" id="size-label">Size</p>
+      <div class="sizes" role="group" aria-labelledby="size-label">
+        <button class="size" type="button" aria-pressed="true" data-size="390">390 sq ft</button>
+        <button class="size" type="button" aria-pressed="false" data-size="960">960 sq ft</button>
+        <button class="size" type="button" aria-pressed="false" data-size="1200">1,200 sq ft</button>
+      </div>
+      <ul class="feat">
+        <li><svg class="ico"><use href="#i-check"/></svg><div><b>Pre-cast foundation</b><span>No casting on your land. The foundation arrives ready to place.</span></div></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><div><b>Up to 50% lower energy use</b><span>Superior insulation and an ERV ventilation system.</span></div></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><div><b>Upgrade any time</b><span>Change or upgrade panels as your needs grow.</span></div></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><div><b>Less mess on site</b><span>Built in the factory to a standard process, cutting site hassle and landfill waste.</span></div></li>
+      </ul>
+      <a class="btn btn-dark" href="#quote" data-quote="home" id="plans-cta">Get floor plans for 390 sq ft <svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="process" aria-labelledby="process-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">How it works</span>
+        <h2 class="h2" id="process-title">From factory to finished, <em>in weeks.</em></h2>
+      </div>
+    </div>
+    <ol class="steps">
+      <li class="step reveal"><span class="n">01</span><h3>Design</h3><p>Choose a model and size, then pick the finishes and materials that suit your site.</p></li>
+      <li class="step reveal"><span class="n">02</span><h3>Factory</h3><p>Frame and panels are made to a standard process, which cuts errors and reliance on site labour.</p></li>
+      <li class="step reveal"><span class="n">03</span><h3>Foundation and delivery</h3><p>A pre-cast foundation arrives with your kit, flat-packed to save space and transport cost.</p></li>
+      <li class="step reveal"><span class="n">04</span><h3>Assembly</h3><p>The aluminium system locks together fast. Homes take days, and a glasshouse goes up in under 24 hours.</p></li>
+    </ol>
+    <div class="process-note reveal">
+      <p><b>Typical timeline:</b> about 3 weeks in the factory, then days on site, not months.</p>
+      <a class="tlink accent" href="#quote" data-quote="home">Plan your build <svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec eng" id="engineering" aria-labelledby="eng-title">
+  <div class="wrap eng-grid">
+    <div>
+      <span class="eyebrow">Engineering</span>
+      <h2 class="h2" id="eng-title">Engineered like a building. <em>Assembled in days.</em></h2>
+      <p class="lead" style="margin-top:18px">The frame is the most critical part of any structure, so that is where we start.</p>
+      <dl class="specs">
+        <div><dt>Frame</dt><dd>High-strength aluminium alloy with stainless-steel reinforcements</dd></div>
+        <div><dt>Loads</dt><dd>Verified against the loads specified in the US CFR</dd></div>
+        <div><dt>Wind</dt><dd>Tested to US Zone 3 (110 mph) and North zone (40 psf) loads</dd></div>
+        <div><dt>Envelope</dt><dd>Thermal-bridge-free detailing, passive and net-zero ready</dd></div>
+        <div><dt>Glass</dt><dd>Laminated double glazing</dd></div>
+        <div><dt>Air</dt><dd>ERV ventilation, with indoor air quality kept under AQI 50</dd></div>
+        <div><dt>Upkeep</dt><dd>Repairable, upgradeable panels and non-corrosive finishes</dd></div>
+      </dl>
+    </div>
+    <figure class="fig reveal">
+      <div class="media"><img src="images/fea.webp" width="1200" height="737" srcset="images/fea-700.webp 700w, images/fea.webp 1200w" sizes="(min-width: 960px) 45vw, 100vw" decoding="async" loading="lazy" alt="Structural simulation of a Simpelbuild frame showing maximum combined stress"></div>
+      <figcaption>Structural simulation of the frame: maximum combined stress under load.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="glass" id="glasshouses" aria-labelledby="glass-title">
+  <div class="bg"><img src="images/glass.webp" width="1902" height="1269" srcset="images/glass-768.webp 768w, images/glass-1280.webp 1280w, images/glass.webp 1902w" sizes="100vw" decoding="async" loading="lazy" alt="Inside a Simpelbuild glasshouse set for dinner under pendant lights"></div>
+  <div class="wrap">
+    <div class="glass-card reveal">
+      <span class="eyebrow">Glasshouses</span>
+      <h2 class="h2" id="glass-title">A room made <em>of light.</em></h2>
+      <p class="lead" style="margin-top:16px">Compact glass rooms for luxury living, from a 120 sq ft retreat to a 760 sq ft pavilion.</p>
+      <ul class="ticks">
+        <li><svg class="ico"><use href="#i-check"/></svg>Laminated double glazing keeps heating and cooling in</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Flat-packed to save space and transport cost</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Replace any pane or panel without dismantling</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Assembled in under 24 hours</li>
+      </ul>
+      <ul class="chips" aria-label="Sizes"><li class="chip">120 sq ft</li><li class="chip">240 sq ft</li><li class="chip">760 sq ft</li></ul>
+      <div class="btn-row" style="margin-top:22px"><a class="btn btn-primary" href="#quote" data-quote="glass">Get a glasshouse quote</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="outdoor" aria-labelledby="outdoor-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Outdoor living</span>
+        <h2 class="h2" id="outdoor-title">Fire, food and <em>long evenings outside.</em></h2>
+        <p class="lead">Six collections in recyclable aluminium alloy with non-corrosive finishes. Each one assembles with basic tools.</p>
+      </div>
+      <a class="tlink accent" href="#quote" data-quote="outdoor">Ask about outdoor pieces <svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+    <ul class="tiles">
+      <li class="tile reveal"><div class="media"><img src="images/tile-fireplace.webp" width="385" height="515" decoding="async" loading="lazy" alt="Black aluminium outdoor fireplace beside a lounger"></div><h3>Fireplaces</h3></li>
+      <li class="tile reveal"><div class="media"><img src="images/tile-firepits.webp" width="385" height="515" decoding="async" loading="lazy" alt="Aluminium firepit on a lawn"></div><h3>Firepits</h3></li>
+      <li class="tile reveal"><div class="media"><img src="images/tile-barbecue.webp" width="386" height="515" decoding="async" loading="lazy" alt="Outdoor barbecue in a garden"></div><h3>Barbecues</h3></li>
+      <li class="tile reveal"><div class="media"><img src="images/tile-furniture.webp" width="385" height="516" decoding="async" loading="lazy" alt="Outdoor sofa with cushions"></div><h3>Furniture</h3></li>
+      <li class="tile reveal"><div class="media"><img src="images/tile-lantern.webp" width="385" height="516" decoding="async" loading="lazy" alt="Tall aluminium garden lantern"></div><h3>Lanterns</h3></li>
+      <li class="tile reveal"><div class="media"><img src="images/tile-planters.webp" width="386" height="516" decoding="async" loading="lazy" alt="Planter with agave against a panel wall"></div><h3>Planters</h3></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="projects" aria-labelledby="projects-title" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Projects</span>
+        <h2 class="h2" id="projects-title">Pavilions for <em>global brands.</em></h2>
+        <p class="lead">The same modular system builds premium brand spaces, from exhibition displays to retail and corporate pavilions.</p>
+      </div>
+    </div>
+    <div class="proj-grid">
+      <article class="pcard reveal">
+        <div class="media"><img src="images/proj-rolex.webp" width="1200" height="800" srcset="images/proj-rolex-640.webp 640w, images/proj-rolex.webp 1200w" sizes="(min-width: 760px) 50vw, 100vw" decoding="async" loading="lazy" alt="Rolex exhibition pavilion lit at night"></div>
+        <div class="meta"><h3>Rolex</h3><span class="type">Exhibition pavilion</span></div>
+        <p>A precision display pavilion for luxury timepieces.</p>
+      </article>
+      <article class="pcard reveal">
+        <div class="media"><img src="images/proj-loccitane.webp" width="952" height="634" srcset="images/proj-loccitane-640.webp 640w, images/proj-loccitane.webp 952w" sizes="(min-width: 760px) 50vw, 100vw" decoding="async" loading="lazy" alt="L’Occitane retail pavilion with glass walls"></div>
+        <div class="meta"><h3>L’Occitane</h3><span class="type">Retail pavilion</span></div>
+        <p>A refined display environment for a beauty brand.</p>
+      </article>
+      <article class="pcard reveal">
+        <div class="media"><img src="images/proj-jpmorgan.webp" width="952" height="634" srcset="images/proj-jpmorgan-640.webp 640w, images/proj-jpmorgan.webp 952w" sizes="(min-width: 760px) 50vw, 100vw" decoding="async" loading="lazy" alt="J.P. Morgan corporate pavilion surrounded by plants"></div>
+        <div class="meta"><h3>J.P. Morgan</h3><span class="type">Corporate pavilion</span></div>
+        <p>An executive brand-experience space.</p>
+      </article>
+      <article class="pcard reveal">
+        <div class="media"><img src="images/proj-lifestyle.webp" width="952" height="634" srcset="images/proj-lifestyle-640.webp 640w, images/proj-lifestyle.webp 952w" sizes="(min-width: 760px) 50vw, 100vw" decoding="async" loading="lazy" alt="Lifestyle Luxury retail pavilion at night"></div>
+        <div class="meta"><h3>Lifestyle Luxury</h3><span class="type">Retail installation</span></div>
+        <p>An immersive premium shopping pavilion.</p>
+      </article>
+    </div>
+    <div class="proj-cta reveal">
+      <p>Planning a pavilion or pop-up?</p>
+      <a class="btn btn-dark" href="#quote" data-quote="pavilion">Talk to the team <svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec visit" id="visit" aria-labelledby="visit-title" style="padding-top:0">
+  <div class="wrap visit-grid">
+    <div class="media reveal"><img src="images/visit.webp" width="860" height="1289" srcset="images/visit-560.webp 560w, images/visit.webp 860w" sizes="(min-width: 960px) 40vw, 100vw" decoding="async" loading="lazy" alt="Boca Chica home entrance with wall lights and planters"></div>
+    <div class="reveal">
+      <span class="eyebrow">Visit us</span>
+      <h2 class="h2" id="visit-title">See it before <em>you buy.</em></h2>
+      <p class="lead" style="margin-top:18px">Come to our Greater Noida factory, see the aluminium frame up close and meet the team that builds it.</p>
+      <div class="addr">
+        <div><svg class="ico"><use href="#i-pin"/></svg><p style="margin:0"><b>Factory</b><span>192, Ecotech-I Extension, Greater Noida</span></p></div>
+        <div><svg class="ico"><use href="#i-pin"/></svg><p style="margin:0"><b>Office</b><span>E6, 12th Floor, Wegmen’s Signature Tower, Knowledge Park III, Greater Noida</span></p></div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#quote" data-quote="visit">Book a factory visit</a>
+        <a class="btn btn-ghost" href="tel:+918800891173"><svg class="ico"><use href="#i-phone"/></svg>+91 88008 91173</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec faq" id="faq" aria-labelledby="faq-title">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="eyebrow">FAQ</span>
+      <h2 class="h2" id="faq-title">Good questions, <em>straight answers.</em></h2>
+      <p class="lead" style="margin-top:18px">Something else on your mind? <a href="#quote" data-quote="home">Ask the team</a>.</p>
+    </div>
+    <div>
+      <details class="qa"><summary>How long does it take?<span class="pm"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Your structure is built in the factory in about 3 weeks. On site, a home is assembled in days and a glasshouse in under 24 hours.</p></details>
+      <details class="qa"><summary>Do I need a foundation?<span class="pm"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>No casting is needed on your land. We send a pre-cast foundation with your structure.</p></details>
+      <details class="qa"><summary>How energy-efficient is it?<span class="pm"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Superior insulation, thermal-bridge-free detailing and an ERV ventilation system cut energy use by up to 50%.</p></details>
+      <details class="qa"><summary>How strong is the frame?<span class="pm"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>The high-strength aluminium alloy frame has stainless-steel reinforcements. Structures are verified against the loads specified in the US CFR and tested to US Zone 3 wind loads (110 mph).</p></details>
+      <details class="qa"><summary>Can I change or upgrade it later?<span class="pm"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Yes. The system is modular, so panels and glass can be replaced or upgraded without dismantling the structure.</p></details>
+      <details class="qa"><summary>Where do you deliver?<span class="pm"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>We work across India and take on projects abroad. Share your location and we will confirm logistics.</p></details>
+      <details class="qa"><summary>How much does it cost?<span class="pm"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p>Every project is quoted for your site, size and finishes. Share a few details and the team will send options and pricing.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="quote" aria-labelledby="quote-title">
+  <div class="wrap quote-grid">
+    <div>
+      <span class="eyebrow">Get a quote</span>
+      <h2 class="h2" id="quote-title">Tell us about <em>your space.</em></h2>
+      <p class="lead" style="margin-top:18px">Share a few details and the team will come back with options, floor plans and pricing.</p>
+      <ul class="direct">
+        <li><a href="tel:+918800891173"><svg class="ico"><use href="#i-phone"/></svg><div><span>Call</span><b>+91 88008 91173</b></div></a></li>
+        <li><a href="https://wa.me/918800891173?text=Hi%20Simpelbuild%2C%20I%27d%20like%20to%20know%20more." target="_blank" rel="noopener" data-wa><svg class="ico"><use href="#i-chat"/></svg><div><span>WhatsApp</span><b>Chat with the team</b></div></a></li>
+        <li><a href="mailto:rj@buildingoutdoorspace.com?subject=Simpelbuild%20enquiry"><svg class="ico"><use href="#i-mail"/></svg><div><span>Email</span><b>rj@buildingoutdoorspace.com</b></div></a></li>
+      </ul>
+    </div>
+    <div class="form-card reveal" id="form-card">
+      <form id="qform" novalidate>
+        <div class="fgrid">
+          <div class="field"><label for="f-product">I’m interested in</label>
+            <select id="f-product" name="product" required>
+              <option value="home">Boca Chica home</option>
+              <option value="glass">Glasshouse</option>
+              <option value="outdoor">Outdoor living</option>
+              <option value="pavilion">Brand pavilion</option>
+              <option value="visit">A factory visit</option>
+            </select></div>
+          <div class="field"><label for="f-size" id="f-size-label">Size</label>
+            <select id="f-size" name="size"></select></div>
+          <div class="field"><label for="f-city">City or PIN code</label>
+            <input id="f-city" name="city" type="text" autocomplete="address-level2" required placeholder="e.g. Gurugram or 122002"></div>
+          <div class="field"><label for="f-time">When do you need it?</label>
+            <select id="f-time" name="timeline">
+              <option>Within 3 months</option>
+              <option>3–6 months</option>
+              <option>6–12 months</option>
+              <option>Just exploring</option>
+            </select></div>
+          <div class="field"><label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="f-phone">Phone</label>
+            <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required pattern="[\d\s+\-]{8,}" title="Phone number with at least 8 digits" placeholder="+91"></div>
+          <div class="field full"><label for="f-email">Email <i>(optional)</i></label>
+            <input id="f-email" name="email" type="email" autocomplete="email"></div>
+          <div class="field full"><label for="f-msg">Anything else? <i>(optional)</i></label>
+            <textarea id="f-msg" name="message" placeholder="Plot size, how you plan to use the space, finishes you like"></textarea></div>
+          <label class="consent"><input type="checkbox" name="consent" required><span>I agree to be contacted about this enquiry by phone, WhatsApp or email.</span></label>
+          <div class="form-foot">
+            <small>Concept demo: nothing is sent from this page.</small>
+            <button class="btn btn-primary" type="submit">Send enquiry <svg class="ico"><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-grid">
+      <div>
+        <a class="logo" href="#top"><span>Simpel</span><b>build</b></a>
+        <p>Healthy, high-performance modular spaces, designed for comfort, efficiency and long-term living.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="#homes">Boca Chica homes</a></li>
+          <li><a href="#glasshouses">Glasshouses</a></li>
+          <li><a href="#outdoor">Outdoor living</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Talk to us</h2>
+        <ul>
+          <li><a href="tel:+918800891173">+91 88008 91173</a></li>
+          <li><a href="https://wa.me/918800891173" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:rj@buildingoutdoorspace.com">rj@buildingoutdoorspace.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Visit</h2>
+        <address>Factory: 192, Ecotech-I Extension, Greater Noida<br>Office: Knowledge Park III, Greater Noida</address>
+      </div>
+    </div>
+    <div class="ftr-bottom">
+      <span>© 2026 Simpelbuild. India · Global.</span>
+      <span>Concept by <a href="https://www.linkedin.com/in/thenitinmalik" target="_blank" rel="noopener">Nitin Malik</a>. Not the official website.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar" aria-label="Quick actions">
+  <a class="btn btn-ghost" href="https://wa.me/918800891173?text=Hi%20Simpelbuild%2C%20I%27d%20like%20to%20know%20more." target="_blank" rel="noopener" data-wa><svg class="ico"><use href="#i-chat"/></svg>WhatsApp</a>
+  <a class="btn btn-primary" href="#quote" data-quote="home">Get a quote</a>
+</div>
+
+<button class="ai-launch" type="button" aria-controls="ai" aria-expanded="false" id="ai-launch"><span class="dot"><svg class="ico"><use href="#i-spark"/></svg></span><span class="label">Ask Simpelbuild</span></button>
+<div class="ai" id="ai" role="dialog" aria-label="Simpelbuild enquiry assistant, scripted demo">
+  <div class="ai-head">
+    <span class="dot"><svg class="ico"><use href="#i-spark"/></svg></span>
+    <div><b>Simpelbuild assistant</b><small>Phase 2 preview · scripted demo</small></div>
+    <button type="button" aria-label="Close assistant" data-ai-close><svg class="ico"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="ai-log" id="ai-log" aria-live="polite"></div>
+  <form class="ai-input" id="ai-input" hidden>
+    <label class="sr" for="ai-text">Your answer</label>
+    <input id="ai-text" type="text" autocomplete="address-level2" placeholder="City or PIN code">
+    <button type="submit">Send</button>
+  </form>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="changes" role="dialog" aria-modal="true" aria-labelledby="changes-title" hidden>
+  <div class="drawer-head">
+    <div>
+      <h2 id="changes-title">What changed</h2>
+      <p>Nine fixes from the audit of the current simpelbuild.com.</p>
+    </div>
+    <button type="button" aria-label="Close" data-close-changes><svg class="ico"><use href="#i-close"/></svg></button>
+  </div>
+  <ol class="changes">
+    <li><div><b>Contact links that work</b><p>WhatsApp and tap-to-call use the real number, and the email address is clickable.</p><a href="#quote" data-close-changes>See it</a></div></li>
+    <li><div><b>Clear next steps</b><p>“Get a quote” and “Book a factory visit” replace “Buy Now” for a purchase this size.</p><a href="#top" data-close-changes>See it</a></div></li>
+    <li><div><b>A form sales can act on</b><p>It captures product, size, city and timeline, so every lead arrives qualified.</p><a href="#quote" data-close-changes>See it</a></div></li>
+    <li><div><b>Same photos, a fraction of the weight</b><p>All 21 photos on this page add up to about 1.4 MB. The current homepage downloads 31.5 MB.</p><a href="#top" data-close-changes>See it</a></div></li>
+    <li><div><b>Proof up front</b><p>Key numbers in the hero, the brand pavilions, engineering specs and the structural simulation.</p><a href="#engineering" data-close-changes>See it</a></div></li>
+    <li><div><b>One consistent story</b><p>Range, rooms, process, engineering, projects, visit, FAQ and quote, with one energy figure and one wind figure throughout.</p><a href="#range" data-close-changes>See it</a></div></li>
+    <li><div><b>One visual system</b><p>The crimson from the logo as the only accent, warm neutrals, and one serif and sans type pairing.</p><a href="#about" data-close-changes>See it</a></div></li>
+    <li><div><b>Built for phones</b><p>A mobile-first layout, a sticky WhatsApp and quote bar, and no text running off the screen.</p><a href="#range" data-close-changes>See it</a></div></li>
+    <li><div><b>Phase 2 preview</b><p>The assistant qualifies an enquiry in four questions and hands it to WhatsApp.</p><a href="#" data-open-ai>Try it</a></div></li>
+  </ol>
+</aside>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var WA = '918800891173';
+  var waLink = function (text) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text); };
+  var el = function (tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  };
+
+  /* Header turns solid once the page scrolls */
+  var hdr = $('#hdr');
+  var onScroll = function () { hdr.classList.toggle('solid', window.scrollY > 40); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Mobile menu */
+  var menuBtn = $('.menu-btn'), mnav = $('#mnav');
+  var setMenu = function (open) {
+    mnav.classList.toggle('open', open);
+    hdr.classList.toggle('menu-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menuBtn.querySelector('use').setAttribute('href', open ? '#i-close' : '#i-menu');
+  };
+  menuBtn.addEventListener('click', function () { setMenu(!mnav.classList.contains('open')); });
+  $$('#mnav a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && mnav.classList.contains('open')) { setMenu(false); menuBtn.focus(); } });
+
+  /* Concept bar */
+  $('[data-close-cbar]').addEventListener('click', function () { $('#cbar').remove(); });
+
+  /* "What changed" drawer */
+  var drawer = $('#changes'), scrim = $('#scrim'), lastFocus = null;
+  function escDrawer(e) { if (e.key === 'Escape') closeDrawer(true); }
+  function openDrawer() {
+    lastFocus = document.activeElement;
+    drawer.hidden = false; scrim.hidden = false;
+    requestAnimationFrame(function () { requestAnimationFrame(function () { drawer.classList.add('show'); scrim.classList.add('show'); }); });
+    $('.drawer-head button', drawer).focus();
+    document.addEventListener('keydown', escDrawer);
+  }
+  function closeDrawer(restoreFocus) {
+    if (drawer.hidden) return;
+    drawer.classList.remove('show'); scrim.classList.remove('show');
+    setTimeout(function () { drawer.hidden = true; scrim.hidden = true; }, reduced ? 0 : 340);
+    document.removeEventListener('keydown', escDrawer);
+    if (restoreFocus && lastFocus) lastFocus.focus();
+  }
+  $$('[data-open-changes]').forEach(function (b) { b.addEventListener('click', openDrawer); });
+  $('.drawer-head button', drawer).addEventListener('click', function () { closeDrawer(true); });
+  $$('.changes a[data-close-changes]').forEach(function (a) { a.addEventListener('click', function () { closeDrawer(false); }); });
+  scrim.addEventListener('click', function () { closeDrawer(true); });
+
+  /* Quote form */
+  var SIZES = {
+    home: { label: 'Size', opts: ['390 sq ft', '960 sq ft', '1,200 sq ft', 'Not sure yet'] },
+    glass: { label: 'Size', opts: ['120 sq ft', '240 sq ft', '760 sq ft', 'Not sure yet'] },
+    outdoor: { label: 'Product', opts: ['Fireplace', 'Firepit', 'Barbecue', 'Furniture', 'Lanterns and planters'] },
+    pavilion: { label: 'Purpose', opts: ['Event or exhibition', 'Retail space', 'Corporate space'] },
+    visit: { label: 'Preferred day', opts: ['Weekday', 'Weekend'] }
+  };
+  var PRODUCT_NAMES = { home: 'Boca Chica home', glass: 'Glasshouse', outdoor: 'Outdoor living', pavilion: 'Brand pavilion', visit: 'Factory visit' };
+  var form = $('#qform'), card = $('#form-card');
+  var fProduct = $('#f-product'), fSize = $('#f-size'), fSizeLabel = $('#f-size-label'), fCity = $('#f-city'), fTime = $('#f-time');
+  var success = null;
+
+  function fillSizes(product, preset) {
+    var cfg = SIZES[product] || SIZES.home;
+    fSizeLabel.textContent = cfg.label;
+    fSize.innerHTML = '';
+    cfg.opts.forEach(function (o) { fSize.appendChild(el('option', null, o)); });
+    if (preset) {
+      for (var i = 0; i < fSize.options.length; i++) { if (fSize.options[i].text === preset) fSize.selectedIndex = i; }
+    }
+  }
+  function showForm() { if (success) { success.remove(); success = null; } form.hidden = false; }
+  function presetQuote(product, size) { showForm(); fProduct.value = product; fillSizes(product, size); }
+  fProduct.addEventListener('change', function () { fillSizes(fProduct.value); });
+  fillSizes('home');
+
+  $$('[data-quote]').forEach(function (a) {
+    a.addEventListener('click', function () { presetQuote(a.getAttribute('data-quote'), a.getAttribute('data-size-preset')); });
+  });
+
+  function firstName(n) { return String(n || '').trim().split(/\s+/)[0] || 'there'; }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    var d = new FormData(form);
+    var product = PRODUCT_NAMES[d.get('product')];
+    var rows = [['Interested in', product], [fSizeLabel.textContent, d.get('size')], ['Location', d.get('city')], ['Timeline', d.get('timeline')], ['Name', d.get('name')], ['Phone', d.get('phone')]];
+    var text = 'Hi Simpelbuild, I am ' + d.get('name') + '. I am interested in: ' + product + ' (' + d.get('size') + '). Location: ' + d.get('city') + '. Timeline: ' + d.get('timeline') + '.' + (d.get('message') ? ' ' + d.get('message') : '');
+
+    form.hidden = true;
+    success = el('div', 'success');
+    success.setAttribute('tabindex', '-1');
+    success.appendChild(el('span', 'badge', 'Enquiry ready'));
+    success.appendChild(el('h3', null, 'Thank you, ' + firstName(d.get('name')) + '.'));
+    success.appendChild(el('p', 'lead', 'On the live site, this goes straight to the sales inbox and WhatsApp, with every detail the team needs to reply.'));
+    var ul = el('ul', 'sum');
+    rows.forEach(function (r) { var li = el('li'); li.appendChild(el('span', null, r[0])); li.appendChild(el('b', null, r[1])); ul.appendChild(li); });
+    success.appendChild(ul);
+    var row = el('div', 'btn-row');
+    var wa = el('a', 'btn btn-primary', 'Continue on WhatsApp'); wa.href = waLink(text); wa.target = '_blank'; wa.rel = 'noopener';
+    var edit = el('button', 'btn btn-ghost', 'Edit enquiry'); edit.type = 'button'; edit.addEventListener('click', showForm);
+    row.appendChild(wa); row.appendChild(edit);
+    success.appendChild(row);
+    card.appendChild(success);
+    success.focus({ preventScroll: true });
+    card.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+  });
+
+  /* Boca Chica viewer: room buttons switch the photo, size buttons set the floor-plan request */
+  var ROOM_LABEL = { kitchen: 'Kitchen', bedroom: 'Bedroom', bathroom: 'Bathroom', garden: 'Outdoor deck' };
+  var SIZE_TEXT = { '390': '390 sq ft', '960': '960 sq ft', '1200': '1,200 sq ft' };
+  var roomCap = $('#room-cap'), plans = $('#plans-cta');
+  plans.setAttribute('data-size-preset', SIZE_TEXT['390']);
+  $$('.tab').forEach(function (t) {
+    t.addEventListener('click', function () {
+      var room = t.getAttribute('data-room');
+      $$('.tab').forEach(function (x) { x.setAttribute('aria-pressed', String(x === t)); });
+      $$('.rooms .room').forEach(function (img) {
+        var on = img.getAttribute('data-room') === room;
+        img.classList.toggle('active', on);
+        if (on) img.removeAttribute('aria-hidden'); else img.setAttribute('aria-hidden', 'true');
+      });
+      roomCap.textContent = ROOM_LABEL[room];
+    });
+  });
+  $$('.size').forEach(function (b) {
+    b.addEventListener('click', function () {
+      $$('.size').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      var size = SIZE_TEXT[b.getAttribute('data-size')];
+      plans.firstChild.nodeValue = 'Get floor plans for ' + size + ' ';
+      plans.setAttribute('data-size-preset', size);
+    });
+  });
+
+  /* Phase 2 preview: a scripted enquiry assistant (no AI, nothing is sent) */
+  var ai = $('#ai'), log = $('#ai-log'), launch = $('#ai-launch'), aiForm = $('#ai-input'), aiText = $('#ai-text');
+  var answers = {}, started = false, syncFloating = null;
+  var PRODUCT_AI = { home: 'Boca Chica home', glass: 'Glasshouse', outdoor: 'Outdoor living', pavilion: 'Brand pavilion' };
+  var STEPS = {
+    start: { say: 'Hi! I can help you plan your Simpelbuild space in four quick questions. What are you looking for?', key: 'product', options: [['A home or studio', 'home'], ['A glasshouse', 'glass'], ['Outdoor living', 'outdoor'], ['A brand pavilion', 'pavilion']] },
+    home: { say: 'Boca Chica homes come in three sizes. Which fits your plans?', key: 'size', options: ['390 sq ft', '960 sq ft', '1,200 sq ft', 'Not sure yet'], next: 'city' },
+    glass: { say: 'Glasshouses come in 120, 240 and 760 sq ft. Which size are you considering?', key: 'size', options: ['120 sq ft', '240 sq ft', '760 sq ft', 'Not sure yet'], next: 'city' },
+    outdoor: { say: 'Which outdoor piece are you interested in?', key: 'size', options: ['Fireplace', 'Firepit', 'Barbecue', 'Furniture', 'Lanterns and planters'], next: 'city' },
+    pavilion: { say: 'Simpelbuild has built pavilions for brands like Rolex and L’Occitane. What is yours for?', key: 'size', options: ['Event or exhibition', 'Retail space', 'Corporate space'], next: 'city' },
+    city: { say: 'Where will it be installed? Type your city or PIN code.', key: 'city', input: true, next: 'time' },
+    time: { say: 'When would you like it ready?', key: 'timeline', options: ['Within 3 months', '3–6 months', '6–12 months', 'Just exploring'], next: 'done' }
+  };
+  function bubble(text, who) { var m = el('div', 'msg ' + who, text); log.appendChild(m); log.scrollTop = log.scrollHeight; return m; }
+  function typing(cb) {
+    var t = bubble('•••', 'bot typing');
+    t.setAttribute('aria-hidden', 'true');
+    setTimeout(function () { t.remove(); cb(); }, reduced ? 0 : 550);
+  }
+  function ask(id) {
+    var step = STEPS[id];
+    typing(function () {
+      bubble(step.say, 'bot');
+      if (step.input) {
+        aiForm.hidden = false; aiText.value = ''; aiText.focus();
+        aiForm.onsubmit = function (e) {
+          e.preventDefault();
+          var v = aiText.value.trim(); if (!v) return;
+          aiForm.hidden = true; bubble(v, 'me'); answers[step.key] = v; ask(step.next);
+        };
+        return;
+      }
+      var wrap = el('div', 'opts');
+      step.options.forEach(function (o) {
+        var label = Array.isArray(o) ? o[0] : o, value = Array.isArray(o) ? o[1] : o;
+        var b = el('button', 'opt', label); b.type = 'button';
+        b.addEventListener('click', function () {
+          wrap.remove(); bubble(label, 'me'); answers[step.key] = value;
+          if (id === 'start') ask(value); else if (step.next === 'done') finish(); else ask(step.next);
+        });
+        wrap.appendChild(b);
+      });
+      log.appendChild(wrap); log.scrollTop = log.scrollHeight;
+      var first = wrap.querySelector('button'); if (first) first.focus({ preventScroll: true });
+    });
+  }
+  function finish() {
+    typing(function () {
+      bubble('Thanks! Here is your enquiry. Send it to the Simpelbuild team on WhatsApp, or ask for a call back.', 'bot');
+      var sum = el('div', 'ai-sum');
+      [['Interested in', PRODUCT_AI[answers.product]], ['Detail', answers.size], ['Location', answers.city], ['Timeline', answers.timeline]].forEach(function (r) {
+        var d = el('div'); d.appendChild(el('span', null, r[0])); d.appendChild(el('b', null, r[1])); sum.appendChild(d);
+      });
+      log.appendChild(sum);
+      var text = 'Hi Simpelbuild, I am interested in: ' + PRODUCT_AI[answers.product] + ' (' + answers.size + '). Location: ' + answers.city + '. Timeline: ' + answers.timeline + '.';
+      var wrap = el('div', 'opts');
+      var wa = el('a', 'opt primary', 'Send on WhatsApp'); wa.href = waLink(text); wa.target = '_blank'; wa.rel = 'noopener';
+      var call = el('button', 'opt', 'Request a call back'); call.type = 'button';
+      call.addEventListener('click', function () {
+        presetQuote(answers.product, answers.size);
+        fCity.value = answers.city; fTime.value = answers.timeline;
+        closeAI(false);
+        $('#quote').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+      });
+      var again = el('button', 'opt', 'Start again'); again.type = 'button'; again.addEventListener('click', restart);
+      wrap.appendChild(wa); wrap.appendChild(call); wrap.appendChild(again);
+      log.appendChild(wrap); log.scrollTop = log.scrollHeight;
+    });
+  }
+  function restart() { log.innerHTML = ''; answers = {}; aiForm.hidden = true; ask('start'); }
+  function openAI() {
+    ai.classList.add('open'); launch.setAttribute('aria-expanded', 'true');
+    if (syncFloating) syncFloating();
+    if (!started) { started = true; ask('start'); }
+  }
+  function closeAI(restoreFocus) {
+    ai.classList.remove('open'); launch.setAttribute('aria-expanded', 'false');
+    if (syncFloating) syncFloating();
+    if (restoreFocus !== false && launch.classList.contains('show')) launch.focus();
+  }
+  launch.addEventListener('click', function () { if (ai.classList.contains('open')) closeAI(); else openAI(); });
+  $('[data-ai-close]').addEventListener('click', function () { closeAI(); });
+  ai.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAI(); });
+  $$('[data-open-ai]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); closeDrawer(false); openAI(); }); });
+
+  /* Show the mobile action bar and the assistant launcher once the hero buttons scroll away;
+     hide the bar while the quote form is on screen so it never covers the inputs */
+  var mbar = $('.mbar'), pastHero = false, inQuote = false;
+  syncFloating = function () {
+    mbar.classList.toggle('show', pastHero && !inQuote);
+    launch.classList.toggle('show', (pastHero && !inQuote) || ai.classList.contains('open'));
+  };
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) {
+      pastHero = !en[0].isIntersecting && en[0].boundingClientRect.top < 0; syncFloating();
+    }).observe($('.hero-ctas'));
+    new IntersectionObserver(function (en) { inQuote = en[0].isIntersecting; syncFloating(); }, { threshold: 0.15 }).observe($('#quote'));
+  } else { pastHero = true; syncFloating(); }
+
+  /* Gentle reveal on scroll */
+  $$('.range-grid, .steps, .tiles, .proj-grid, .pillars').forEach(function (g) {
+    $$('.reveal', g).forEach(function (n, i) { n.style.transitionDelay = (i % 6) * 70 + 'ms'; });
+  });
+  if ('IntersectionObserver' in window && !reduced) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
+    $$('.reveal').forEach(function (n) { io.observe(n); });
+  } else {
+    $$('.reveal').forEach(function (n) { n.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
